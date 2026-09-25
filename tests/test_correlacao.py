@@ -47,3 +47,9 @@ def test_calcular_tem_todas_as_janelas():
     t = {"a": mensal(np.random.default_rng(1).normal(size=150)), "b": mensal(np.random.default_rng(2).normal(size=150))}
     out = C.calcular(t)
     assert set(out["correlacao"]) == set(out["arestas"]) == {"tudo", "10a", "5a", "2a"}
+
+
+def test_entrada_vazia_nao_quebra():
+    assert C.matriz({}, None) == {"ids": [], "matriz": [], "n": []}
+    out = C.calcular({})
+    assert all(out["correlacao"][j]["ids"] == [] and out["arestas"][j] == [] for j in C.JANELAS)

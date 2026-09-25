@@ -19,6 +19,8 @@ def matriz(transformadas: dict[str, pd.Series], meses: int | None) -> dict:
     df = pd.DataFrame(transformadas).sort_index()
     df = recortar(df, meses)
     df = df.loc[:, df.notna().sum() >= MIN_MESES]
+    if df.shape[1] == 0:
+        return {"ids": [], "matriz": [], "n": []}
     ids = list(df.columns)
     r = df.corr(min_periods=MIN_MESES)
     presente = df.notna().astype(int)
