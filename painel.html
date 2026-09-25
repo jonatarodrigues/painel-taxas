@@ -48,10 +48,10 @@
         <button type="button" class="seg" data-periodo="tudo">Tudo</button>
       </div>
       <div class="segmentos" role="group" aria-label="Modo">
-        <button type="button" class="seg" data-modo="base100" aria-pressed="true">Base 100</button>
+        <button type="button" class="seg" data-modo="variacao" aria-pressed="true">Variação</button>
         <button type="button" class="seg" data-modo="nivel" id="modo-nivel">Nível</button>
       </div>
-      <span id="aviso-modo" class="hint" hidden>Unidades diferentes: só Base 100</span>
+      <span id="aviso-modo" class="hint" hidden>Unidades diferentes: só Variação</span>
       <div id="chips-cat" class="chips" aria-label="Categorias de eventos"></div>
     </div>
     <div class="card">
@@ -78,7 +78,7 @@
   <section id="aba-correlacoes" class="aba" role="tabpanel" hidden>
     <div class="controles">
       <div class="segmentos" role="group" aria-label="Janela" data-janela-grupo="heat"></div>
-      <span class="hint">Célula vazia: menos de 24 meses em comum.</span>
+      <span class="hint">Célula vazia: menos de 24 meses em comum ou série sem variação na janela.</span>
     </div>
     <div class="card"><div id="chart-heat" class="chart" style="height:900px"></div></div>
   </section>
@@ -94,7 +94,6 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js" integrity="sha384-Mx5lkUEQPM1pOJCwFtUICyX45KNojXbkWdYhkKUKsbv391mavbfoAmONbzkgYPzR" crossorigin="anonymous"></script>
-<script src="dados.js"></script>
 <script src="painel.js"></script>
 </body>
 </html>

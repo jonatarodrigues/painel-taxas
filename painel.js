@@ -17,7 +17,7 @@
   const estado = {
     aba: 'series',
     selecionadas: ['selic_meta', 'ipca_12m', 'usd_brl'],
-    modo: 'base100',
+    modo: 'variacao',
     periodo: '10a',
     categorias: new Set(ORDEM_CAT),
     janela: 'tudo',
@@ -90,6 +90,7 @@
   function grafico(idEl) {
     const dom = document.getElementById(idEl);
     if (charts[idEl]) charts[idEl].dispose();
+    dom.replaceChildren();
     charts[idEl] = echarts.init(dom, null, { renderer: 'canvas' });
     return charts[idEl];
   }
@@ -145,6 +146,15 @@
   }
 
   // ---------- carregamento ----------
+  function carregarDadosJs() {
+    return new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = 'dados.js';
+      s.onload = () => (window.DADOS ? res(window.DADOS) : rej(new Error('dados.js não definiu window.DADOS')));
+      s.onerror = () => rej(new Error('dados.js não encontrado'));
+      document.head.append(s);
+    });
+  }
   async function carregar() {
     if (/^https?:$/.test(location.protocol)) {
       try {
@@ -152,7 +162,9 @@
         if (r.ok) return await r.json();
       } catch (e) { /* cai no fallback */ }
     }
-    if (window.DADOS) return window.DADOS;
+    try {
+      return await carregarDadosJs();
+    } catch (e) { /* cai no erro final */ }
     throw new Error('Não encontrei dados.json nem dados.js. Rode "python atualizar.py" nesta pasta e recarregue.');
   }
   function validar(d) {
@@ -178,15 +190,18 @@
     try { tema = localStorage.getItem('tema') || 'dark'; } catch (e) { /* ok */ }
     aplicarTema(tema);
     $('#btn-tema').addEventListener('click', () => aplicarTema(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
-    try { D = await carregar(); validar(D); } catch (e) { const box = $('#erro'); box.hidden = false; box.textContent = e.message; return; }
+    try {
+      if (typeof echarts === 'undefined') throw new Error('Não foi possível carregar a biblioteca de gráficos (ECharts). O painel precisa de internet na primeira abertura para baixar o ECharts e a fonte Inter.');
+      D = await carregar();
+      validar(D);
+    } catch (e) { const box = $('#erro'); box.hidden = false; box.textContent = e.message; return; }
     montarControlesBase();
-    if (typeof montarControles === 'function') montarControles();
+    montarControles();
     renderKpis();
     ativarAba('series');
     window.addEventListener('resize', () => Object.values(charts).forEach((c) => c.resize()));
   }
 
-  // Ponto de extensão das Tasks 11–14: cada uma define funções aqui e registra em RENDER.
   function chips(container, opcoes, conjunto, cor, aoMudar) {
     container.replaceChildren(...Object.entries(opcoes).map(([chave, rotulo]) => {
       const b = el('button', { type: 'button', class: 'chip', style: `--cor:${cor(chave)}`, 'aria-pressed': String(conjunto.has(chave)) }, el('span', { class: 'ponto' }), rotulo);
@@ -236,17 +251,25 @@
     $$('[data-periodo]').forEach((b) => b.addEventListener('click', () => { estado.periodo = b.dataset.periodo; $$('[data-periodo]').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); renderSeries(); }));
     $$('[data-modo]').forEach((b) => b.addEventListener('click', () => { if (b.disabled) return; estado.modo = b.dataset.modo; renderSeries(); }));
     chips($('#chips-cat'), CATEGORIAS, estado.categorias, corCat, renderSeries);
-    if (typeof montarControlesCerebro === 'function') montarControlesCerebro();
-    if (typeof montarControlesHeat === 'function') montarControlesHeat();
-    if (typeof montarControlesTimeline === 'function') montarControlesTimeline();
+    montarControlesCerebro();
+    montarControlesHeat();
+    montarControlesTimeline();
   }
   function atualizarResumoSel() { $('#sel-resumo').textContent = `Séries (${estado.selecionadas.length}) ▾`; }
   // ---------- aba Séries ----------
   function renderSeries() {
     const ids = estado.selecionadas.filter((id) => D.series[id]);
+    if (!ids.length) {
+      $('#evento-detalhe').hidden = true;
+      grafico('chart-series').setOption({ title: { text: 'Selecione ao menos uma série', left: 'center', top: 'middle', textStyle: { color: cssVar('--muted'), fontWeight: 400, fontSize: 14 } } }, true);
+      $('#modo-nivel').disabled = true;
+      $('#aviso-modo').hidden = true;
+      return;
+    }
     const unidades = new Set(ids.map((id) => D.series[id].unidade));
     const misto = unidades.size > 1;
-    const modo = misto ? 'base100' : estado.modo;
+    const modo = misto ? 'variacao' : estado.modo;
+    estado.modoAtivo = modo;
     $('#modo-nivel').disabled = misto;
     $('#aviso-modo').hidden = !misto;
     $$('[data-modo]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
@@ -258,9 +281,9 @@
     const series = ids.map((id, i) => {
       const s = D.series[id];
       let dados = pontos(id).filter((p) => p[0] >= inicio);
-      if (modo === 'base100' && dados.length) {
-        const base = dados.find((p) => p[1] !== 0 && p[1] != null);
-        dados = base ? dados.map(([d, v]) => [d, (v / base[1]) * 100]) : [];
+      if (modo === 'variacao' && dados.length) {
+        const base = dados.find((p) => p[1] != null && (s.var_tipo !== 'pct' || p[1] !== 0));
+        dados = !base ? [] : dados.map(([d, v]) => [d, s.var_tipo === 'pct' ? (v / base[1] - 1) * 100 : v - base[1]]);
       }
       return { id, name: s.nome, type: 'line', showSymbol: false, symbolSize: 8, sampling: 'lttb', data: dados, lineStyle: { width: 2, color: corSlot(i) }, itemStyle: { color: corSlot(i) }, emphasis: { focus: 'series' } };
     });
@@ -273,7 +296,7 @@
     const c = grafico('chart-series');
     c.setOption({
       textStyle: textoBase(), animation: false,
-      legend: { data: ids.map((id) => D.series[id].nome), top: 0, textStyle: { color: cssVar('--text-2') }, icon: 'path://M0,5 L20,5 L20,7 L0,7 Z', itemWidth: 18 },
+      legend: { data: ids.map((id) => D.series[id].nome), top: 0, type: 'scroll', textStyle: { color: cssVar('--text-2') }, icon: 'path://M0,5 L20,5 L20,7 L0,7 Z', itemWidth: 18 },
       grid: [{ left: 60, right: 24, top: 44, height: '58%' }, { left: 60, right: 24, top: '76%', height: 44 }],
       axisPointer: { link: [{ xAxisIndex: 'all' }], lineStyle: { color: cssVar('--muted') } },
       tooltip: Object.assign(tooltipBase(), { trigger: 'axis', formatter: tooltipSeries }),
@@ -282,7 +305,7 @@
         Object.assign({ type: 'time', gridIndex: 1 }, eixoBase(), { axisLabel: { show: false }, splitLine: { show: false }, axisLine: { show: false } }),
       ],
       yAxis: [
-        Object.assign({ type: 'value', scale: true, name: modo === 'base100' ? 'Base 100' : [...unidades][0] || '', nameTextStyle: { color: cssVar('--muted'), align: 'left' } }, eixoBase(), { axisLine: { show: false } }),
+        Object.assign({ type: 'value', scale: true, name: modo === 'variacao' ? 'Variação desde o início (% ou p.p.)' : [...unidades][0] || '', nameTextStyle: { color: cssVar('--muted'), align: 'left' } }, eixoBase(), { axisLine: { show: false } }),
         { type: 'value', gridIndex: 1, min: -1, max: ORDEM_CAT.length, show: false },
       ],
       dataZoom: [
@@ -302,7 +325,9 @@
       caixa.append(el('div', { class: 'tt-titulo', text: fmtData(String(linhas[0].value[0]).slice(0, 10)) }));
       for (const p of linhas) {
         const id = p.seriesId;
-        caixa.append(el('div', { class: 'tt-linha' }, el('span', { class: 'tt-chave', style: `background:${p.color}` }), el('strong', { text: fmt(p.value[1], id && D.series[id] ? casasDe(id) : 2) }), el('span', { class: 'tt-nome', text: p.seriesName })));
+        const v = p.value[1];
+        const texto = estado.modoAtivo === 'variacao' && id && D.series[id] ? fmtSinal(v) + unidadeVar(id) : fmt(v, id && D.series[id] ? casasDe(id) : 2);
+        caixa.append(el('div', { class: 'tt-linha' }, el('span', { class: 'tt-chave', style: `background:${p.color}` }), el('strong', { text: texto }), el('span', { class: 'tt-nome', text: p.seriesName })));
       }
     }
     for (const p of lista.filter((q) => q.seriesType === 'scatter' && q.data && q.data.evento)) {
