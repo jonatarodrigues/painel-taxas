@@ -463,5 +463,29 @@
 
   // @@ABAS@@
 
+  // ---------- aba Linha do tempo ----------
+  function montarControlesTimeline() {
+    chips($('#chips-timeline'), CATEGORIAS, estado.filtroCat, corCat, renderTimeline);
+    const busca = $('#busca');
+    let timer = null;
+    busca.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => { estado.busca = busca.value; renderTimeline(); }, 150); });
+  }
+
+  function renderTimeline() {
+    const lista = $('#lista-eventos');
+    const q = estado.busca.trim().toLowerCase();
+    const evs = D.eventos
+      .filter((e) => estado.filtroCat.has(e.categoria) && (!q || (e.titulo + ' ' + e.descricao).toLowerCase().includes(q)))
+      .slice().sort((a, b) => b.data.localeCompare(a.data));
+    $('#n-eventos').textContent = `${evs.length} eventos`;
+    lista.replaceChildren(...evs.map(cardEvento));
+    if (!evs.length) lista.append(el('p', { class: 'muted', text: 'Nenhum evento com esses filtros.' }));
+  }
+
+  function cardEvento(e) {
+    return el('article', { class: 'evento' }, cabecalhoEvento(e), el('h3', { text: e.titulo }), el('p', { text: e.descricao }), tabelaImpactos(e));
+  }
+  RENDER.timeline = renderTimeline;
+
   init();
 })();
