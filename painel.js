@@ -350,6 +350,8 @@
   }
 
   function renderCerebro() {
+    const domCerebro = document.getElementById('chart-cerebro');
+    const escala = Math.max(0.6, Math.min(1.8, Math.sqrt(Math.max(1, domCerebro.clientWidth * domCerebro.clientHeight)) / 580));
     const visivel = (id) => D.series[id] && estado.gruposCerebro.has(D.series[id].grupo);
     const ar = (D.arestas[estado.janela] || []).filter((a) => Math.abs(a.r) >= estado.corte && visivel(a.a) && visivel(a.b));
     const peso = {};
@@ -370,12 +372,24 @@
         type: 'graph', layout: 'force', roam: true, draggable: true, data: nodes, links,
         categories: ORDEM_GRUPOS.map((g) => ({ name: GRUPOS[g], itemStyle: { color: corGrupo(g) } })),
         label: { show: true, position: 'right', color: cssVar('--text'), fontSize: 11 },
-        force: { repulsion: 340, gravity: 0.1, edgeLength: [50, 220], friction: 0.15 },
+        force: { repulsion: 230 * escala, gravity: 0.22, edgeLength: [40 * escala, 160 * escala], friction: 0.2 },
+        top: 44,
         emphasis: { focus: 'adjacency', lineStyle: { opacity: 1 } },
         lineStyle: { opacity: 0.7 }, edgeSymbol: ['none', 'none'],
+        selectedMode: 'single',
+        select: { itemStyle: { borderColor: cssVar('--text'), borderWidth: 3 }, label: { fontWeight: 'bold' } },
       }],
     }, true);
-    c.on('click', (p) => { if (p.dataType === 'node') { estado.noSelecionado = p.data.id; renderPainelNo(); } });
+    c.on('click', (p) => {
+      if (p.dataType !== 'node') return;
+      estado.noSelecionado = p.data.id;
+      c.dispatchAction({ type: 'downplay', seriesIndex: 0 });
+      c.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: p.dataIndex });
+      renderPainelNo();
+    });
+    if (estado.noSelecionado && ids.includes(estado.noSelecionado)) {
+      c.dispatchAction({ type: 'select', seriesIndex: 0, dataIndex: ids.indexOf(estado.noSelecionado) });
+    }
     $('#n-arestas').textContent = `${ar.length} conexões · ${nodes.length} variáveis · janela ${JANELAS[estado.janela].toLowerCase()}`;
     renderPainelNo();
   }
