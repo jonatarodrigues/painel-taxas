@@ -223,7 +223,12 @@
         cb.checked = estado.selecionadas.includes(id);
         cb.addEventListener('change', () => {
           if (cb.checked) {
-            if (estado.selecionadas.length >= MAX_SERIES) { cb.checked = false; $('#sel-resumo').textContent = `Máximo de ${MAX_SERIES} séries`; return; }
+            if (estado.selecionadas.length >= MAX_SERIES) {
+              cb.checked = false;
+              $('#sel-resumo').textContent = `Máximo de ${MAX_SERIES} séries`;
+              setTimeout(atualizarResumoSel, 2000);
+              return;
+            }
             estado.selecionadas.push(id);
           } else estado.selecionadas = estado.selecionadas.filter((x) => x !== id);
           atualizarResumoSel();
@@ -259,7 +264,10 @@
     const series = ids.map((id, i) => {
       const s = D.series[id];
       let dados = pontos(id).filter((p) => p[0] >= inicio);
-      if (modo === 'base100' && dados.length) { const b = dados[0][1]; dados = b ? dados.map(([d, v]) => [d, (v / b) * 100]) : []; }
+      if (modo === 'base100' && dados.length) {
+        const base = dados.find((p) => p[1] !== 0 && p[1] != null);
+        dados = base ? dados.map(([d, v]) => [d, (v / base[1]) * 100]) : [];
+      }
       return { id, name: s.nome, type: 'line', showSymbol: false, symbolSize: 8, sampling: 'lttb', data: dados, lineStyle: { width: 2, color: corSlot(i) }, itemStyle: { color: corSlot(i) }, emphasis: { focus: 'series' } };
     });
     const eventos = D.eventos.filter((e) => estado.categorias.has(e.categoria) && e.data >= inicio && e.data <= ultimo);
