@@ -15,7 +15,7 @@
 - Python 3.12; pandas >= 2.2 (instalado: 3.0.5); requests; numpy; pytest >= 8.
 - Nenhuma chave de API. Fontes: BCB SGS, FRED CSV público, Yahoo Finance `v8/finance/chart` (com `User-Agent` de navegador), IPEA OData.
 - BCB: séries diárias baixadas em janelas de 10 anos; `404` = janela vazia, não erro; série 432 cortada em "hoje".
-- Correlação: Pearson sobre base mensal; mínimo 24 meses por par; janelas `tudo`, `10a` (120 meses), `5a` (60), `2a` (24); arestas exportadas com `|r| >= 0.15`.
+- Correlação: Pearson sobre base mensal; mínimo 24 meses por par; janelas `tudo`, `10a` (120 meses), `5a` (60), `3a` (36) — a janela curta passou de 24 para 36 meses durante a execução (ruling registrado no ledger); arestas exportadas com `|r| >= 0.15`.
 - Transformações: `diff` (variação em p.p.), `logret` (retorno log, ignora valores <= 0), `nivel`.
 - Painel: sem build; tema escuro padrão; **um único eixo Y** (modos Base 100 / Nível); paleta de grupos exatamente a da spec §6; positivo azul / negativo vermelho; nomes e textos inseridos no DOM só via `textContent`.
 - Todos os textos voltados ao usuário em português do Brasil. Identificadores de código em português sem acento (`para_mensal`, `renderCerebro`).
@@ -926,7 +926,7 @@ def test_arestas_respeitam_corte_e_ordenam():
 def test_calcular_tem_todas_as_janelas():
     t = {"a": mensal(np.random.default_rng(1).normal(size=150)), "b": mensal(np.random.default_rng(2).normal(size=150))}
     out = C.calcular(t)
-    assert set(out["correlacao"]) == set(out["arestas"]) == {"tudo", "10a", "5a", "2a"}
+    assert set(out["correlacao"]) == set(out["arestas"]) == {"tudo", "10a", "5a", "3a"}
 ```
 
 - [ ] **Step 2: Rodar e ver falhar**
@@ -942,7 +942,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-JANELAS: dict[str, int | None] = {"tudo": None, "10a": 120, "5a": 60, "2a": 24}
+JANELAS: dict[str, int | None] = {"tudo": None, "10a": 120, "5a": 60, "3a": 36}
 MIN_MESES = 24
 CORTE_ARESTA = 0.15
 
@@ -1825,7 +1825,7 @@ p { margin: 6px 0; }
   const CATEGORIAS = { copom: 'Copom', fomc: 'Fed', crise: 'Crise', politica: 'Política', fiscal: 'Fiscal', externo: 'Externo', plano: 'Plano econômico' };
   const ORDEM_CAT = Object.keys(CATEGORIAS);
   const KPI_IDS = ['selic_meta', 'cdi', 'ipca_12m', 'usd_brl', 'fed_funds', 'ibovespa'];
-  const JANELAS = { tudo: 'Tudo', '10a': '10 anos', '5a': '5 anos', '2a': '2 anos' };
+  const JANELAS = { tudo: 'Tudo', '10a': '10 anos', '5a': '5 anos', '3a': '3 anos' };
   const PERIODOS = { '1a': 1, '5a': 5, '10a': 10, '20a': 20, tudo: null };
   const MAX_SERIES = 8;
 

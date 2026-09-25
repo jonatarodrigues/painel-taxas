@@ -79,7 +79,7 @@ Entrada: lista de séries em `pipeline/series.py` (código, nome, grupo, fonte,
 unidade, tipo de transformação). Saída: `dados.json`.
 
 Módulos:
-- `pipeline/fontes.py`: uma função por fonte (`bcb`, `fred`, `stooq`, `ipea`),
+- `pipeline/fontes.py`: uma função por fonte (`bcb`, `fred`, `yahoo`, `ipea`),
   cada uma retornando `pd.Series` indexada por data com nome igual ao id da
   série. Baixa com `requests`, timeout 30 s, 3 tentativas.
 - `pipeline/cache.py`: grava e lê `cache/{id}.csv`. Se o download falha, usa
@@ -193,9 +193,12 @@ Layout:
    Ibovespa. Cada um com valor, variação 1m e 12m e sparkline de 2 anos.
 3. **Aba Séries**: seletor múltiplo de variáveis agrupado por grupo (até 8
    ao mesmo tempo), gráfico de linhas com **um único eixo Y** em dois modos:
-   `Base 100` (cada série reindexada a 100 no início do período) e `Nível`
-   (disponível só quando todas as séries selecionadas têm a mesma unidade;
-   com unidades mistas o painel força Base 100 e avisa). Atalhos de período
+   `Variação` (variação de cada série desde o início do período: em % para
+   preços e índices, em pontos percentuais para taxas e inflação; eixo
+   centrado em zero) e `Nível` (disponível só quando todas as séries
+   selecionadas têm a mesma unidade; com unidades mistas o painel força
+   Variação e avisa). O modo "Base 100" da primeira versão foi descartado
+   porque 8 das 29 séries cruzam zero e o rebase explodia. Atalhos de período
    1a / 5a / 10a / 20a / tudo e dataZoom. Eventos aparecem numa **faixa
    própria abaixo do gráfico**, alinhada ao mesmo eixo de tempo, com um
    ponto por evento colorido pela categoria e filtrável por categoria;
