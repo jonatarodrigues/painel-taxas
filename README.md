@@ -6,7 +6,19 @@ correlações.
 
 Requer Python 3.10 ou superior (desenvolvido com 3.12).
 
-## Uso
+## Abrir com duplo clique
+
+- **`Abrir Painel.bat`**: atualiza os dados (1 a 3 minutos, depende do BCB),
+  sobe um servidor local e abre o painel no navegador. Deixe a janela preta
+  aberta enquanto usa o painel; fechá-la encerra o servidor.
+- **`Abrir Painel (rapido).bat`**: abre com os dados já gravados, sem baixar
+  nada.
+
+Os dois chamam `python abrir_painel.py` (opções: `--rapido`, `--offline`,
+`--porta N`). O navegador não consegue executar Python a partir do
+`painel.html`, por isso a atualização acontece nesse atalho, antes de abrir.
+
+## Uso manual
 
 ```bash
 pip install -r requirements.txt
