@@ -89,7 +89,7 @@ Módulos:
   úteis) e a mensal (último valor do mês para diárias; valor do mês para
   mensais), as séries derivadas e as transformações para correlação.
 - `pipeline/correlacao.py`: matrizes de correlação de Pearson para quatro
-  janelas (`tudo`, `10a`, `5a`, `2a`), mais a lista de arestas do grafo.
+  janelas (`tudo`, `10a`, `5a`, `3a`), mais a lista de arestas do grafo.
 - `pipeline/ciclos.py`: detecta na própria série 432 cada virada de direção
   da Selic meta (alta para baixa ou baixa para alta) e gera um evento
   `copom` automático por virada, com `"auto": true`. Assim os ciclos do Copom
@@ -108,7 +108,10 @@ Transformações para correlação (coluna `transformacao` em `series.py`):
 Regras de correlação:
 - Mínimo de 24 meses de sobreposição por par. Abaixo disso, o valor é `null`.
 - A matriz de cada janela usa apenas os meses dentro da janela contados a
-  partir do último mês disponível.
+  partir do último mês disponível. A janela curta é de 36 meses (não 24):
+  com janela igual ao mínimo de 24 meses, qualquer série mensal com um mês
+  de defasagem de publicação (IPCA, IGP-M, IBC-Br, CPI, fiscais) ficava de
+  fora, como se viu nos dados reais (17 de 29 séries).
 - Arestas do grafo: todos os pares com `|r| >= 0.15` entram no JSON; o corte
   visual é feito no painel pelo slider (padrão 0,30). Cada aresta carrega
   `r`, `n` (meses) e a janela.
@@ -130,11 +133,11 @@ Regras de correlação:
   },
   "correlacao": {
     "tudo": {"ids": ["selic_meta"], "matriz": [[1]], "n": [[320]]},
-    "10a": {}, "5a": {}, "2a": {}
+    "10a": {}, "5a": {}, "3a": {}
   },
   "arestas": {
     "tudo": [{"a": "selic_meta", "b": "cdi", "r": 0.98, "n": 320}],
-    "10a": [], "5a": [], "2a": []
+    "10a": [], "5a": [], "3a": []
   },
   "eventos": [],
   "avisos": ["FRED DGS2: usando cache de 2026-09-10"]
@@ -203,7 +206,7 @@ Layout:
    por grupo, tamanho proporcional à soma de |r| das arestas visíveis.
    Aresta: espessura proporcional a |r|, azul para positiva, vermelho para
    negativa (par divergente azul/vermelho com cinza neutro, o mesmo do
-   heatmap). Controles: janela (tudo/10a/5a/2a), slider de |r| mínimo
+   heatmap). Controles: janela (tudo/10a/5a/3a), slider de |r| mínimo
    (0,15 a 0,9, padrão 0,30), filtro por grupo. Clicar em nó destaca
    vizinhos e abre um painel lateral com a lista de correlações daquele nó
    ordenada por |r|.

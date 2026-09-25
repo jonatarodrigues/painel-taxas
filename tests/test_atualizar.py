@@ -39,3 +39,18 @@ def test_offline_usa_cache(tmp_path, monkeypatch):
     atualizar.main(["--pasta", str(tmp_path)])
     monkeypatch.setattr(cache_mod.fontes, "baixar", lambda s: 1 / 0)
     assert atualizar.main(["--pasta", str(tmp_path), "--offline"]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert d["series"]["ipca_12m"]["status"] == "desatualizada"
+
+
+def test_status_derivada_herda_pior_status():
+    st = {"ipca": "desatualizada", "selic_meta": "ok"}
+    assert atualizar.status_derivada("ipca_12m", st) == "desatualizada"
+    st["ipca_12m"] = atualizar.status_derivada("ipca_12m", st)
+    assert atualizar.status_derivada("juro_real", st) == "desatualizada"
+    assert atualizar.status_derivada("curva_eua", {}) == "ausente"
+
+
+def test_offline_sem_cache_retorna_1(tmp_path):
+    shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
+    assert atualizar.main(["--pasta", str(tmp_path), "--offline"]) == 1

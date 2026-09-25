@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-JANELAS: dict[str, int | None] = {"tudo": None, "10a": 120, "5a": 60, "2a": 24}
+JANELAS: dict[str, int | None] = {"tudo": None, "10a": 120, "5a": 60, "3a": 36}
 MIN_MESES = 24
 CORTE_ARESTA = 0.15
 

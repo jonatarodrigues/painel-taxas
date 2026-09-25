@@ -18,6 +18,14 @@ from pipeline.series import DERIVADAS, POR_ID, SERIES
 
 RAIZ = Path(__file__).resolve().parent
 
+ORDEM_STATUS = {"ok": 0, "desatualizada": 1, "ausente": 2}
+
+
+def status_derivada(id: str, status: dict[str, str]) -> str:
+    """Pior status entre as séries-base de uma derivada."""
+    bases = POR_ID[id].codigo.split("-")
+    return max((status.get(b, "ausente") for b in bases), key=ORDEM_STATUS.__getitem__)
+
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Atualiza os dados do painel de taxas.")
@@ -44,13 +52,17 @@ def main(argv: list[str] | None = None) -> int:
     mensais = {id: transformar.para_mensal(s, POR_ID[id].freq) for id, s in brutas.items()}
     for id, s in transformar.derivadas(mensais).items():
         mensais[id] = s
-        status[id] = "ok"
+        status[id] = status_derivada(id, status)
     transformadas = {id: transformar.transformar(m, POR_ID[id].transformacao)
                      for id, m in mensais.items() if not m.empty}
     correl = correlacao.calcular(transformadas)
 
     arq_eventos = pasta / "eventos.json"
-    eventos = json.loads(arq_eventos.read_text(encoding="utf-8")) if arq_eventos.exists() else []
+    if arq_eventos.exists():
+        eventos = json.loads(arq_eventos.read_text(encoding="utf-8"))
+    else:
+        eventos = []
+        avisos.append(f"eventos.json não encontrado em {pasta}; painel sem eventos curados")
     if "selic_meta" in brutas:
         eventos = eventos + ciclos_copom(brutas["selic_meta"])
 
@@ -64,7 +76,7 @@ def main(argv: list[str] | None = None) -> int:
     for a in avisos:
         print("  !", a)
     print(f"Gravado em {pasta / 'dados.json'}")
-    return 0 if any(st == "ok" for st in status.values()) else 1
+    return 0 if any(st in ("ok", "desatualizada") for st in status.values()) else 1
 
 
 if __name__ == "__main__":

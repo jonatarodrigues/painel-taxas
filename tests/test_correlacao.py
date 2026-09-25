@@ -46,7 +46,7 @@ def test_arestas_respeitam_corte_e_ordenam():
 def test_calcular_tem_todas_as_janelas():
     t = {"a": mensal(np.random.default_rng(1).normal(size=150)), "b": mensal(np.random.default_rng(2).normal(size=150))}
     out = C.calcular(t)
-    assert set(out["correlacao"]) == set(out["arestas"]) == {"tudo", "10a", "5a", "2a"}
+    assert set(out["correlacao"]) == set(out["arestas"]) == {"tudo", "10a", "5a", "3a"}
 
 
 def test_entrada_vazia_nao_quebra():
