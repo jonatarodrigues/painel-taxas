@@ -340,6 +340,80 @@
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
   RENDER.series = renderSeries;
+
+  // ---------- aba Cérebro ----------
+  function montarControlesCerebro() {
+    segmentosJanela($('[data-janela-grupo=cerebro]'), 'janela', renderCerebro);
+    const slider = $('#corte');
+    slider.addEventListener('input', () => { estado.corte = Number(slider.value); $('#corte-valor').textContent = fmt(estado.corte, 2); renderCerebro(); });
+    chips($('#chips-grupo'), GRUPOS, estado.gruposCerebro, corGrupo, renderCerebro);
+  }
+
+  function renderCerebro() {
+    const visivel = (id) => D.series[id] && estado.gruposCerebro.has(D.series[id].grupo);
+    const ar = (D.arestas[estado.janela] || []).filter((a) => Math.abs(a.r) >= estado.corte && visivel(a.a) && visivel(a.b));
+    const peso = {};
+    for (const a of ar) { peso[a.a] = (peso[a.a] || 0) + Math.abs(a.r); peso[a.b] = (peso[a.b] || 0) + Math.abs(a.r); }
+    const ids = ((D.correlacao[estado.janela] || {}).ids || []).filter(visivel);
+    const maxPeso = Math.max(0.01, ...Object.values(peso));
+    const nodes = ids.map((id) => ({
+      id, name: D.series[id].nome, category: ORDEM_GRUPOS.indexOf(D.series[id].grupo), value: peso[id] || 0,
+      symbolSize: 12 + 36 * ((peso[id] || 0) / maxPeso), itemStyle: { opacity: peso[id] ? 1 : 0.35 },
+    }));
+    const links = ar.map((a) => ({ source: a.a, target: a.b, value: a.r, n: a.n, lineStyle: { width: 1 + 6 * Math.abs(a.r), color: a.r > 0 ? cssVar('--pos') : cssVar('--neg'), opacity: 0.7, curveness: 0.12 } }));
+    const c = grafico('chart-cerebro');
+    c.setOption({
+      textStyle: textoBase(),
+      tooltip: Object.assign(tooltipBase(), { formatter: tooltipCerebro }),
+      legend: { data: ORDEM_GRUPOS.map((g) => GRUPOS[g]), top: 0, textStyle: { color: cssVar('--text-2') } },
+      series: [{
+        type: 'graph', layout: 'force', roam: true, draggable: true, data: nodes, links,
+        categories: ORDEM_GRUPOS.map((g) => ({ name: GRUPOS[g], itemStyle: { color: corGrupo(g) } })),
+        label: { show: true, position: 'right', color: cssVar('--text'), fontSize: 11 },
+        force: { repulsion: 340, gravity: 0.1, edgeLength: [50, 220], friction: 0.15 },
+        emphasis: { focus: 'adjacency', lineStyle: { opacity: 1 } },
+        lineStyle: { opacity: 0.7 }, edgeSymbol: ['none', 'none'],
+      }],
+    }, true);
+    c.on('click', (p) => { if (p.dataType === 'node') { estado.noSelecionado = p.data.id; renderPainelNo(); } });
+    $('#n-arestas').textContent = `${ar.length} conexões · ${nodes.length} variáveis · janela ${JANELAS[estado.janela].toLowerCase()}`;
+    renderPainelNo();
+  }
+
+  function tooltipCerebro(p) {
+    const caixa = el('div', { class: 'tt' });
+    if (p.dataType === 'edge') {
+      caixa.append(el('div', { class: 'tt-titulo', text: `${D.series[p.data.source].nome} ↔ ${D.series[p.data.target].nome}` }),
+        el('div', {}, el('strong', { text: 'r = ' + fmt(p.data.value, 2) }), el('span', { class: 'tt-nome', text: ` · ${p.data.n} meses` })));
+    } else {
+      const s = D.series[p.data.id];
+      caixa.append(el('div', { class: 'tt-titulo', text: s.nome }), el('div', { class: 'tt-nome', text: `${GRUPOS[s.grupo]} · ${s.unidade} · desde ${fmtData(s.inicio)}` }),
+        el('div', { text: `Conectividade ${fmt(p.data.value, 2)}` }));
+    }
+    return caixa;
+  }
+
+  function renderPainelNo() {
+    const box = $('#painel-no');
+    const m = D.correlacao[estado.janela];
+    const id = estado.noSelecionado;
+    if (!id || !m || !m.ids.includes(id)) { box.replaceChildren(el('h3', { text: 'Correlações' }), el('p', { class: 'muted', text: 'Clique num nó para ver com quem ele se correlaciona nesta janela.' })); return; }
+    const i = m.ids.indexOf(id);
+    const linhas = m.ids.map((outro, j) => ({ outro, r: m.matriz[i][j], n: m.n[i][j] })).filter((x) => x.outro !== id && x.r != null).sort((a, b) => Math.abs(b.r) - Math.abs(a.r));
+    box.replaceChildren(
+      el('h3', { text: D.series[id].nome }),
+      el('p', { class: 'muted', text: `${linhas.length} pares com pelo menos 24 meses em comum · janela ${JANELAS[estado.janela].toLowerCase()}` }),
+      ...linhas.map((x) => {
+        const barra = el('div', { class: 'corr-barra' });
+        const pct = Math.abs(x.r) * 50;
+        barra.append(el('i', { style: `left:${x.r < 0 ? 50 - pct : 50}%;width:${pct}%;background:${x.r > 0 ? cssVar('--pos') : cssVar('--neg')}` }));
+        return el('div', { class: 'corr-linha', title: `${x.n} meses` },
+          el('div', { class: 'corr-nome' }, el('span', { class: 'ponto', style: `width:8px;height:8px;border-radius:50%;background:${corGrupo(D.series[x.outro].grupo)};flex:none` }), el('span', { text: D.series[x.outro].nome }), barra),
+          el('div', { class: 'corr-valor ' + classeVar(x.r), text: fmtSinal(x.r, 2) }));
+      }));
+  }
+  RENDER.cerebro = renderCerebro;
+
   // @@ABAS@@
 
   init();
