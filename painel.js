@@ -193,7 +193,145 @@
   }
 
   // Ponto de extensão das Tasks 11–14: cada uma define funções aqui e registra em RENDER.
-  let montarControles = null;
+  function chips(container, opcoes, conjunto, cor, aoMudar) {
+    container.replaceChildren(...Object.entries(opcoes).map(([chave, rotulo]) => {
+      const b = el('button', { type: 'button', class: 'chip', style: `--cor:${cor(chave)}`, 'aria-pressed': String(conjunto.has(chave)) }, el('span', { class: 'ponto' }), rotulo);
+      b.addEventListener('click', () => {
+        if (conjunto.has(chave)) conjunto.delete(chave); else conjunto.add(chave);
+        b.setAttribute('aria-pressed', String(conjunto.has(chave)));
+        aoMudar();
+      });
+      return b;
+    }));
+  }
+  function segmentosJanela(container, chave, aoMudar) {
+    container.replaceChildren(...Object.entries(JANELAS).map(([j, rotulo]) => {
+      const b = el('button', { type: 'button', class: 'seg', 'aria-pressed': String(estado[chave] === j), text: rotulo });
+      b.addEventListener('click', () => { estado[chave] = j; $$('.seg', container).forEach((x) => x.setAttribute('aria-pressed', String(x === b))); aoMudar(); });
+      return b;
+    }));
+  }
+  function montarControles() {
+    // seletor de séries agrupado
+    const lista = $('#sel-lista');
+    for (const g of ORDEM_GRUPOS) {
+      const ids = Object.keys(D.series).filter((id) => D.series[id].grupo === g);
+      if (!ids.length) continue;
+      lista.append(el('div', { class: 'sel-grupo', text: GRUPOS[g] }));
+      for (const id of ids) {
+        const cb = el('input', { type: 'checkbox', value: id });
+        cb.checked = estado.selecionadas.includes(id);
+        cb.addEventListener('change', () => {
+          if (cb.checked) {
+            if (estado.selecionadas.length >= MAX_SERIES) { cb.checked = false; $('#sel-resumo').textContent = `Máximo de ${MAX_SERIES} séries`; return; }
+            estado.selecionadas.push(id);
+          } else estado.selecionadas = estado.selecionadas.filter((x) => x !== id);
+          atualizarResumoSel();
+          renderSeries();
+        });
+        lista.append(el('label', { style: `--cor:${corGrupo(g)}` }, cb, el('span', { class: 'ponto' }), D.series[id].nome));
+      }
+    }
+    atualizarResumoSel();
+    document.addEventListener('click', (ev) => { const det = $('.seletor'); if (det.open && !det.contains(ev.target)) det.open = false; });
+    $$('[data-periodo]').forEach((b) => b.addEventListener('click', () => { estado.periodo = b.dataset.periodo; $$('[data-periodo]').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); renderSeries(); }));
+    $$('[data-modo]').forEach((b) => b.addEventListener('click', () => { if (b.disabled) return; estado.modo = b.dataset.modo; renderSeries(); }));
+    chips($('#chips-cat'), CATEGORIAS, estado.categorias, corCat, renderSeries);
+    if (typeof montarControlesCerebro === 'function') montarControlesCerebro();
+    if (typeof montarControlesHeat === 'function') montarControlesHeat();
+    if (typeof montarControlesTimeline === 'function') montarControlesTimeline();
+  }
+  function atualizarResumoSel() { $('#sel-resumo').textContent = `Séries (${estado.selecionadas.length}) ▾`; }
+  // ---------- aba Séries ----------
+  function renderSeries() {
+    const ids = estado.selecionadas.filter((id) => D.series[id]);
+    const unidades = new Set(ids.map((id) => D.series[id].unidade));
+    const misto = unidades.size > 1;
+    const modo = misto ? 'base100' : estado.modo;
+    $('#modo-nivel').disabled = misto;
+    $('#aviso-modo').hidden = !misto;
+    $$('[data-modo]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
+
+    const ultimo = ids.reduce((m, id) => (D.series[id].fim > m ? D.series[id].fim : m), '0000-00-00');
+    const anos = PERIODOS[estado.periodo];
+    const inicio = anos ? anosAtras(ultimo, anos) : '0000-00-00';
+
+    const series = ids.map((id, i) => {
+      const s = D.series[id];
+      let dados = pontos(id).filter((p) => p[0] >= inicio);
+      if (modo === 'base100' && dados.length) { const b = dados[0][1]; dados = b ? dados.map(([d, v]) => [d, (v / b) * 100]) : []; }
+      return { id, name: s.nome, type: 'line', showSymbol: false, symbolSize: 8, sampling: 'lttb', data: dados, lineStyle: { width: 2, color: corSlot(i) }, itemStyle: { color: corSlot(i) }, emphasis: { focus: 'series' } };
+    });
+    const eventos = D.eventos.filter((e) => estado.categorias.has(e.categoria) && e.data >= inicio && e.data <= ultimo);
+    series.push({
+      name: 'Eventos', type: 'scatter', xAxisIndex: 1, yAxisIndex: 1, symbolSize: 10,
+      data: eventos.map((e) => ({ value: [e.data, ORDEM_CAT.indexOf(e.categoria)], evento: e, itemStyle: { color: corCat(e.categoria), borderColor: cssVar('--card'), borderWidth: 2 } })),
+    });
+
+    const c = grafico('chart-series');
+    c.setOption({
+      textStyle: textoBase(), animation: false,
+      legend: { data: ids.map((id) => D.series[id].nome), top: 0, textStyle: { color: cssVar('--text-2') }, icon: 'path://M0,5 L20,5 L20,7 L0,7 Z', itemWidth: 18 },
+      grid: [{ left: 60, right: 24, top: 44, height: '58%' }, { left: 60, right: 24, top: '76%', height: 44 }],
+      axisPointer: { link: [{ xAxisIndex: 'all' }], lineStyle: { color: cssVar('--muted') } },
+      tooltip: Object.assign(tooltipBase(), { trigger: 'axis', formatter: tooltipSeries }),
+      xAxis: [
+        Object.assign({ type: 'time' }, eixoBase(), { splitLine: { show: false } }),
+        Object.assign({ type: 'time', gridIndex: 1 }, eixoBase(), { axisLabel: { show: false }, splitLine: { show: false }, axisLine: { show: false } }),
+      ],
+      yAxis: [
+        Object.assign({ type: 'value', scale: true, name: modo === 'base100' ? 'Base 100' : [...unidades][0] || '', nameTextStyle: { color: cssVar('--muted'), align: 'left' } }, eixoBase(), { axisLine: { show: false } }),
+        { type: 'value', gridIndex: 1, min: -1, max: ORDEM_CAT.length, show: false },
+      ],
+      dataZoom: [
+        { type: 'inside', xAxisIndex: [0, 1] },
+        { type: 'slider', xAxisIndex: [0, 1], bottom: 6, height: 22, borderColor: 'transparent', backgroundColor: cssVar('--bg'), fillerColor: 'rgba(120,120,140,.18)', handleStyle: { color: cssVar('--muted') }, textStyle: { color: cssVar('--muted') }, dataBackground: { lineStyle: { color: cssVar('--muted') }, areaStyle: { color: cssVar('--grid') } } },
+      ],
+      series,
+    }, true);
+    c.on('click', (p) => { if (p.seriesType === 'scatter' && p.data && p.data.evento) mostrarEvento(p.data.evento); });
+  }
+
+  function tooltipSeries(params) {
+    const lista = Array.isArray(params) ? params : [params];
+    const caixa = el('div', { class: 'tt' });
+    const linhas = lista.filter((p) => p.seriesType === 'line');
+    if (linhas.length) {
+      caixa.append(el('div', { class: 'tt-titulo', text: fmtData(String(linhas[0].value[0]).slice(0, 10)) }));
+      for (const p of linhas) {
+        const id = p.seriesId;
+        caixa.append(el('div', { class: 'tt-linha' }, el('span', { class: 'tt-chave', style: `background:${p.color}` }), el('strong', { text: fmt(p.value[1], id && D.series[id] ? casasDe(id) : 2) }), el('span', { class: 'tt-nome', text: p.seriesName })));
+      }
+    }
+    for (const p of lista.filter((q) => q.seriesType === 'scatter' && q.data && q.data.evento)) {
+      const e = p.data.evento;
+      caixa.append(el('div', { class: 'tt-evento' }, el('div', { class: 'tt-titulo', text: `${fmtData(e.data)} · ${e.titulo}` }), el('div', { class: 'tt-desc', text: e.descricao })));
+    }
+    return caixa;
+  }
+
+  function tabelaImpactos(e) {
+    const corpo = el('tbody');
+    for (const id of e.series) {
+      if (!D.series[id]) continue;
+      const i30 = impacto(id, e.data, 30), i90 = impacto(id, e.data, 90);
+      corpo.append(el('tr', {}, el('td', { text: D.series[id].nome }), el('td', { class: classeVar(i30), text: fmtVar(id, i30) }), el('td', { class: classeVar(i90), text: fmtVar(id, i90) })));
+    }
+    return el('table', { class: 'impactos' }, el('thead', {}, el('tr', {}, el('th', { text: 'Série' }), el('th', { text: '30 dias' }), el('th', { text: '90 dias' }))), corpo);
+  }
+  function cabecalhoEvento(e) {
+    return el('div', { class: 'evento-cab' },
+      el('time', { datetime: e.data, text: fmtData(e.data) }),
+      el('span', { class: 'chip cat', style: `--cor:${corCat(e.categoria)}`, text: CATEGORIAS[e.categoria] || e.categoria }),
+      e.auto ? el('span', { class: 'chip', text: 'detectado na série' }) : null);
+  }
+  function mostrarEvento(e) {
+    const box = $('#evento-detalhe');
+    box.hidden = false;
+    box.replaceChildren(cabecalhoEvento(e), el('h3', { text: e.titulo }), el('p', { text: e.descricao }), tabelaImpactos(e));
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  RENDER.series = renderSeries;
   // @@ABAS@@
 
   init();
