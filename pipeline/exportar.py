@@ -42,11 +42,12 @@ def resumo_serie(serie: Serie, diaria: pd.Series, mensal: pd.Series, status: str
         inicio, fim = diaria.index.min(), diaria.index.max()
     else:
         inicio, fim = mensal.index.min().to_timestamp(), mensal.index.max().to_timestamp(how="end")
+    prefixo = {"bcb": "BCB SGS"}.get(serie.fonte, serie.fonte.upper())
     return {
         "nome": serie.nome,
         "grupo": serie.grupo,
         "unidade": serie.unidade,
-        "fonte": "derivada" if serie.fonte == "derivada" else f"{serie.fonte.upper()} {serie.codigo}",
+        "fonte": "derivada" if serie.fonte == "derivada" else f"{prefixo} {serie.codigo}",
         "freq": serie.freq,
         "transformacao": serie.transformacao,
         "status": status,

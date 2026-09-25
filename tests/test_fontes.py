@@ -56,7 +56,7 @@ class RespostaFalsa:
 def test_bcb_janelas_e_404(monkeypatch):
     chamadas = []
 
-    def get_falso(url, params=None):
+    def get_falso(url, params=None, **kwargs):
         chamadas.append(params)
         if params["dataInicial"].endswith("1980"):
             return None  # BCB responde 404 quando a janela não tem dados
@@ -70,7 +70,7 @@ def test_bcb_janelas_e_404(monkeypatch):
 
 
 def test_bcb_corta_datas_futuras(monkeypatch):
-    def get_falso(url, params=None):
+    def get_falso(url, params=None, **kwargs):
         return RespostaFalsa([{"data": "24/09/2026", "valor": "15"}, {"data": "04/11/2026", "valor": "15"}])
 
     monkeypatch.setattr(fontes, "_get", get_falso)
@@ -81,7 +81,7 @@ def test_bcb_corta_datas_futuras(monkeypatch):
 def test_bcb_mensal_sem_janela(monkeypatch):
     chamadas = []
 
-    def get_falso(url, params=None):
+    def get_falso(url, params=None, **kwargs):
         chamadas.append(params)
         return RespostaFalsa([{"data": "01/01/1980", "valor": "6.62"}])
 

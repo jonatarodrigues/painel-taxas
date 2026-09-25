@@ -41,6 +41,7 @@ def test_offline_usa_cache(tmp_path, monkeypatch):
     assert atualizar.main(["--pasta", str(tmp_path), "--offline"]) == 0
     d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
     assert d["series"]["ipca_12m"]["status"] == "desatualizada"
+    assert sum("Modo offline" in a for a in d["avisos"]) == 1 and not any("modo offline, usando" in a for a in d["avisos"])
 
 
 def test_status_derivada_herda_pior_status():
@@ -54,3 +55,31 @@ def test_status_derivada_herda_pior_status():
 def test_offline_sem_cache_retorna_1(tmp_path):
     shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
     assert atualizar.main(["--pasta", str(tmp_path), "--offline"]) == 1
+
+
+def test_carregar_eventos_json_quebrado(tmp_path):
+    arq = tmp_path / "eventos.json"
+    arq.write_text("[{", encoding="utf-8")
+    avisos = []
+    assert atualizar.carregar_eventos(arq, avisos) == []
+    assert any("inválido" in a for a in avisos)
+
+
+def test_carregar_eventos_descarta_malformados(tmp_path):
+    arq = tmp_path / "eventos.json"
+    arq.write_text(json.dumps([
+        {"data": "2008-09-15", "titulo": "ok", "categoria": "crise", "descricao": "d", "series": ["usd_brl"]},
+        {"data": "15/09/2008", "titulo": "data errada", "categoria": "crise", "descricao": "d", "series": ["usd_brl"]},
+        {"data": "2008-09-15", "titulo": "serie inexistente", "categoria": "crise", "descricao": "d", "series": ["xpto"]},
+        {"data": "2008-09-15", "titulo": "sem series", "categoria": "crise", "descricao": "d"},
+    ]), encoding="utf-8")
+    avisos = []
+    validos = atualizar.carregar_eventos(arq, avisos)
+    assert [e["titulo"] for e in validos] == ["ok"]
+    assert avisos and "3 evento(s)" in avisos[0]
+
+
+def test_carregar_eventos_ausente(tmp_path):
+    avisos = []
+    assert atualizar.carregar_eventos(tmp_path / "eventos.json", avisos) == []
+    assert "não encontrado" in avisos[0]

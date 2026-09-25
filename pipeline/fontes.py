@@ -22,19 +22,20 @@ class RespostaVazia(Exception):
     """A fonte respondeu, mas sem dados utilizáveis."""
 
 
-def _get(url: str, params: dict | None = None) -> requests.Response | None:
+def _get(url: str, params: dict | None = None, timeout: int = TIMEOUT) -> requests.Response | None:
     """GET com tentativas. Retorna None em 404 (o BCB usa 404 para janela sem dados)."""
     erro: Exception | None = None
     for i in range(TENTATIVAS):
         try:
-            r = requests.get(url, params=params, headers=HEADERS, timeout=TIMEOUT)
+            r = requests.get(url, params=params, headers=HEADERS, timeout=timeout)
             if r.status_code == 404:
                 return None
             r.raise_for_status()
             return r
         except requests.RequestException as e:
             erro = e
-            time.sleep(2 * (i + 1))
+            if i < TENTATIVAS - 1:
+                time.sleep(2 * (i + 1))
     assert erro is not None
     raise erro
 
@@ -64,7 +65,7 @@ def bcb(codigo: str, freq: str, hoje: date | None = None) -> pd.Series:
     hoje = hoje or date.today()
     url = f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados"
     if freq == "m":
-        r = _get(url, {"formato": "json"})
+        r = _get(url, {"formato": "json"}, timeout=60)
         s = parse_bcb(r.json() if r is not None else [])
     else:
         partes = []
@@ -73,7 +74,7 @@ def bcb(codigo: str, freq: str, hoje: date | None = None) -> pd.Series:
             fim = min(date(inicio.year + 9, 12, 31), hoje)
             r = _get(url, {"formato": "json",
                            "dataInicial": inicio.strftime("%d/%m/%Y"),
-                           "dataFinal": fim.strftime("%d/%m/%Y")})
+                           "dataFinal": fim.strftime("%d/%m/%Y")}, timeout=60)
             if r is not None:
                 partes.append(parse_bcb(r.json()))
             inicio = date(fim.year + 1, 1, 1)
