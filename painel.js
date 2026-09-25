@@ -428,6 +428,39 @@
   }
   RENDER.cerebro = renderCerebro;
 
+  // ---------- aba Correlações ----------
+  function montarControlesHeat() { segmentosJanela($('[data-janela-grupo=heat]'), 'janelaHeat', renderHeat); }
+
+  function renderHeat() {
+    const m = D.correlacao[estado.janelaHeat];
+    const dom = document.getElementById('chart-heat');
+    if (!m || !m.ids.length) { dom.textContent = 'Sem dados para esta janela.'; return; }
+    const ordem = m.ids.map((_, i) => i).sort((a, b) => ORDEM_GRUPOS.indexOf(D.series[m.ids[a]].grupo) - ORDEM_GRUPOS.indexOf(D.series[m.ids[b]].grupo) || a - b);
+    const ids = ordem.map((i) => m.ids[i]);
+    const nomes = ids.map((id) => D.series[id].nome);
+    const data = [];
+    ordem.forEach((oi, x) => ordem.forEach((oj, y) => {
+      const r = m.matriz[oi][oj];
+      if (r != null) data.push({ value: [x, y, r], n: m.n[oi][oj], label: { color: Math.abs(r) > 0.55 ? '#ffffff' : cssVar('--text') } });
+    }));
+    const tam = ids.length;
+    dom.style.height = Math.max(520, Math.min(980, tam * 28 + 200)) + 'px';
+    const c = grafico('chart-heat');
+    c.setOption({
+      textStyle: textoBase(), animation: false,
+      tooltip: Object.assign(tooltipBase(), {
+        position: 'top',
+        formatter: (p) => el('div', { class: 'tt' }, el('div', { class: 'tt-titulo', text: `${nomes[p.value[0]]} × ${nomes[p.value[1]]}` }), el('div', {}, el('strong', { text: 'r = ' + fmt(p.value[2], 2) }), el('span', { class: 'tt-nome', text: ` · ${p.data.n} meses` }))),
+      }),
+      grid: { left: 190, right: 24, top: 12, bottom: 170 },
+      xAxis: Object.assign({ type: 'category', data: nomes }, eixoBase(), { splitLine: { show: false }, axisLabel: { rotate: 55, fontSize: 10, color: cssVar('--muted') } }),
+      yAxis: Object.assign({ type: 'category', data: nomes, inverse: true }, eixoBase(), { splitLine: { show: false }, axisLabel: { fontSize: 10, color: cssVar('--muted') } }),
+      visualMap: { min: -1, max: 1, calculable: true, orient: 'horizontal', left: 'center', bottom: 4, itemWidth: 12, itemHeight: 180, textStyle: { color: cssVar('--muted') }, inRange: { color: [cssVar('--neg'), cssVar('--mid'), cssVar('--pos')] } },
+      series: [{ type: 'heatmap', data, label: { show: tam <= 24, fontSize: 9, formatter: (p) => p.value[2].toFixed(2) }, itemStyle: { borderColor: cssVar('--card'), borderWidth: 2 }, emphasis: { itemStyle: { borderColor: cssVar('--text') } } }],
+    }, true);
+  }
+  RENDER.correlacoes = renderHeat;
+
   // @@ABAS@@
 
   init();
