@@ -22,10 +22,14 @@ def listar_mensal(s: pd.Series) -> list[list]:
 
 
 def _variacao(m: pd.Series, defasagem: int, pct: bool) -> float | None:
+    """Variação entre o último mês e o mês `defasagem` meses antes; None se esse mês não existe."""
     m = m.dropna()
-    if len(m) <= defasagem:
+    if m.empty:
         return None
-    atual, antes = float(m.iloc[-1]), float(m.iloc[-1 - defasagem])
+    alvo = m.index[-1] - defasagem
+    if alvo not in m.index:
+        return None
+    atual, antes = float(m.iloc[-1]), float(m[alvo])
     if pct:
         return None if antes == 0 else round((atual / antes - 1) * 100, CASAS)
     return round(atual - antes, CASAS)

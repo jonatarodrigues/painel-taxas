@@ -59,3 +59,10 @@ def test_variacao_percentual_e_pontos():
     assert exportar._variacao(m, 1, pct=True) == 10.0
     assert exportar._variacao(m, 1, pct=False) == 10.0
     assert exportar._variacao(m, 12, pct=True) is None
+
+
+def test_variacao_respeita_calendario():
+    idx = pd.PeriodIndex(["2024-01", "2024-02", "2024-04"], freq="M")
+    m = pd.Series([100.0, 105.0, 120.0], index=idx)
+    assert exportar._variacao(m, 1, pct=False) is None       # 2024-03 não existe
+    assert exportar._variacao(m, 2, pct=False) == 15.0       # 2024-02 existe
