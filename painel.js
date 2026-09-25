@@ -111,6 +111,10 @@
           el('span', { class: classeVar(s.var_12m), text: '12m ' + fmtVar(id, s.var_12m) })),
         el('div', { class: 'kpi-spark', id: 'spark-' + id }),
         el('div', { class: 'kpi-data muted', text: 'até ' + fmtData(s.fim) })));
+    }
+    for (const id of KPI_IDS) {
+      const s = D.series[id];
+      if (!s) continue;
       const dados = s.mensal.slice(-24).map((p) => p[1]);
       grafico('spark-' + id).setOption({
         animation: false,

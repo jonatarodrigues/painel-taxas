@@ -43,12 +43,12 @@ p { margin: 6px 0; }
 .erro { background: var(--card); border: 1px solid var(--neg); border-radius: 10px; padding: 14px; margin: 12px 0; }
 
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
-.kpi { background: var(--card); border-radius: 12px; padding: 12px 14px 8px; box-shadow: var(--sombra); border-top: 3px solid var(--cor); }
+.kpi { background: var(--card); border-radius: 12px; padding: 12px 14px 8px; box-shadow: var(--sombra); border-top: 3px solid var(--cor); overflow: hidden; }
 .kpi-nome { font-size: 12px; color: var(--text-2); }
 .kpi-valor { font-size: 24px; font-weight: 600; line-height: 1.2; margin-top: 2px; }
 .kpi-unid { font-size: 12px; font-weight: 400; color: var(--muted); }
 .kpi-vars { display: flex; gap: 10px; font-size: 12px; margin-top: 4px; font-variant-numeric: tabular-nums; }
-.kpi-spark { height: 38px; margin-top: 6px; }
+.kpi-spark { height: 38px; margin-top: 6px; overflow: hidden; }
 .kpi-data { font-size: 11px; }
 .var-pos { color: var(--pos); } .var-neg { color: var(--neg); }
 
