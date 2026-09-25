@@ -136,13 +136,6 @@
   }
   function renderAba() { if (RENDER[estado.aba]) RENDER[estado.aba](); }
 
-  // stubs substituídos nas Tasks 11–14
-  const emConstrucao = (idEl) => () => { const d = document.getElementById(idEl); if (d) d.textContent = 'em construção'; };
-  RENDER.series = emConstrucao('chart-series');
-  RENDER.cerebro = emConstrucao('chart-cerebro');
-  RENDER.correlacoes = emConstrucao('chart-heat');
-  RENDER.timeline = emConstrucao('lista-eventos');
-
   // ---------- tema ----------
   function aplicarTema(t) {
     document.documentElement.dataset.theme = t;
@@ -461,8 +454,6 @@
     }, true);
   }
   RENDER.correlacoes = renderHeat;
-
-  // @@ABAS@@
 
   // ---------- aba Linha do tempo ----------
   function montarControlesTimeline() {
