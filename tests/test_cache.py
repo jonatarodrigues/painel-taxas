@@ -56,3 +56,4 @@ def test_obter_offline(tmp_path):
     c.gravar("selic_meta", serie_exemplo())
     s, status, aviso = obter(SELIC, c, offline=True, baixar=lambda serie: 1 / 0)
     assert status == "desatualizada" and len(s) == 2
+    assert "modo offline" in aviso and "usando cache de" in aviso

@@ -46,7 +46,8 @@ def obter(serie: Serie, cache: Cache, offline: bool = False,
         s = cache.ler(serie.id)
         if s is None:
             return None, "ausente", f"{serie.nome}: sem cache (modo offline)"
-        return s, "desatualizada", None
+        quando = cache.modificado_em(serie.id)
+        return s, "desatualizada", f"{serie.nome}: modo offline, usando cache de {quando:%Y-%m-%d}"
     try:
         s = baixar(serie)
         if s is None or s.empty:
