@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+cache/
+dados.json
+dados.js
+.remember/
+.sonar/
+.superpowers/
