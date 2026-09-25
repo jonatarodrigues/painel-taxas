@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de Taxas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="painel.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-titulo">
+    <h1>Painel de Taxas</h1>
+    <span id="atualizado" class="muted"></span>
+  </div>
+  <div class="topo-acoes">
+    <button id="btn-avisos" class="chip chip-aviso" type="button" hidden>⚠ <span id="n-avisos"></span> avisos</button>
+    <button id="btn-tema" class="btn" type="button" aria-label="Alternar tema"></button>
+  </div>
+</header>
+<div id="avisos" class="avisos" hidden></div>
+<div id="erro" class="erro" role="alert" hidden></div>
+
+<section id="kpis" class="kpis" aria-label="Indicadores principais"></section>
+
+<nav class="abas" role="tablist" aria-label="Seções do painel">
+  <button role="tab" type="button" data-aba="series" aria-selected="true">Séries</button>
+  <button role="tab" type="button" data-aba="cerebro" aria-selected="false">Cérebro</button>
+  <button role="tab" type="button" data-aba="correlacoes" aria-selected="false">Correlações</button>
+  <button role="tab" type="button" data-aba="timeline" aria-selected="false">Linha do tempo</button>
+</nav>
+
+<main>
+  <section id="aba-series" class="aba ativa" role="tabpanel">
+    <div class="controles">
+      <details class="seletor">
+        <summary id="sel-resumo">Séries</summary>
+        <div id="sel-lista" class="sel-lista"></div>
+      </details>
+      <div class="segmentos" role="group" aria-label="Período">
+        <button type="button" class="seg" data-periodo="1a">1a</button>
+        <button type="button" class="seg" data-periodo="5a">5a</button>
+        <button type="button" class="seg" data-periodo="10a" aria-pressed="true">10a</button>
+        <button type="button" class="seg" data-periodo="20a">20a</button>
+        <button type="button" class="seg" data-periodo="tudo">Tudo</button>
+      </div>
+      <div class="segmentos" role="group" aria-label="Modo">
+        <button type="button" class="seg" data-modo="base100" aria-pressed="true">Base 100</button>
+        <button type="button" class="seg" data-modo="nivel" id="modo-nivel">Nível</button>
+      </div>
+      <span id="aviso-modo" class="hint" hidden>Unidades diferentes: só Base 100</span>
+      <div id="chips-cat" class="chips" aria-label="Categorias de eventos"></div>
+    </div>
+    <div class="card">
+      <div id="chart-series" class="chart" style="height:560px"></div>
+      <p class="legenda-faixa muted">Faixa inferior: eventos por categoria. Passe o mouse para ler, clique para ver o impacto em 30 e 90 dias.</p>
+    </div>
+    <div id="evento-detalhe" class="card evento-detalhe" hidden></div>
+  </section>
+
+  <section id="aba-cerebro" class="aba" role="tabpanel" hidden>
+    <div class="controles">
+      <div class="segmentos" role="group" aria-label="Janela" data-janela-grupo="cerebro"></div>
+      <label class="slider">|r| mínimo <input id="corte" type="range" min="0.15" max="0.9" step="0.05" value="0.3"> <output id="corte-valor">0,30</output></label>
+      <div id="chips-grupo" class="chips" aria-label="Grupos"></div>
+      <span id="n-arestas" class="hint"></span>
+    </div>
+    <div class="cerebro-grade">
+      <div class="card"><div id="chart-cerebro" class="chart" style="height:640px"></div>
+        <p class="legenda-faixa muted">Nó maior = mais conectado. Aresta azul = correlação positiva, vermelha = negativa; espessura = força. Arraste para reorganizar, role para dar zoom, clique num nó para ver a lista.</p></div>
+      <aside id="painel-no" class="card painel-no"></aside>
+    </div>
+  </section>
+
+  <section id="aba-correlacoes" class="aba" role="tabpanel" hidden>
+    <div class="controles">
+      <div class="segmentos" role="group" aria-label="Janela" data-janela-grupo="heat"></div>
+      <span class="hint">Célula vazia: menos de 24 meses em comum.</span>
+    </div>
+    <div class="card"><div id="chart-heat" class="chart" style="height:900px"></div></div>
+  </section>
+
+  <section id="aba-timeline" class="aba" role="tabpanel" hidden>
+    <div class="controles">
+      <input id="busca" class="busca" type="search" placeholder="Buscar evento…" aria-label="Buscar evento">
+      <div id="chips-timeline" class="chips" aria-label="Categorias"></div>
+      <span id="n-eventos" class="hint"></span>
+    </div>
+    <div id="lista-eventos" class="lista-eventos"></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js" integrity="sha384-Mx5lkUEQPM1pOJCwFtUICyX45KNojXbkWdYhkKUKsbv391mavbfoAmONbzkgYPzR" crossorigin="anonymous"></script>
+<script src="dados.js"></script>
+<script src="painel.js"></script>
+</body>
+</html>
