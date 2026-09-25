@@ -57,6 +57,7 @@
   const unidadeVar = (id) => D.series[id].var_tipo === 'pct' ? '%' : ' p.p.';
   const classeVar = (v) => v == null ? 'muted' : (v > 0 ? 'var-pos' : v < 0 ? 'var-neg' : '');
   const fmtVar = (id, v) => v == null ? '—' : fmtSinal(v) + unidadeVar(id);
+  const plural = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
   const addDias = (iso, dias) => { const d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + dias); return d.toISOString().slice(0, 10); };
   const anosAtras = (iso, anos) => { const d = new Date(iso + 'T00:00:00Z'); d.setUTCFullYear(d.getUTCFullYear() - anos); return d.toISOString().slice(0, 10); };
 
@@ -390,7 +391,7 @@
     if (estado.noSelecionado && ids.includes(estado.noSelecionado)) {
       c.dispatchAction({ type: 'select', seriesIndex: 0, dataIndex: ids.indexOf(estado.noSelecionado) });
     }
-    $('#n-arestas').textContent = `${ar.length} conexões · ${nodes.length} variáveis · janela ${JANELAS[estado.janela].toLowerCase()}`;
+    $('#n-arestas').textContent = `${plural(ar.length, 'conexão', 'conexões')} · ${plural(nodes.length, 'variável', 'variáveis')} · janela ${JANELAS[estado.janela].toLowerCase()}`;
     renderPainelNo();
   }
 
@@ -477,7 +478,7 @@
     const evs = D.eventos
       .filter((e) => estado.filtroCat.has(e.categoria) && (!q || (e.titulo + ' ' + e.descricao).toLowerCase().includes(q)))
       .slice().sort((a, b) => b.data.localeCompare(a.data));
-    $('#n-eventos').textContent = `${evs.length} eventos`;
+    $('#n-eventos').textContent = plural(evs.length, 'evento', 'eventos');
     lista.replaceChildren(...evs.map(cardEvento));
     if (!evs.length) lista.append(el('p', { class: 'muted', text: 'Nenhum evento com esses filtros.' }));
   }
