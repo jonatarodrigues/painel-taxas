@@ -7,6 +7,13 @@ import pandas as pd
 LIMITE_FFILL = 5
 
 
+def _meses_completos(s: pd.Series) -> pd.Series:
+    """Reindexa para todos os meses entre o primeiro e o último, deixando NaN nos buracos."""
+    if s.empty:
+        return s
+    return s.reindex(pd.period_range(s.index.min(), s.index.max(), freq="M"))
+
+
 def para_diaria(s: pd.Series, limite_ffill: int = LIMITE_FFILL) -> pd.Series:
     """Reindexa em dias úteis, preenchendo buracos de até `limite_ffill` dias úteis."""
     if s.empty:
@@ -26,16 +33,17 @@ def para_mensal(s: pd.Series, freq: str) -> pd.Series:
 
 
 def acumulado_12m(pct_mensal: pd.Series) -> pd.Series:
+    pct_mensal = _meses_completos(pct_mensal)
     fator = (1 + pct_mensal / 100).rolling(12).apply(np.prod, raw=True)
     return ((fator - 1) * 100).dropna()
 
 
 def transformar(mensal: pd.Series, tipo: str) -> pd.Series:
     if tipo == "diff":
-        return mensal.diff().dropna()
+        return _meses_completos(mensal).diff().dropna()
     if tipo == "logret":
         positivos = mensal[mensal > 0]  # WTI negativo em 2020 quebraria o log
-        return np.log(positivos).diff().dropna()
+        return np.log(_meses_completos(positivos)).diff().dropna()
     if tipo == "nivel":
         return mensal.dropna()
     raise ValueError(f"transformação desconhecida: {tipo}")

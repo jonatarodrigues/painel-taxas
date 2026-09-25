@@ -77,3 +77,16 @@ def test_derivadas():
     assert d["dif_selic_fed"].iloc[-1] == pytest.approx(8.75)
     assert d["curva_eua"].iloc[-1] == pytest.approx(-0.5)
     assert d["juro_real"].iloc[-1] == pytest.approx(13.75 - d["ipca_12m"].iloc[-1])
+
+
+def test_diff_nao_atravessa_buraco_de_mes():
+    idx = pd.PeriodIndex(["2024-01", "2024-02", "2024-04"], freq="M")
+    s = pd.Series([10.0, 10.5, 12.0], index=idx)
+    r = T.transformar(s, "diff")
+    assert list(r.index.astype(str)) == ["2024-02"]  # 2024-04 não tem mês anterior
+
+
+def test_acumulado_12m_exige_12_meses_consecutivos():
+    idx = pd.period_range("2023-01", periods=14, freq="M").delete(6)  # falta 2023-07
+    s = pd.Series([1.0] * 13, index=idx)
+    assert T.acumulado_12m(s).empty
