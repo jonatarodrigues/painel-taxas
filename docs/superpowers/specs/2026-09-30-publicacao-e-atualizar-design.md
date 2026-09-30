@@ -23,11 +23,104 @@ com dados atualizados sozinhos, e dar ao painel um botão de atualizar
 - Antes do primeiro push, o autor dos commits passa para o e-mail privativo
   do GitHub.
 
+- A aba Previsões ganha a comparação "o que o mercado previa há 12 meses"
+  contra o que aconteceu (seção própria abaixo). Ela entra antes da
+  publicação, para o site já sair com ela.
+
 ### Fora do escopo
 
 - Disparo remoto do Actions pelo site.
 - Domínio próprio.
 - Notícias.
+- Várias safras de previsão (3, 6 e 24 meses); só a de 12 meses entra.
+- Guardar as projeções do próprio painel ao longo do tempo: o histórico
+  vem da API do Focus.
+
+## Previsão de 12 meses atrás contra o realizado
+
+### Dados (`pipeline/focus.py`)
+
+- **`baixar(hoje)`** passa a buscar também a pesquisa de cerca de um ano
+  atrás, na chave `ha_12m` do bruto:
+  - **Selic por reunião:** `ExpectativasMercadoSelic` com
+    `baseCalculo eq 0 and Data le '<hoje − 365 dias>'`,
+    `orderby=Data desc`, `top=60`. Fica só a data mais recente
+    (`ha_12m.data_pesquisa`).
+  - **Anuais:** `ExpectativasMercadoAnuais` com `baseCalculo eq 0`,
+    `Data` entre `data_pesquisa − 7 dias` e `data_pesquisa`, `Indicador`
+    em IPCA, Câmbio e PIB Total, e `DataReferencia` de `hoje.year − 1` a
+    `hoje.year + 1`. Para cada indicador e ano, fica a linha da maior
+    `Data`.
+- **Falha só da consulta retroativa:** não derruba a atualização. Nesse
+  caso `ha_12m` fica `None` e entra o aviso "Focus: sem a pesquisa de 12
+  meses atrás (…); comparação omitida". As regras de "Focus sem projeções"
+  continuam valendo só para a pesquisa atual.
+- **Cache:** vem junto no `cache/focus.json`. Um cache antigo, sem a chave
+  `ha_12m`, é tratado como `None`.
+
+### Agenda
+
+O `agenda.json` ganha R7/2025 (`2025-11-05`) e R8/2025 (`2025-12-10`),
+com o FOMC correspondente (`2025-10-29` e `2025-12-10`), para a linha
+antiga da Selic ter datas desde o fim de 2025. As contagens de 2026 e 2027
+no teste de integridade não mudam.
+
+### Export (`exportar.previsoes`)
+
+- Cada trajetória ganha `proj_12m`:
+  `{"data_pesquisa": "2025-09-30", "pontos": [[data_iso, mediana, rotulo]]}`
+  ou `null`.
+  - **Selic:** as reuniões da pesquisa antiga que têm data no
+    `agenda.json`, em ordem.
+  - **IPCA, Câmbio e PIB:** um ponto por `31/12` de cada ano da pesquisa
+    antiga.
+- **Sinal novo `tipo: "acerto"`** (nível `info`), um por indicador. Os
+  textos dizem fatos, nunca julgam o mercado:
+  - **Selic:** a reunião mais recente com data ≤ hoje que existe na
+    pesquisa antiga, comparada com a Selic meta atual (ou, havendo o aviso
+    de Selic defasada, com a mediana usada como âncora). Exemplo:
+    "Há 12 meses (Focus de 30/09/2025) o mercado esperava a Selic em
+    **12,75%** no Copom de 16/09/2026; ela está em 13,75% (1,00 p.p.
+    acima)."
+  - **IPCA:** o ano `hoje.year − 1`, comparado com `ipca_12m` de dezembro
+    desse ano. Exemplo: "Há 12 meses o mercado esperava IPCA de **4,81%**
+    em 2025; fechou em 4,26% (0,55 p.p. abaixo)."
+  - **Câmbio:** o ano `hoje.year − 1`, comparado com o último `usd_brl`
+    daquele ano. Exemplo: "Há 12 meses o mercado esperava o dólar a
+    **R$ 5,46** no fim de 2025; fechou em R$ 5,50 (+0,8%)."
+  - **PIB:** fica sem sinal (o painel não tem a série do PIB anual).
+  - Sem o dado realizado (série ausente, ou dezembro do ano anterior ainda
+    não publicado), o sinal daquele indicador não aparece.
+  - Diferença com `|dif| < 0,005` → "igual ao previsto".
+
+### Tela
+
+- O gráfico de trajetória ganha a série "Previsto há 12 meses": linha
+  tracejada fina em `--muted`, sem faixa. Ela começa no valor real da
+  série na data da pesquisa antiga (via `valorEm`, já existente no
+  `painel.js`) e segue pelos `pontos`. A Selic aparece em degraus.
+- **Legenda** abaixo do gráfico: "Cinza tracejado: o que o Focus previa
+  em DD/MM/AAAA."
+- **Tooltip:** mostra "Previsto em DD/MM/AAAA: X". Ao passar sobre uma data
+  que tem as duas linhas, mostra os dois valores.
+- A etiqueta do sinal `acerto` é "Retrospectiva".
+
+### Testes
+
+- `test_focus.py`:
+  - a consulta retroativa monta os filtros certos;
+  - falha só na consulta retroativa → `ha_12m: None`, sem exceção.
+- `test_previsoes.py`:
+  - `proj_12m` da Selic só com reuniões datadas;
+  - `proj_12m` anual com os pontos em 31/12;
+  - sinal da Selic acima e abaixo do previsto;
+  - sinal do IPCA usando dezembro do ano anterior;
+  - sinal do câmbio usando o último valor do ano;
+  - sem dado realizado → sem sinal;
+  - `ha_12m` ausente → sem `proj_12m` e sem sinais `acerto`.
+- `test_sinais.py`: as funções puras dos três sinais, com os textos
+  exatos.
+- O fixture `focus_bruto.json` é regravado com `ha_12m`.
 
 ## Botão de atualizar
 
