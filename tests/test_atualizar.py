@@ -120,3 +120,12 @@ def test_main_sem_focus_e_sem_cache_continua(tmp_path, monkeypatch):
     assert d["previsoes"]["focus_data"] is None
     assert any(a.startswith("Focus: falha ao baixar") for a in d["avisos"])
     assert "agenda.json não encontrado; aba Previsões sem agenda" in d["avisos"]
+
+
+def test_valor_dezembro_e_ultimo_do_ano():
+    m = pd.Series([4.1, 4.2644], index=pd.to_datetime(["2025-11-01", "2025-12-01"]))
+    assert atualizar.valor_dezembro(m, 2025) == 4.2644
+    assert atualizar.valor_dezembro(m, 2024) is None and atualizar.valor_dezembro(None, 2025) is None
+    d = pd.Series([5.4, 5.5024, 5.6], index=pd.to_datetime(["2025-12-30", "2025-12-31", "2026-01-02"]))
+    assert atualizar.ultimo_do_ano(d, 2025) == 5.5024
+    assert atualizar.ultimo_do_ano(d, 2024) is None and atualizar.ultimo_do_ano(None, 2025) is None

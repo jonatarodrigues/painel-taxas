@@ -140,3 +140,56 @@ def test_focus_sem_alguns_indicadores_avisa():
     for ind in ("Câmbio", "PIB Total", "Selic"):
         assert f"Focus sem projeções anuais de {ind}; sinais e gráfico desse indicador ficam de fora" in avisos
     assert not any("de IPCA;" in a for a in avisos)
+
+
+HA_12M = {"data_pesquisa": "2025-09-30",
+          "selic": [{"Reuniao": "R6/2026", "Mediana": 12.75}, {"Reuniao": "R7/2026", "Mediana": 12.5},
+                    {"Reuniao": "R1/2027", "Mediana": 12.0}],
+          "anuais": [{"Indicador": "Câmbio", "DataReferencia": "2025", "Mediana": 5.4555},
+                     {"Indicador": "IPCA", "DataReferencia": "2025", "Mediana": 4.8061},
+                     {"Indicador": "IPCA", "DataReferencia": "2026", "Mediana": 4.29}]}
+
+
+def com_ha(**troca):
+    return montar(bruto=dict(BRUTO, ha_12m=HA_12M, ha_12m_erro=None), **troca)
+
+
+def test_proj_12m_selic_so_reunioes_datadas_e_anual_em_31_12():
+    p, _ = com_ha()
+    assert p["trajetorias"]["selic"]["proj_12m"] == {
+        "data_pesquisa": "2025-09-30",
+        "pontos": [["2026-09-16", 12.75, "R6/2026"], ["2026-11-04", 12.5, "R7/2026"]]}  # R1/2027 sem data na AGENDA
+    assert p["trajetorias"]["ipca"]["proj_12m"]["pontos"] == [["2025-12-31", 4.8061, "2025"], ["2026-12-31", 4.29, "2026"]]
+    assert p["trajetorias"]["cambio"]["proj_12m"]["pontos"] == [["2025-12-31", 5.4555, "2025"]]
+    assert p["trajetorias"]["pib"]["proj_12m"] is None
+
+
+def test_sinais_de_retrospectiva():
+    p, _ = com_ha(ipca_dez_anterior=4.2644, usd_fim_anterior=5.5024)
+    assert [s["texto"] for s in p["sinais"] if s["tipo"] == "acerto"] == [
+        "Há 12 meses (Focus de 30/09/2025) o mercado esperava a Selic em **12,75%** no Copom de 16/09/2026; "
+        "ela está em 13,75% (1,00 p.p. acima).",
+        "Há 12 meses o mercado esperava IPCA de **4,81%** em 2025; fechou em 4,26% (0,55 p.p. abaixo).",
+        "Há 12 meses o mercado esperava o dólar a **R$ 5,46** no fim de 2025; fechou em R$ 5,50 (+0,7%).",
+    ]
+
+
+def test_retrospectiva_sem_realizado_so_selic():
+    p, _ = com_ha()
+    acertos = [s["texto"] for s in p["sinais"] if s["tipo"] == "acerto"]
+    assert len(acertos) == 1 and acertos[0].startswith("Há 12 meses (Focus de 30/09/2025) o mercado esperava a Selic")
+
+
+def test_retrospectiva_da_selic_usa_a_ancora_quando_a_selic_esta_defasada():
+    p, _ = com_ha(selic_data="2026-09-10")  # antes do Copom de 16/09; o Focus traz R6/2026 = 14,00
+    texto = next(s["texto"] for s in p["sinais"] if s["tipo"] == "acerto")
+    assert "ela está em 14,00% (1,25 p.p. acima)" in texto
+
+
+def test_sem_ha_12m_cache_antigo_e_falha():
+    p, avisos = montar()  # BRUTO sem a chave ha_12m, como um cache antigo
+    assert all(t["proj_12m"] is None for t in p["trajetorias"].values())
+    assert not any(s["tipo"] == "acerto" for s in p["sinais"])
+    assert not any("12 meses atrás" in a for a in avisos)
+    p, avisos = montar(bruto=dict(BRUTO, ha_12m=None, ha_12m_erro="rede fora"), avisos=[])
+    assert "Focus: sem a pesquisa de 12 meses atrás (rede fora); comparação omitida" in avisos

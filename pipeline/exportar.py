@@ -114,7 +114,8 @@ def _dmy(iso: str) -> str:
 
 
 def previsoes(bruto: dict | None, agenda_: list[dict], selic_hoje: float | None, selic_data: str | None, usd_hoje: float | None,
-              fed_funds: float | None, juro_hist: list[float], hoje: date, avisos: list[str]) -> dict:
+              fed_funds: float | None, juro_hist: list[float], hoje: date, avisos: list[str], *,
+              ipca_dez_anterior: float | None = None, usd_fim_anterior: float | None = None) -> dict:
     """Bloco da aba Previsões: sinais, agenda futura e trajetórias. Sem Focus, só a agenda."""
     iso = hoje.isoformat()
     passadas = {a["reuniao"] for a in agenda_ if a["tipo"] == "copom" and a["data"] < iso}
@@ -175,6 +176,37 @@ def previsoes(bruto: dict | None, agenda_: list[dict], selic_hoje: float | None,
                              "proj": proj_selic or _proj_anual(semanal, "Selic")}}
     for chave, ind, nome, unidade, hist in TRAJETORIAS:
         trajetorias[chave] = {"nome": nome, "unidade": unidade, "serie_hist": hist, "proj": _proj_anual(semanal, ind)}
+
+    for t in trajetorias.values():
+        t["proj_12m"] = None
+    ha = bruto.get("ha_12m")
+    if ha is None and bruto.get("ha_12m_erro"):
+        avisos.append(f"Focus: sem a pesquisa de 12 meses atrás ({bruto['ha_12m_erro']}); comparação omitida")
+    if ha:
+        med_ha = {r["Reuniao"]: float(r["Mediana"]) for r in ha.get("selic", [])}
+        pontos_selic = [[datas[r], med_ha[r], r] for r in sorted(med_ha, key=sinais.chave_reuniao) if r in datas]
+        if pontos_selic:
+            trajetorias["selic"]["proj_12m"] = {"data_pesquisa": ha["data_pesquisa"], "pontos": pontos_selic}
+        anuais_ha: dict[str, dict[str, float]] = {}
+        for r in ha.get("anuais", []):
+            anuais_ha.setdefault(r["Indicador"], {})[str(r["DataReferencia"])] = float(r["Mediana"])
+        for chave, ind, *_ in TRAJETORIAS:
+            if anuais_ha.get(ind):
+                trajetorias[chave]["proj_12m"] = {
+                    "data_pesquisa": ha["data_pesquisa"],
+                    "pontos": [[f"{ano}-12-31", v, ano] for ano, v in sorted(anuais_ha[ind].items())]}
+        # Retrospectiva: o que a pesquisa de 12 meses atrás previa para o que já aconteceu.
+        feitas = [a for a in agenda_ if a["tipo"] == "copom" and a["data"] <= iso and a["reuniao"] in med_ha]
+        if ancora is not None and feitas:
+            a = max(feitas, key=lambda a: a["data"])
+            lista.append(sinais.sinal_acerto_selic(med_ha[a["reuniao"]], a["data"], ha["data_pesquisa"], ancora))
+        ano_anterior = str(hoje.year - 1)
+        previsto = anuais_ha.get("IPCA", {}).get(ano_anterior)
+        if previsto is not None and ipca_dez_anterior is not None:
+            lista.append(sinais.sinal_acerto_ipca(previsto, ano_anterior, ipca_dez_anterior))
+        previsto = anuais_ha.get("Câmbio", {}).get(ano_anterior)
+        if previsto is not None and usd_fim_anterior is not None:
+            lista.append(sinais.sinal_acerto_cambio(previsto, ano_anterior, usd_fim_anterior))
 
     ipca_ano = semanal.get("IPCA", {}).get(str(hoje.year)) or []
     return {"focus_data": bruto.get("data_pesquisa"),

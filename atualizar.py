@@ -13,6 +13,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
+import pandas as pd
+
 from pipeline import agenda, correlacao, exportar, focus, fontes, transformar
 from pipeline.cache import Cache, obter
 from pipeline.ciclos import ciclos_copom
@@ -61,6 +63,25 @@ def status_derivada(id: str, status: dict[str, str]) -> str:
     """Pior status entre as séries-base de uma derivada."""
     bases = POR_ID[id].codigo.split("-")
     return max((status.get(b, "ausente") for b in bases), key=ORDEM_STATUS.__getitem__)
+
+
+def valor_dezembro(mensal: pd.Series | None, ano: int) -> float | None:
+    """Valor mensal de dezembro de `ano` (o IPCA 12 meses fechado do ano)."""
+    if mensal is None:
+        return None
+    for i, v in mensal.dropna().items():
+        if str(i)[:7] == f"{ano}-12":
+            return float(v)
+    return None
+
+
+def ultimo_do_ano(serie: pd.Series | None, ano: int) -> float | None:
+    """Último valor observado em `ano` (o fechamento do dólar)."""
+    if serie is None:
+        return None
+    s = serie.dropna()
+    s = s[s.index.year == ano]
+    return float(s.iloc[-1]) if len(s) else None
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -121,7 +142,9 @@ def main(argv: list[str] | None = None) -> int:
     selic_serie = brutas["selic_meta"].dropna() if "selic_meta" in brutas else None
     selic_data = None if selic_serie is None or selic_serie.empty else str(selic_serie.index[-1])[:10]
     prev = exportar.previsoes(bruto_focus, agenda_, ultimo("selic_meta"), selic_data, ultimo("usd_brl"),
-                              ultimo("fed_funds"), juro_hist, hoje, avisos)
+                              ultimo("fed_funds"), juro_hist, hoje, avisos,
+                              ipca_dez_anterior=valor_dezembro(mensais.get("ipca_12m"), hoje.year - 1),
+                              usd_fim_anterior=ultimo_do_ano(brutas.get("usd_brl"), hoje.year - 1))
 
     metas = {s.id: s for s in SERIES + DERIVADAS}
     dados = exportar.montar(metas, diarias, mensais, status, avisos, correl, eventos, previsoes=prev)
