@@ -13,6 +13,7 @@
   const MAX_SERIES = 8;
 
   let D = null;
+  let modo = 'publico';
   const charts = {};
   const estado = {
     aba: 'series',
@@ -178,14 +179,89 @@
 
   function montarControlesBase() {
     $$('[role=tab]').forEach((b) => b.addEventListener('click', () => ativarAba(b.dataset.aba)));
-    if (D.avisos && D.avisos.length) {
-      const b = $('#btn-avisos'), box = $('#avisos');
-      b.hidden = false;
-      $('#n-avisos').textContent = D.avisos.length;
-      box.replaceChildren(...D.avisos.map((a) => el('div', { text: a })));
-      b.addEventListener('click', () => { box.hidden = !box.hidden; });
+    $('#btn-avisos').addEventListener('click', () => { const box = $('#avisos'); box.hidden = !box.hidden; });
+    $('#btn-atualizar').addEventListener('click', aoClicarAtualizar);
+    mostrarAvisos();
+    $('#atualizado').textContent = textoAtualizado();
+  }
+
+  // ---------- atualizar ----------
+  async function detectarModo() {
+    if (location.protocol === 'file:') return 'arquivo';
+    try {
+      const r = await fetch('api/status', { cache: 'no-store' });
+      if (r.ok) { const j = await r.json(); if (j && j.local === true) return 'local'; }
+    } catch (e) { /* sem servidor local */ }
+    return 'publico';
+  }
+  function textoAtualizado() {
+    const base = 'Atualizado em ' + fmtData(D.gerado_em.slice(0, 10)) + ' às ' + D.gerado_em.slice(11, 16);
+    return modo === 'publico' ? base + ' · atualização automática em dias úteis às 20h' : base;
+  }
+  function mostrarAvisos() {
+    const lista = D.avisos || [];
+    $('#btn-avisos').hidden = !lista.length;
+    $('#n-avisos').textContent = lista.length;
+    $('#avisos').replaceChildren(...lista.map((a) => el('div', { text: a })));
+    if (!lista.length) $('#avisos').hidden = true;
+  }
+  function aplicarDados(novo) {
+    validar(novo);
+    D = novo;
+    $('#atualizado').textContent = textoAtualizado();
+    mostrarAvisos();
+    renderKpis();
+    renderAba();
+  }
+  function toast(msg) {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.hidden = false;
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => { t.hidden = true; }, 4000);
+  }
+  function girando(sim) {
+    const b = $('#btn-atualizar');
+    b.disabled = sim;
+    b.classList.toggle('girando', sim);
+  }
+  const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
+  async function atualizarLocal() {
+    girando(true);
+    toast('Atualizando… (1 a 3 min)');
+    try {
+      const r = await fetch('api/atualizar', { method: 'POST', headers: { 'X-Painel': '1' } });
+      if (r.status !== 202 && r.status !== 409) { toast(`Não foi possível atualizar (HTTP ${r.status})`); return; }
+      let st;
+      do {
+        await esperar(3000);
+        st = await (await fetch('api/status', { cache: 'no-store' })).json();
+      } while (st.atualizando);
+      // O atualizar.py grava os arquivos mesmo com falhas parciais; o código 1 só vem quando tudo falha.
+      try { aplicarDados(await carregar()); } catch (e) { /* mantém os dados na tela */ }
+      toast(st.ultimo_codigo === 0 ? 'Dados atualizados' : `A atualização falhou (código ${st.ultimo_codigo}); dados anteriores mantidos`);
+    } catch (e) {
+      toast('Servidor local indisponível; feche e abra o painel de novo');
+    } finally {
+      girando(false);
     }
-    $('#atualizado').textContent = 'Atualizado em ' + fmtData(D.gerado_em.slice(0, 10)) + ' às ' + D.gerado_em.slice(11, 16);
+  }
+  async function atualizarPublico() {
+    girando(true);
+    try {
+      const novo = await carregar();
+      if (novo.gerado_em !== D.gerado_em) { aplicarDados(novo); toast('Dados atualizados'); }
+      else toast(`Os dados já são os mais recentes (${fmtData(D.gerado_em.slice(0, 10)).slice(0, 5)} ${D.gerado_em.slice(11, 16)})`);
+    } catch (e) {
+      toast('Não foi possível buscar os dados: ' + e.message);
+    } finally {
+      girando(false);
+    }
+  }
+  function aoClicarAtualizar() {
+    if (modo === 'arquivo') location.reload();
+    else if (modo === 'local') atualizarLocal();
+    else atualizarPublico();
   }
 
   async function init() {
@@ -198,6 +274,7 @@
       D = await carregar();
       validar(D);
     } catch (e) { const box = $('#erro'); box.hidden = false; box.textContent = e.message; return; }
+    modo = await detectarModo();
     montarControlesBase();
     montarControles();
     renderKpis();
