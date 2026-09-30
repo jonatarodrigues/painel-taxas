@@ -87,7 +87,14 @@ class Atualizador:
 class HandlerPainel(HandlerSilencioso):
     """Arquivos estáticos mais as rotas /api/status e /api/atualizar."""
 
+    def _host_ok(self) -> bool:
+        porta = self.server.server_address[1]
+        return self.headers.get("Host") in {f"127.0.0.1:{porta}", f"localhost:{porta}"}
+
     def do_GET(self):
+        # O Host barra DNS rebinding também nos estáticos e no status.
+        if not self._host_ok():
+            return self._json(403, {"erro": "proibido"})
         if self.path.split("?")[0] == "/api/status":
             return self._json(200, self.server.atualizador.status())
         return super().do_GET()
@@ -95,10 +102,9 @@ class HandlerPainel(HandlerSilencioso):
     def do_POST(self):
         if self.path.split("?")[0] != "/api/atualizar":
             return self._json(404, {"erro": "não encontrado"})
-        porta = self.server.server_address[1]
         # Um site em outra aba não consegue mandar cabeçalho próprio sem preflight de CORS (não
         # atendido aqui); o Host barra DNS rebinding.
-        if self.headers.get("X-Painel") != "1" or self.headers.get("Host") not in {f"127.0.0.1:{porta}", f"localhost:{porta}"}:
+        if self.headers.get("X-Painel") != "1" or not self._host_ok():
             return self._json(403, {"erro": "proibido"})
         at = self.server.atualizador
         return self._json(202 if at.iniciar() else 409, at.status())

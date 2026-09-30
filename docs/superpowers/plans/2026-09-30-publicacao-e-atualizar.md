@@ -1199,12 +1199,20 @@ git log --all --format='%ae %ce' | sort -u
 
 Esperado: uma única linha, com o e-mail privativo nas duas colunas.
 
+O mesmo passo também reescreve o conteúdo dos arquivos em todo o histórico (`--tree-filter` com `sed`) trocando o e-mail pessoal por `<e-mail pessoal>` e o caminho da pasta do usuário por `<pasta do projeto>`.
+
 - [ ] **Passo 3: conferir o que fica público**
 
 ```bash
 git ls-files | grep -E '^(cache/|dados\.|\.superpowers/|\.remember/|\.playwright-mcp/|capturas/)' ; echo "fim da lista proibida"
 git grep -n -i -E 'token|senha|password|api_key' -- . ':!docs' ':!tests/fixtures' || echo "nenhum segredo"
 ```
+
+```bash
+git log --all -p | grep -c -i -E "<e-mail pessoal>|Users/rod[r]i"
+```
+
+Esperado: 0 (troque o marcador pelo e-mail real só no terminal, nunca em arquivo).
 
 Esperado: nada antes de "fim da lista proibida" e "nenhum segredo", ou só ocorrências inocentes, que devem ser lidas uma a uma.
 

@@ -342,6 +342,8 @@
   const COR_TRAJ = { selic: 'juros', ipca: 'inflacao', cambio: 'cambio', pib: 'macro' };
   const TAG_SINAL = { copom: 'Copom', selic: 'Selic', revisao: 'Revisão', juro_real: 'Juro real', cambio: 'Câmbio', fomc: 'Agenda', ipca: 'Agenda', acerto: 'Retrospectiva' };
   const COR_AGENDA = { copom: 'copom', fomc: 'fomc', ipca: 'plano' };
+  const TEXTO_SEM_FOCUS = 'Previsões indisponíveis: o Boletim Focus não pôde ser baixado nesta atualização.';
+  const DICA_SEM_FOCUS = ' Rode o Abrir Painel.bat com internet para tentar de novo.';
 
   // "**x**" vira <strong>, sem innerHTML.
   function textoRico(texto) {
@@ -355,6 +357,7 @@
     const hoje = D.gerado_em.slice(0, 10);
     const semFocus = !P || !P.focus_data;
     $('#prev-vazio').hidden = !semFocus;
+    $('#prev-vazio').textContent = TEXTO_SEM_FOCUS + (modo !== 'publico' ? DICA_SEM_FOCUS : '');
     $('#focus-info').textContent = semFocus ? '' : `Boletim Focus de ${fmtData(P.focus_data)}` + (P.respondentes ? ` · ${P.respondentes} instituições` : '');
     $('#sinais').replaceChildren(...((P && P.sinais) || []).map((s) =>
       el('div', { class: 'sinal ' + s.nivel }, el('span', { class: 'sinal-tag', text: TAG_SINAL[s.tipo] || s.tipo }), textoRico(s.texto))));
@@ -430,7 +433,7 @@
           } else {
             caixa.append(el('div', { class: 'tt-titulo', text: `${q12.data[2]} · ${fmtData(q12.data[0])}` }));
           }
-          if (q12) caixa.append(el('div', { class: 'tt-nome', text: `Previsto em ${fmtData(p12.data_pesquisa)}: ${fmt(q12.data[1])} ${t.unidade}` }));
+          if (q12) caixa.append(el('div', { class: 'tt-nome', text: `Previsto em ${fmtData(p12.data_pesquisa)} para ${q12.data[2]}: ${fmt(q12.data[1])} ${t.unidade}` }));
           return caixa;
         },
       }),

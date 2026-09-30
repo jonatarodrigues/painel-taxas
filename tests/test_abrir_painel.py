@@ -61,6 +61,13 @@ def test_post_sem_cabecalho_ou_com_host_estranho_e_proibido(servidor):
     assert json.loads(pedir(s, "GET", "/api/status")[1])["iniciado_em"] is None
 
 
+def test_get_com_host_estranho_e_proibido(servidor):
+    s = servidor()
+    assert pedir(s, "GET", "/ola.txt", host="evil.example")[0] == 403
+    assert pedir(s, "GET", "/api/status", host="evil.example")[0] == 403
+    assert pedir(s, "GET", "/ola.txt")[0] == 200
+
+
 def test_post_valido_roda_uma_vez_e_registra_codigo(servidor):
     s = servidor(codigo=3)
     codigo, corpo = pedir(s, "POST", "/api/atualizar", {"X-Painel": "1"})

@@ -186,6 +186,12 @@ def test_retrospectiva_da_selic_usa_a_ancora_quando_a_selic_esta_defasada():
     assert "ela está em 14,00% (1,25 p.p. acima)" in texto
 
 
+def test_retrospectiva_no_dia_do_copom_nao_conta_a_decisao_do_dia():
+    # 16/09 e o dia da R6/2026: a decisao ainda nao esta na Selic quando o pipeline roda
+    p, _ = com_ha(hoje=date(2026, 9, 16), selic_data="2026-09-15")
+    assert not any(s["tipo"] == "acerto" and "Selic" in s["texto"] for s in p["sinais"])
+
+
 def test_sem_ha_12m_cache_antigo_e_falha():
     p, avisos = montar()  # BRUTO sem a chave ha_12m, como um cache antigo
     assert all(t["proj_12m"] is None for t in p["trajetorias"].values())

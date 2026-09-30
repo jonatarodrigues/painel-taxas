@@ -63,7 +63,7 @@
 - [ ] **Step 1: Iniciar o repositório e arquivos de base**
 
 ```bash
-cd "<pasta do projeto>"
+cd <pasta do projeto>
 git init -b main
 ```
 

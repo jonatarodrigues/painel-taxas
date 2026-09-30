@@ -196,7 +196,7 @@ def previsoes(bruto: dict | None, agenda_: list[dict], selic_hoje: float | None,
                     "data_pesquisa": ha["data_pesquisa"],
                     "pontos": [[f"{ano}-12-31", v, ano] for ano, v in sorted(anuais_ha[ind].items())]}
         # Retrospectiva: o que a pesquisa de 12 meses atrás previa para o que já aconteceu.
-        feitas = [a for a in agenda_ if a["tipo"] == "copom" and a["data"] <= iso and a["reuniao"] in med_ha]
+        feitas = [a for a in agenda_ if a["tipo"] == "copom" and a["data"] < iso and a["reuniao"] in med_ha]
         if ancora is not None and feitas:
             a = max(feitas, key=lambda a: a["data"])
             lista.append(sinais.sinal_acerto_selic(med_ha[a["reuniao"]], a["data"], ha["data_pesquisa"], ancora))

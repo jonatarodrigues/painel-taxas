@@ -12,7 +12,7 @@ Requer Python 3.10 ou superior (desenvolvido com 3.12).
 
 ## Abrir com duplo clique
 
-- **`Abrir Painel.bat`**: atualiza os dados (1 a 3 minutos, depende do BCB),
+- **`Abrir Painel.bat`**: atualiza os dados (de alguns minutos a uns 15, depende do BCB),
   sobe um servidor local e abre o painel no navegador. Deixe a janela preta
   aberta enquanto usa o painel; fechá-la encerra o servidor.
 - **`Abrir Painel (rapido).bat`**: abre com os dados já gravados, sem baixar
