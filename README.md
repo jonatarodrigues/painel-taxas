@@ -1,5 +1,9 @@
 # Painel de Taxas de Mercado
 
+[![publicar](https://github.com/jonatarodrigues/painel-taxas/actions/workflows/publicar.yml/badge.svg)](https://github.com/jonatarodrigues/painel-taxas/actions/workflows/publicar.yml)
+
+**Ao vivo:** https://jonatarodrigues.github.io/painel-taxas/
+
 Painel local para acompanhar juros, inflação, câmbio, exterior e bolsa com
 histórico máximo, eventos que explicam os movimentos e um grafo de
 correlações.
@@ -17,6 +21,10 @@ Requer Python 3.10 ou superior (desenvolvido com 3.12).
 Os dois chamam `python abrir_painel.py` (opções: `--rapido`, `--offline`,
 `--porta N`). O navegador não consegue executar Python a partir do
 `painel.html`, por isso a atualização acontece nesse atalho, antes de abrir.
+
+- Com o painel aberto pelo `Abrir Painel.bat`, o botão ⟳ no topo roda a
+  atualização de novo sem fechar a janela. No site publicado, o mesmo botão
+  só busca os dados mais recentes que já foram publicados.
 
 ## Uso manual
 
@@ -41,6 +49,20 @@ abertura para baixar o ECharts e a fonte Inter (ambos vêm de CDN).
 - Na aba Séries, o modo Variação mostra a variação de cada série desde o
   início do período (em % para preços e índices, em pontos percentuais para
   taxas); Nível fica disponível quando todas as séries têm a mesma unidade.
+
+## Publicação
+
+O workflow `.github/workflows/publicar.yml` roda os testes, executa o
+`atualizar.py` e publica o painel no GitHub Pages em dias úteis às 20h
+(horário de Brasília), a cada push na `main` e quando disparado à mão
+(Actions → publicar → Run workflow). O `cache/` das fontes é guardado entre
+execuções; se uma fonte falhar, a série usa o último dado bom e aparece nos
+avisos. Só `painel.html`, `painel.css`, `painel.js`, `dados.js`,
+`dados.json` e a página inicial vão para o site.
+
+O GitHub desativa workflows agendados em repositórios sem atividade por 60
+dias. Se o site parar de atualizar, reative em Actions → publicar →
+Enable workflow (ou faça qualquer push).
 
 ## Aba Previsões
 
