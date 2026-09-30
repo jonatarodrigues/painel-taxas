@@ -340,7 +340,7 @@
   // ---------- aba Previsões ----------
   const TRAJ = [['selic', 'Selic'], ['ipca', 'IPCA 12m'], ['cambio', 'Dólar'], ['pib', 'PIB']];
   const COR_TRAJ = { selic: 'juros', ipca: 'inflacao', cambio: 'cambio', pib: 'macro' };
-  const TAG_SINAL = { copom: 'Copom', selic: 'Selic', revisao: 'Revisão', juro_real: 'Juro real', cambio: 'Câmbio', fomc: 'Agenda', ipca: 'Agenda' };
+  const TAG_SINAL = { copom: 'Copom', selic: 'Selic', revisao: 'Revisão', juro_real: 'Juro real', cambio: 'Câmbio', fomc: 'Agenda', ipca: 'Agenda', acerto: 'Retrospectiva' };
   const COR_AGENDA = { copom: 'copom', fomc: 'fomc', ipca: 'plano' };
 
   // "**x**" vira <strong>, sem innerHTML.
@@ -393,6 +393,7 @@
     const c = grafico('chart-traj');
     if (!t || !t.proj.length) {
       $('#leg-traj').textContent = '';
+      $('#leg-prev12').hidden = true;
       c.setOption({ title: { text: 'Sem projeções do Focus para este indicador', left: 'center', top: 'middle', textStyle: { color: cssVar('--muted'), fontWeight: 400, fontSize: 14 } } }, true);
       return;
     }
@@ -403,6 +404,13 @@
     // A projeção parte do último ponto real para a linha não ter buraco.
     const proj = (ultimo ? [[ultimo[0], ultimo[1], ultimo[1], ultimo[1], null, 'hoje']] : []).concat(t.proj);
     const degrau = estado.traj === 'selic' && t.proj[0] && t.proj[0][5].startsWith('R') ? 'end' : false;
+    // O que a pesquisa de ~12 meses atrás previa, partindo do valor real daquela data.
+    const p12 = t.proj_12m;
+    const ini12 = p12 && t.serie_hist && D.series[t.serie_hist] ? valorEm(t.serie_hist, p12.data_pesquisa) : null;
+    const prev12 = p12 ? (ini12 != null ? [[p12.data_pesquisa, ini12, null]] : []).concat(p12.pontos) : [];
+    const degrau12 = p12 && p12.pontos.length && String(p12.pontos[0][2]).startsWith('R') ? 'end' : false;
+    $('#leg-prev12').hidden = !prev12.length;
+    if (prev12.length) $('#leg-prev12').textContent = `Cinza tracejado: o que o Focus previa em ${fmtData(p12.data_pesquisa)}.`;
     $('#leg-traj').textContent = `${t.nome} · ${t.unidade}` + (t.serie_hist ? '' : ' · sem histórico no painel, só projeções');
     c.setOption({
       textStyle: textoBase(), animation: false,
@@ -411,11 +419,18 @@
         trigger: 'axis',
         formatter: (ps) => {
           const p = ps.find((q) => q.seriesId === 'proj' && q.data[4] != null) || ps.find((q) => q.seriesId === 'hist');
-          if (!p) return '';
-          const d = p.data;
-          const caixa = el('div', { class: 'tt' }, el('div', { class: 'tt-titulo', text: p.seriesId === 'proj' ? `${d[5]} · ${fmtData(d[0])}` : fmtData(String(d[0]).slice(0, 10)) }),
-            el('div', {}, el('strong', { text: `${fmt(d[1])} ${t.unidade}` }), el('span', { class: 'tt-nome', text: p.seriesId === 'proj' ? ' mediana' : '' })));
-          if (p.seriesId === 'proj') caixa.append(el('div', { class: 'tt-nome', text: `Faixa ${fmt(d[2])} a ${fmt(d[3])} · ${d[4]} respostas` }));
+          const q12 = ps.find((q) => q.seriesId === 'prev12' && q.data[2] != null);
+          if (!p && !q12) return '';
+          const caixa = el('div', { class: 'tt' });
+          if (p) {
+            const d = p.data;
+            caixa.append(el('div', { class: 'tt-titulo', text: p.seriesId === 'proj' ? `${d[5]} · ${fmtData(d[0])}` : fmtData(String(d[0]).slice(0, 10)) }),
+              el('div', {}, el('strong', { text: `${fmt(d[1])} ${t.unidade}` }), el('span', { class: 'tt-nome', text: p.seriesId === 'proj' ? ' mediana' : '' })));
+            if (p.seriesId === 'proj') caixa.append(el('div', { class: 'tt-nome', text: `Faixa ${fmt(d[2])} a ${fmt(d[3])} · ${d[4]} respostas` }));
+          } else {
+            caixa.append(el('div', { class: 'tt-titulo', text: `${q12.data[2]} · ${fmtData(q12.data[0])}` }));
+          }
+          if (q12) caixa.append(el('div', { class: 'tt-nome', text: `Previsto em ${fmtData(p12.data_pesquisa)}: ${fmt(q12.data[1])} ${t.unidade}` }));
           return caixa;
         },
       }),
@@ -428,6 +443,8 @@
         { id: 'faixa-base', type: 'line', data: proj.map((p) => [p[0], p[2]]), stack: 'faixa', step: degrau, lineStyle: { opacity: 0 }, showSymbol: false, silent: true, tooltip: { show: false } },
         { id: 'faixa', type: 'line', data: proj.map((p) => [p[0], p[3] - p[2]]), stack: 'faixa', step: degrau, lineStyle: { opacity: 0 }, showSymbol: false, silent: true, areaStyle: { color: cor, opacity: 0.16 }, tooltip: { show: false } },
         { id: 'proj', type: 'line', data: proj, step: degrau, showSymbol: true, symbolSize: 6, lineStyle: { width: 2, type: 'dashed', color: cor }, itemStyle: { color: cor } },
+        { id: 'prev12', type: 'line', data: prev12, step: degrau12, showSymbol: true, symbolSize: 4, z: 1,
+          lineStyle: { width: 1.5, type: 'dashed', color: cssVar('--muted') }, itemStyle: { color: cssVar('--muted') } },
       ],
     }, true);
   }
