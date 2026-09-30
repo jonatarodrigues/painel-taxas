@@ -17,14 +17,13 @@ Requer Python 3.10 ou superior (desenvolvido com 3.12).
   aberta enquanto usa o painel; fechá-la encerra o servidor.
 - **`Abrir Painel (rapido).bat`**: abre com os dados já gravados, sem baixar
   nada.
+- Com o painel aberto pelo `Abrir Painel.bat`, o botão ⟳ no topo roda a
+  atualização de novo sem fechar a janela. No site publicado, o mesmo botão
+  só busca os dados mais recentes que já foram publicados.
 
 Os dois chamam `python abrir_painel.py` (opções: `--rapido`, `--offline`,
 `--porta N`). O navegador não consegue executar Python a partir do
 `painel.html`, por isso a atualização acontece nesse atalho, antes de abrir.
-
-- Com o painel aberto pelo `Abrir Painel.bat`, o botão ⟳ no topo roda a
-  atualização de novo sem fechar a janela. No site publicado, o mesmo botão
-  só busca os dados mais recentes que já foram publicados.
 
 ## Uso manual
 
@@ -50,20 +49,6 @@ abertura para baixar o ECharts e a fonte Inter (ambos vêm de CDN).
   início do período (em % para preços e índices, em pontos percentuais para
   taxas); Nível fica disponível quando todas as séries têm a mesma unidade.
 
-## Publicação
-
-O workflow `.github/workflows/publicar.yml` roda os testes, executa o
-`atualizar.py` e publica o painel no GitHub Pages em dias úteis às 20h
-(horário de Brasília), a cada push na `main` e quando disparado à mão
-(Actions → publicar → Run workflow). O `cache/` das fontes é guardado entre
-execuções; se uma fonte falhar, a série usa o último dado bom e aparece nos
-avisos. Só `painel.html`, `painel.css`, `painel.js`, `dados.js`,
-`dados.json` e a página inicial vão para o site.
-
-O GitHub desativa workflows agendados em repositórios sem atividade por 60
-dias. Se o site parar de atualizar, reative em Actions → publicar →
-Enable workflow (ou faça qualquer push).
-
 ## Aba Previsões
 
 Mostra o consenso do mercado segundo o Boletim Focus do BCB (mediana,
@@ -81,6 +66,20 @@ recomendação de investimento.
   fora do gráfico.
 - Regras dos sinais e limites: `pipeline/sinais.py` e
   `docs/superpowers/specs/2026-09-30-previsoes-design.md`.
+
+## Publicação
+
+O workflow `.github/workflows/publicar.yml` roda os testes, executa o
+`atualizar.py` e publica o painel no GitHub Pages em dias úteis às 20h
+(horário de Brasília), a cada push na `main` e quando disparado à mão
+(Actions → publicar → Run workflow). O `cache/` das fontes é guardado entre
+execuções; se uma fonte falhar, a série usa o último dado bom e aparece nos
+avisos. Só `painel.html`, `painel.css`, `painel.js`, `dados.js`,
+`dados.json` e a página inicial vão para o site.
+
+O GitHub desativa workflows agendados em repositórios sem atividade por 60
+dias. Se o site parar de atualizar, reative em Actions → publicar →
+Enable workflow (ou faça qualquer push).
 
 ## Testes
 
