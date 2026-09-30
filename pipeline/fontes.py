@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import io
+import os
 import re
 import time
 from datetime import date
@@ -114,9 +115,28 @@ def parse_fred(texto: str) -> pd.Series:
     return _limpar(pd.Series(valores.to_numpy(), index=pd.DatetimeIndex(datas)))
 
 
+def parse_fred_api(payload: dict) -> pd.Series:
+    obs = payload.get("observations") or []
+    if not obs:
+        return _vazia()
+    datas = pd.to_datetime([o["date"] for o in obs])
+    valores = pd.to_numeric(pd.Series([o["value"] for o in obs]), errors="coerce")  # "." = sem dado
+    return _limpar(pd.Series(valores.to_numpy(), index=pd.DatetimeIndex(datas)))
+
+
 def fred(codigo: str) -> pd.Series:
-    r = _get("https://fred.stlouisfed.org/graph/fredgraph.csv", {"id": codigo})
-    return parse_fred(r.text) if r is not None else _vazia()
+    # O fredgraph.csv não responde a IPs de nuvem (GitHub Actions); com chave, usa a API oficial.
+    chave = os.environ.get("FRED_API_KEY")
+    if not chave:
+        r = _get("https://fred.stlouisfed.org/graph/fredgraph.csv", {"id": codigo})
+        return parse_fred(r.text) if r is not None else _vazia()
+    try:
+        r = _get("https://api.stlouisfed.org/fred/series/observations",
+                 {"series_id": codigo, "api_key": chave, "file_type": "json"}, json=True)
+    except requests.RequestException as e:
+        # A mensagem do requests traz a URL com a chave, e os avisos vão para o site público.
+        raise requests.RequestException(str(e).replace(chave, "***")) from None
+    return parse_fred_api(r.json()) if r is not None else _vazia()
 
 
 # ---------------- Yahoo Finance ----------------

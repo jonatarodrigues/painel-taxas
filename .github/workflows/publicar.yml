@@ -49,6 +49,8 @@ jobs:
 
       - name: Atualizar os dados
         run: python atualizar.py
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}  # o fredgraph.csv não responde a IPs de nuvem
 
       - name: Guardar o cache das fontes
         if: always() && hashFiles('cache/**') != ''

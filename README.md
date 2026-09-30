@@ -39,6 +39,9 @@ abertura para baixar o ECharts e a fonte Inter (ambos vêm de CDN).
 
 - `python atualizar.py --offline` recalcula só do cache (`cache/`).
 - Fontes: BCB SGS, Boletim Focus (BCB), FRED, Yahoo Finance e IPEA. Nenhuma chave necessária.
+  Se a variável de ambiente `FRED_API_KEY` existir, o FRED é lido pela API
+  oficial em vez do CSV público; o workflow de publicação usa o segredo
+  `FRED_API_KEY`, porque o CSV não responde a IPs de nuvem.
 - `eventos.json` é a base curada de eventos; edite à vontade (data ISO,
   categoria entre `copom, fomc, crise, politica, fiscal, externo, plano`, e
   ids de séries de `pipeline/series.py`). Os ciclos do Copom são detectados

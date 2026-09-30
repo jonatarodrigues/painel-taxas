@@ -134,3 +134,47 @@ def test_get_json_desiste_depois_das_tentativas(monkeypatch):
     monkeypatch.setattr(fontes.time, "sleep", lambda s: None)
     with pytest.raises(fontes.RespostaInvalida, match="Requisição inválida"):
         fontes._get("https://api.bcb.gov.br/x", json=True)
+
+
+def test_parse_fred_api_trata_ponto_como_nulo():
+    payload = {"observations": [{"date": "2026-09-28", "value": "3.88"}, {"date": "2026-09-29", "value": "."},
+                                {"date": "2026-09-30", "value": "3.87"}]}
+    s = fontes.parse_fred_api(payload)
+    assert list(s.index) == [pd.Timestamp("2026-09-28"), pd.Timestamp("2026-09-30")]
+    assert list(s) == [3.88, 3.87]
+    assert fontes.parse_fred_api({}).empty
+
+
+def test_fred_usa_a_api_quando_ha_chave(monkeypatch):
+    chamadas = []
+
+    def get_falso(url, params=None, timeout=None, json=False):
+        chamadas.append((url, params, json))
+        return RespostaHttp('{"observations": [{"date": "2026-09-30", "value": "3.87"}]}')
+
+    monkeypatch.setenv("FRED_API_KEY", "chave-teste")
+    monkeypatch.setattr(fontes, "_get", get_falso)
+    s = fontes.fred("DFF")
+    assert s.iloc[-1] == 3.87
+    url, params, eh_json = chamadas[0]
+    assert url == "https://api.stlouisfed.org/fred/series/observations" and eh_json is True
+    assert params == {"series_id": "DFF", "api_key": "chave-teste", "file_type": "json"}
+
+
+def test_fred_sem_chave_continua_no_csv(monkeypatch):
+    chamadas = []
+    monkeypatch.delenv("FRED_API_KEY", raising=False)
+    monkeypatch.setattr(fontes, "_get", lambda url, params=None, **k: chamadas.append(url) or RespostaHttp("DATE,DFF\n2026-09-30,3.87\n"))
+    assert fontes.fred("DFF").iloc[-1] == 3.87
+    assert chamadas == ["https://fred.stlouisfed.org/graph/fredgraph.csv"]
+
+
+def test_fred_nunca_expoe_a_chave_no_erro(monkeypatch):
+    def get_falso(url, params=None, **k):
+        raise fontes.requests.HTTPError(f"400 Client Error for url: {url}?api_key={params['api_key']}&series_id=DFF")
+
+    monkeypatch.setenv("FRED_API_KEY", "chave-secreta-123")
+    monkeypatch.setattr(fontes, "_get", get_falso)
+    with pytest.raises(fontes.requests.RequestException) as erro:
+        fontes.fred("DFF")
+    assert "chave-secreta-123" not in str(erro.value) and "***" in str(erro.value)
