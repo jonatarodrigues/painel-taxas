@@ -8,3 +8,5 @@ dados.js
 .superpowers/
 .playwright-mcp/
 capturas/
+# atalhos de duplo clique do Windows: ficam só na máquina local
+*.bat

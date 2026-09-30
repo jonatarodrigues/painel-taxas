@@ -343,7 +343,7 @@
   const TAG_SINAL = { copom: 'Copom', selic: 'Selic', revisao: 'Revisão', juro_real: 'Juro real', cambio: 'Câmbio', fomc: 'Agenda', ipca: 'Agenda', acerto: 'Retrospectiva' };
   const COR_AGENDA = { copom: 'copom', fomc: 'fomc', ipca: 'plano' };
   const TEXTO_SEM_FOCUS = 'Previsões indisponíveis: o Boletim Focus não pôde ser baixado nesta atualização.';
-  const DICA_SEM_FOCUS = ' Rode o Abrir Painel.bat com internet para tentar de novo.';
+  const DICA_SEM_FOCUS = ' Rode python abrir_painel.py com internet para tentar de novo.';
 
   // "**x**" vira <strong>, sem innerHTML.
   function textoRico(texto) {

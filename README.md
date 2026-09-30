@@ -4,38 +4,40 @@
 
 **Ao vivo:** https://jonatarodrigues.github.io/painel-taxas/
 
-Painel local para acompanhar juros, inflação, câmbio, exterior e bolsa com
-histórico máximo, eventos que explicam os movimentos e um grafo de
-correlações.
+Painel para acompanhar juros, inflação, câmbio, exterior e bolsa com
+histórico máximo, eventos que explicam os movimentos, um grafo de
+correlações e o consenso do mercado (Boletim Focus), incluindo a comparação
+entre o que o mercado previa há 12 meses e o que aconteceu.
+
+**Para ver funcionando, basta abrir o link acima** — não é preciso baixar
+nada. Os dados são atualizados automaticamente em dias úteis às 20h.
+
+## Rodar no seu computador
 
 Requer Python 3.10 ou superior (desenvolvido com 3.12).
 
-## Abrir com duplo clique
-
-- **`Abrir Painel.bat`**: atualiza os dados (de alguns minutos a uns 15, depende do BCB),
-  sobe um servidor local e abre o painel no navegador. Deixe a janela preta
-  aberta enquanto usa o painel; fechá-la encerra o servidor.
-- **`Abrir Painel (rapido).bat`**: abre com os dados já gravados, sem baixar
-  nada.
-- Com o painel aberto pelo `Abrir Painel.bat`, o botão ⟳ no topo roda a
-  atualização de novo sem fechar a janela. No site publicado, o mesmo botão
-  só busca os dados mais recentes que já foram publicados.
-
-Os dois chamam `python abrir_painel.py` (opções: `--rapido`, `--offline`,
-`--porta N`). O navegador não consegue executar Python a partir do
-`painel.html`, por isso a atualização acontece nesse atalho, antes de abrir.
-
-## Uso manual
-
 ```bash
 pip install -r requirements.txt
-python atualizar.py          # baixa tudo e gera dados.json / dados.js
-python -m http.server 8765   # opcional
+python abrir_painel.py            # atualiza os dados e abre o painel no navegador
+python abrir_painel.py --rapido   # abre com os dados já gravados, sem baixar nada
 ```
 
-Abra `painel.html` (duplo clique funciona) ou `http://localhost:8765/painel.html`.
-Os dados ficam todos locais, mas o painel precisa de internet na primeira
-abertura para baixar o ECharts e a fonte Inter (ambos vêm de CDN).
+- A atualização leva de alguns minutos a uns 15 (depende do BCB). Deixe o
+  terminal aberto enquanto usa o painel; `Ctrl+C` encerra o servidor.
+- Opções: `--offline` (recalcula só do cache), `--porta N`.
+- Com o painel aberto assim, o botão ⟳ no topo roda a atualização de novo
+  sem fechar nada. No site publicado, o mesmo botão só busca os dados mais
+  recentes que já foram publicados.
+- O navegador não consegue executar Python a partir do `painel.html`, por
+  isso a atualização acontece no `abrir_painel.py`, que também serve a
+  página.
+
+Também dá para rodar as etapas separadas: `python atualizar.py` baixa tudo e
+gera `dados.json`/`dados.js`, e o `painel.html` abre direto do disco. O
+painel precisa de internet na primeira abertura para baixar o ECharts e a
+fonte Inter (ambos vêm de CDN).
+
+## Detalhes
 
 - `python atualizar.py --offline` recalcula só do cache (`cache/`).
 - Fontes: BCB SGS, Boletim Focus (BCB), FRED, Yahoo Finance e IPEA. Nenhuma chave necessária.
