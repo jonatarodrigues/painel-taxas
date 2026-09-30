@@ -106,3 +106,31 @@ def test_baixar_fonte_desconhecida():
     from pipeline.series import Serie
     with pytest.raises(ValueError):
         fontes.baixar(Serie("x", "x", "juros", "ftp", "1", "u", "d", "diff"))
+
+
+class RespostaHttp:
+    def __init__(self, texto, status=200):
+        self.text = texto
+        self.status_code = status
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return json.loads(self.text)
+
+
+def test_get_json_repete_quando_bcb_devolve_html_com_200(monkeypatch):
+    # O firewall do BCB às vezes rejeita a chamada com uma página HTML e status 200.
+    respostas = iter([RespostaHttp("<html>Requisição inválida!</html>"), RespostaHttp('[{"data": "01/01/2020", "valor": "4.5"}]')])
+    monkeypatch.setattr(fontes.requests, "get", lambda *a, **k: next(respostas))
+    monkeypatch.setattr(fontes.time, "sleep", lambda s: None)
+    r = fontes._get("https://api.bcb.gov.br/x", json=True)
+    assert r.json() == [{"data": "01/01/2020", "valor": "4.5"}]
+
+
+def test_get_json_desiste_depois_das_tentativas(monkeypatch):
+    monkeypatch.setattr(fontes.requests, "get", lambda *a, **k: RespostaHttp("<html>Requisição inválida!</html>"))
+    monkeypatch.setattr(fontes.time, "sleep", lambda s: None)
+    with pytest.raises(fontes.RespostaInvalida, match="Requisição inválida"):
+        fontes._get("https://api.bcb.gov.br/x", json=True)

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import io
+import re
 import time
 from datetime import date
 from urllib.parse import quote
@@ -22,8 +23,15 @@ class RespostaVazia(Exception):
     """A fonte respondeu, mas sem dados utilizáveis."""
 
 
-def _get(url: str, params: dict | None = None, timeout: int = TIMEOUT) -> requests.Response | None:
-    """GET com tentativas. Retorna None em 404 (o BCB usa 404 para janela sem dados)."""
+class RespostaInvalida(requests.RequestException):
+    """Status 200 com corpo que não é JSON (o firewall do BCB faz isso de vez em quando)."""
+
+
+def _get(url: str, params: dict | None = None, timeout: int = TIMEOUT, json: bool = False) -> requests.Response | None:
+    """GET com tentativas. Retorna None em 404 (o BCB usa 404 para janela sem dados).
+
+    Com json=True, um corpo que não é JSON também conta como falha e é repetido.
+    """
     erro: Exception | None = None
     for i in range(TENTATIVAS):
         try:
@@ -31,6 +39,11 @@ def _get(url: str, params: dict | None = None, timeout: int = TIMEOUT) -> reques
             if r.status_code == 404:
                 return None
             r.raise_for_status()
+            if json:
+                try:
+                    r.json()
+                except ValueError:
+                    raise RespostaInvalida(f"resposta não é JSON: {_resumo(r.text)}") from None
             return r
         except requests.RequestException as e:
             erro = e
@@ -38,6 +51,12 @@ def _get(url: str, params: dict | None = None, timeout: int = TIMEOUT) -> reques
                 time.sleep(2 * (i + 1))
     assert erro is not None
     raise erro
+
+
+def _resumo(texto: str) -> str:
+    """Texto visível de uma página de erro, curto o bastante para o aviso do painel."""
+    visivel = " ".join(re.sub(r"<[^>]*>", " ", texto).split())
+    return visivel[:80] or "(vazio)"
 
 
 def _limpar(s: pd.Series) -> pd.Series:
@@ -65,7 +84,7 @@ def bcb(codigo: str, freq: str, hoje: date | None = None) -> pd.Series:
     hoje = hoje or date.today()
     url = f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.{codigo}/dados"
     if freq == "m":
-        r = _get(url, {"formato": "json"}, timeout=60)
+        r = _get(url, {"formato": "json"}, timeout=60, json=True)
         s = parse_bcb(r.json() if r is not None else [])
     else:
         partes = []
@@ -74,7 +93,7 @@ def bcb(codigo: str, freq: str, hoje: date | None = None) -> pd.Series:
             fim = min(date(inicio.year + 9, 12, 31), hoje)
             r = _get(url, {"formato": "json",
                            "dataInicial": inicio.strftime("%d/%m/%Y"),
-                           "dataFinal": fim.strftime("%d/%m/%Y")}, timeout=60)
+                           "dataFinal": fim.strftime("%d/%m/%Y")}, timeout=60, json=True)
             if r is not None:
                 partes.append(parse_bcb(r.json()))
             inicio = date(fim.year + 1, 1, 1)
@@ -114,7 +133,7 @@ def parse_yahoo(payload: dict) -> pd.Series:
 
 def yahoo(ticker: str) -> pd.Series:
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{quote(ticker, safe='')}"
-    r = _get(url, {"period1": YAHOO_PERIOD1, "period2": int(time.time()), "interval": "1d"})
+    r = _get(url, {"period1": YAHOO_PERIOD1, "period2": int(time.time()), "interval": "1d"}, json=True)
     return parse_yahoo(r.json()) if r is not None else _vazia()
 
 
@@ -132,7 +151,7 @@ def parse_ipea(payload: dict) -> pd.Series:
 
 def ipea(codigo: str) -> pd.Series:
     url = f"http://www.ipeadata.gov.br/api/odata4/ValoresSerie(SERCODIGO='{codigo}')"
-    r = _get(url)
+    r = _get(url, json=True)
     return parse_ipea(r.json()) if r is not None else _vazia()
 
 
