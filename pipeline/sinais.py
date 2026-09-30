@@ -5,7 +5,7 @@ Marcação única: **negrito**.
 """
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 
 EPS = 1e-9
 DIAS_DESTAQUE_COPOM = 7
@@ -125,3 +125,59 @@ def sinais_revisao(semanal: dict, hoje: date) -> list[dict]:
                 continue
             saida.append({"nivel": "destaque", "tipo": "revisao", "texto": texto})
     return saida
+
+
+DIAS_AGENDA = 14
+PERCENTIL_EXTREMO = 10
+
+
+def sinal_juro_real(agenda: list[dict], medianas: dict[str, float], infl12: float | None,
+                    juro_hist: list[float], hoje: date) -> dict | None:
+    if infl12 is None or not juro_hist:
+        return None
+    datas = {a["reuniao"]: date.fromisoformat(a["data"]) for a in agenda
+             if a["tipo"] == "copom" and a["reuniao"] in medianas}
+    if not datas:
+        return None
+    alvo = hoje + timedelta(days=365)
+    r = min(sorted(datas), key=lambda k: abs((datas[k] - alvo).days))
+    jr = medianas[r] - infl12
+    pct = round(100 * sum(h < jr for h in juro_hist) / len(juro_hist))
+    extremo = pct >= 100 - PERCENTIL_EXTREMO or pct <= PERCENTIL_EXTREMO
+    return {"nivel": "destaque" if extremo else "info", "tipo": "juro_real",
+            "texto": (f"Juro real esperado para 12 meses: **{fmt_br(jr, 1)}%** (Selic esperada {fmt_br(medianas[r])}% − "
+                      f"IPCA esperado {fmt_br(infl12)}%). Maior que em {pct}% dos meses desde 2000.")}
+
+
+def sinal_cambio(usd_hoje: float | None, semanal: dict, hoje: date) -> dict | None:
+    anos = semanal.get("Câmbio", {})
+    atual, seguinte = anos.get(str(hoje.year)), anos.get(str(hoje.year + 1))
+    if usd_hoje is None or not atual:
+        return None
+    m = atual[-1]["Mediana"]
+    texto = (f"Dólar hoje R$ {fmt_br(usd_hoje)}; mercado espera **R$ {fmt_br(m)}** no fim de {hoje.year} "
+             f"({fmt_br((m / usd_hoje - 1) * 100, 1, sinal=True)}%)")
+    if seguinte:
+        texto += f" e R$ {fmt_br(seguinte[-1]['Mediana'])} no fim de {hoje.year + 1}"
+    return {"nivel": "info", "tipo": "cambio", "texto": texto + "."}
+
+
+def sinais_agenda(agenda: list[dict], hoje: date, fed_funds: float | None) -> list[dict]:
+    """FOMC e IPCA nos próximos 14 dias; o Copom tem sinal próprio."""
+    saida = []
+    for a in agenda:
+        if a["tipo"] == "copom":
+            continue
+        dias = (date.fromisoformat(a["data"]) - hoje).days
+        if not 0 <= dias <= DIAS_AGENDA:
+            continue
+        texto = f"{a['titulo']} {quando(dias)} ({dm(a['data'])})."
+        if a["tipo"] == "fomc" and fed_funds is not None:
+            texto += f" Fed Funds hoje em {fmt_br(fed_funds)}%."
+        saida.append({"nivel": "info", "tipo": a["tipo"], "data": a["data"], "texto": texto})
+    return saida
+
+
+def ordenar(lista: list[dict]) -> list[dict]:
+    """Destaques primeiro; dentro de cada nível, pela data do evento (sem data vai para o fim)."""
+    return sorted(lista, key=lambda s: (s["nivel"] != "destaque", s.get("data") or "9999-12-31"))

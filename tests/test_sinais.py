@@ -109,3 +109,55 @@ def test_revisao_so_ano_atual_e_seguinte_e_poucas_semanas():
     semanal = {"IPCA": {"2028": sem(3.0, 3.1, 3.2, 3.3, 3.4), "2026": sem(4.9)}}
     assert sinais.sinais_revisao(semanal, HOJE) == []
     assert sinais.sinais_revisao({}, HOJE) == []
+
+
+def test_juro_real_usa_reuniao_mais_perto_de_12_meses():
+    hist = [x / 10 for x in range(100)]  # 0,0..9,9
+    # R6/2027 (22/09/2027) é a reunião mais perto de 30/09/2027; 12,50 − 4,60 = 7,90, acima de 79 dos 100 valores.
+    s = sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.60, hist, HOJE)
+    assert s == {"nivel": "info", "tipo": "juro_real",
+                 "texto": "Juro real esperado para 12 meses: **7,9%** (Selic esperada 12,50% − IPCA esperado 4,60%). Maior que em 79% dos meses desde 2000."}
+
+
+def test_juro_real_destaque_nos_extremos():
+    assert sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.60, [1.0] * 9 + [9.0], HOJE)["nivel"] == "destaque"   # 90%
+    assert sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.60, [1.0] * 8 + [9.0] * 2, HOJE)["nivel"] == "info"    # 80%
+    assert sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.60, [9.0] * 10, HOJE)["nivel"] == "destaque"          # 0%
+    assert sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.60, [1.0] + [9.0] * 9, HOJE)["nivel"] == "destaque"   # 10%
+
+
+def test_juro_real_sem_dados():
+    assert sinais.sinal_juro_real(AGENDA, MEDIANAS, None, [1.0], HOJE) is None
+    assert sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.65, [], HOJE) is None
+    assert sinais.sinal_juro_real([], MEDIANAS, 4.65, [1.0], HOJE) is None
+
+
+def test_cambio():
+    semanal = {"Câmbio": {"2026": sem(5.25, 5.20), "2027": sem(5.2769)}}
+    s = sinais.sinal_cambio(5.36, semanal, HOJE)
+    assert s == {"nivel": "info", "tipo": "cambio",
+                 "texto": "Dólar hoje R$ 5,36; mercado espera **R$ 5,20** no fim de 2026 (-3,0%) e R$ 5,28 no fim de 2027."}
+    assert sinais.sinal_cambio(None, semanal, HOJE) is None
+    assert sinais.sinal_cambio(5.36, {}, HOJE) is None
+
+
+def test_agenda_proxima_14_dias_sem_copom():
+    agenda = [
+        {"data": "2026-09-29", "tipo": "ipca", "titulo": "IPCA de agosto"},
+        {"data": "2026-10-09", "tipo": "ipca", "titulo": "IPCA de setembro"},
+        {"data": "2026-10-14", "tipo": "fomc", "titulo": "FOMC"},
+        {"data": "2026-10-15", "tipo": "fomc", "titulo": "FOMC"},
+        {"data": "2026-10-01", "tipo": "copom", "titulo": "Copom", "reuniao": "R7/2026"},
+    ]
+    r = sinais.sinais_agenda(agenda, HOJE, 3.88)
+    assert r == [
+        {"nivel": "info", "tipo": "ipca", "data": "2026-10-09", "texto": "IPCA de setembro em 9 dias (09/10)."},
+        {"nivel": "info", "tipo": "fomc", "data": "2026-10-14", "texto": "FOMC em 14 dias (14/10). Fed Funds hoje em 3,88%."},
+    ]
+    assert sinais.sinais_agenda(agenda[2:3], HOJE, None)[0]["texto"] == "FOMC em 14 dias (14/10)."
+
+
+def test_ordenar_destaque_primeiro_depois_data():
+    lista = [{"nivel": "info", "tipo": "a"}, {"nivel": "info", "tipo": "b", "data": "2026-10-09"},
+             {"nivel": "destaque", "tipo": "c"}, {"nivel": "destaque", "tipo": "d", "data": "2026-11-04"}]
+    assert [s["tipo"] for s in sinais.ordenar(lista)] == ["d", "c", "b", "a"]
