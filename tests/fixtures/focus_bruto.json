@@ -1,0 +1,9139 @@
+{
+ "data_pesquisa": "2026-09-25",
+ "selic": [
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R6/2028",
+   "Media": 10.7536,
+   "Mediana": 10.5,
+   "DesvioPadrao": 0.9252,
+   "Minimo": 8.5,
+   "Maximo": 13.0,
+   "numeroRespondentes": 69,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R5/2028",
+   "Media": 10.9879,
+   "Mediana": 11.0,
+   "DesvioPadrao": 0.885,
+   "Minimo": 8.75,
+   "Maximo": 13.5,
+   "numeroRespondentes": 103,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R4/2028",
+   "Media": 11.1525,
+   "Mediana": 11.0,
+   "DesvioPadrao": 0.8039,
+   "Minimo": 9.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 118,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R3/2028",
+   "Media": 11.3046,
+   "Mediana": 11.25,
+   "DesvioPadrao": 0.7477,
+   "Minimo": 9.25,
+   "Maximo": 13.5,
+   "numeroRespondentes": 119,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R2/2028",
+   "Media": 11.5126,
+   "Mediana": 11.5,
+   "DesvioPadrao": 0.7144,
+   "Minimo": 9.5,
+   "Maximo": 13.5,
+   "numeroRespondentes": 119,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R1/2028",
+   "Media": 11.7375,
+   "Mediana": 11.75,
+   "DesvioPadrao": 0.7003,
+   "Minimo": 9.75,
+   "Maximo": 13.75,
+   "numeroRespondentes": 120,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R8/2027",
+   "Media": 11.9745,
+   "Mediana": 12.0,
+   "DesvioPadrao": 0.7295,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R7/2027",
+   "Media": 12.1222,
+   "Mediana": 12.25,
+   "DesvioPadrao": 0.7213,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R6/2027",
+   "Media": 12.3177,
+   "Mediana": 12.5,
+   "DesvioPadrao": 0.7249,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R5/2027",
+   "Media": 12.5301,
+   "Mediana": 12.5,
+   "DesvioPadrao": 0.6998,
+   "Minimo": 10.25,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R4/2027",
+   "Media": 12.7575,
+   "Mediana": 13.0,
+   "DesvioPadrao": 0.6438,
+   "Minimo": 11.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R3/2027",
+   "Media": 12.9962,
+   "Mediana": 13.0,
+   "DesvioPadrao": 0.5552,
+   "Minimo": 11.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R2/2027",
+   "Media": 13.1917,
+   "Mediana": 13.25,
+   "DesvioPadrao": 0.442,
+   "Minimo": 12.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R1/2027",
+   "Media": 13.356,
+   "Mediana": 13.5,
+   "DesvioPadrao": 0.334,
+   "Minimo": 12.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 133,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R8/2026",
+   "Media": 13.4678,
+   "Mediana": 13.5,
+   "DesvioPadrao": 0.2286,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138,
+   "baseCalculo": 0
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "Reuniao": "R7/2026",
+   "Media": 13.5827,
+   "Mediana": 13.5,
+   "DesvioPadrao": 0.1252,
+   "Minimo": 13.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136,
+   "baseCalculo": 0
+  }
+ ],
+ "anuais": [
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-01",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-01",
+   "DataReferencia": "2027",
+   "Mediana": 5.2915,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-01",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-01",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-02",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-02",
+   "DataReferencia": "2027",
+   "Mediana": 5.283,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-02",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-02",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-03",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-03",
+   "DataReferencia": "2027",
+   "Mediana": 5.283,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-03",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 87
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-03",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-06",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-06",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-06",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 88
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-06",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-07",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-07",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-07",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 88
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-07",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-08",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-08",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-08",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 88
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-08",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-09",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.75,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-09",
+   "DataReferencia": "2027",
+   "Mediana": 5.283,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-09",
+   "DataReferencia": "2028",
+   "Mediana": 5.35,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-09",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.6,
+   "Maximo": 6.0,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-10",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-10",
+   "DataReferencia": "2027",
+   "Mediana": 5.2799,
+   "Minimo": 4.7,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-10",
+   "DataReferencia": "2028",
+   "Mediana": 5.335,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 88
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-10",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.8,
+   "Maximo": 6.0,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-13",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-13",
+   "DataReferencia": "2027",
+   "Mediana": 5.27,
+   "Minimo": 4.7,
+   "Maximo": 6.0,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-13",
+   "DataReferencia": "2028",
+   "Mediana": 5.3044,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-13",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.8,
+   "Maximo": 6.0,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-14",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-14",
+   "DataReferencia": "2027",
+   "Mediana": 5.2768,
+   "Minimo": 4.7,
+   "Maximo": 6.0,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-14",
+   "DataReferencia": "2028",
+   "Mediana": 5.3044,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-14",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.8,
+   "Maximo": 6.0,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-15",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 6.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-15",
+   "DataReferencia": "2027",
+   "Mediana": 5.2734,
+   "Minimo": 4.7,
+   "Maximo": 6.0,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-15",
+   "DataReferencia": "2028",
+   "Mediana": 5.3022,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-15",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.8,
+   "Maximo": 6.0,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-16",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-16",
+   "DataReferencia": "2027",
+   "Mediana": 5.2768,
+   "Minimo": 4.7,
+   "Maximo": 6.0,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-16",
+   "DataReferencia": "2028",
+   "Mediana": 5.3022,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-16",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.8,
+   "Maximo": 6.0,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-17",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-17",
+   "DataReferencia": "2027",
+   "Mediana": 5.2784,
+   "Minimo": 4.7,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-17",
+   "DataReferencia": "2028",
+   "Mediana": 5.3044,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-17",
+   "DataReferencia": "2029",
+   "Mediana": 5.4,
+   "Minimo": 4.8,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-20",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 94
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-20",
+   "DataReferencia": "2027",
+   "Mediana": 5.2784,
+   "Minimo": 4.8,
+   "Maximo": 5.8,
+   "numeroRespondentes": 90
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-20",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 68
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-20",
+   "DataReferencia": "2029",
+   "Mediana": 5.3734,
+   "Minimo": 4.8,
+   "Maximo": 5.9,
+   "numeroRespondentes": 62
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-21",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 95
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-21",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.8,
+   "Maximo": 5.8,
+   "numeroRespondentes": 91
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-21",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 69
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-21",
+   "DataReferencia": "2029",
+   "Mediana": 5.3867,
+   "Minimo": 4.8,
+   "Maximo": 5.9,
+   "numeroRespondentes": 63
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-22",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 97
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-22",
+   "DataReferencia": "2027",
+   "Mediana": 5.283,
+   "Minimo": 4.8,
+   "Maximo": 5.8,
+   "numeroRespondentes": 93
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-22",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 71
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-22",
+   "DataReferencia": "2029",
+   "Mediana": 5.3734,
+   "Minimo": 4.8,
+   "Maximo": 5.9,
+   "numeroRespondentes": 64
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-23",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 96
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-23",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.8,
+   "Maximo": 5.8,
+   "numeroRespondentes": 92
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-23",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 70
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-23",
+   "DataReferencia": "2029",
+   "Mediana": 5.3867,
+   "Minimo": 4.8,
+   "Maximo": 5.9,
+   "numeroRespondentes": 63
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-24",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-24",
+   "DataReferencia": "2027",
+   "Mediana": 5.2867,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-24",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-24",
+   "DataReferencia": "2029",
+   "Mediana": 5.3673,
+   "Minimo": 4.5,
+   "Maximo": 5.9,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-27",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-27",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-27",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-27",
+   "DataReferencia": "2029",
+   "Mediana": 5.3867,
+   "Minimo": 4.5,
+   "Maximo": 5.9,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-28",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-28",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-28",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-28",
+   "DataReferencia": "2029",
+   "Mediana": 5.377,
+   "Minimo": 4.5,
+   "Maximo": 5.9,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-29",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-29",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-29",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-29",
+   "DataReferencia": "2029",
+   "Mediana": 5.3637,
+   "Minimo": 4.5,
+   "Maximo": 5.9,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-30",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-30",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-30",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 5.9,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-30",
+   "DataReferencia": "2029",
+   "Mediana": 5.377,
+   "Minimo": 4.5,
+   "Maximo": 5.9,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-31",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.85,
+   "Maximo": 5.6,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-31",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-31",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 87
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-07-31",
+   "DataReferencia": "2029",
+   "Mediana": 5.3934,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-03",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-03",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-03",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-03",
+   "DataReferencia": "2029",
+   "Mediana": 5.3934,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-04",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-04",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-04",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-04",
+   "DataReferencia": "2029",
+   "Mediana": 5.3934,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-05",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-05",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-05",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-05",
+   "DataReferencia": "2029",
+   "Mediana": 5.3734,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-06",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-06",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-06",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-06",
+   "DataReferencia": "2029",
+   "Mediana": 5.3734,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-07",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-07",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-07",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-07",
+   "DataReferencia": "2029",
+   "Mediana": 5.3734,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-10",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-10",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-10",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-10",
+   "DataReferencia": "2029",
+   "Mediana": 5.3867,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-11",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-11",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-11",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-11",
+   "DataReferencia": "2029",
+   "Mediana": 5.3867,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-12",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-12",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-12",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-12",
+   "DataReferencia": "2029",
+   "Mediana": 5.3867,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-13",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-13",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-13",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-13",
+   "DataReferencia": "2029",
+   "Mediana": 5.3734,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-14",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-14",
+   "DataReferencia": "2027",
+   "Mediana": 5.2867,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-14",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-14",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-17",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-17",
+   "DataReferencia": "2027",
+   "Mediana": 5.29,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-17",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-17",
+   "DataReferencia": "2029",
+   "Mediana": 5.3599,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-18",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-18",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-18",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-18",
+   "DataReferencia": "2029",
+   "Mediana": 5.3599,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-19",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-19",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-19",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-19",
+   "DataReferencia": "2029",
+   "Mediana": 5.3599,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-20",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-20",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.82,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-20",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-20",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-21",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-21",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.6,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-21",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-21",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-24",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-24",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.6,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-24",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-24",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-25",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-25",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-25",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-25",
+   "DataReferencia": "2029",
+   "Mediana": 5.366,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-26",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-26",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-26",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-26",
+   "DataReferencia": "2029",
+   "Mediana": 5.366,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-27",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-27",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-27",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-27",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-28",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.6,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-28",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-28",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.45,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-28",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-31",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-31",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-31",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-08-31",
+   "DataReferencia": "2029",
+   "Mediana": 5.3567,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-01",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-01",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-01",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-01",
+   "DataReferencia": "2029",
+   "Mediana": 5.3567,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-02",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-02",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-02",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-02",
+   "DataReferencia": "2029",
+   "Mediana": 5.3567,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-03",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-03",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-03",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-03",
+   "DataReferencia": "2029",
+   "Mediana": 5.3521,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-04",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-04",
+   "DataReferencia": "2027",
+   "Mediana": 5.3,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-04",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-04",
+   "DataReferencia": "2029",
+   "Mediana": 5.3508,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-08",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-08",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-08",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-08",
+   "DataReferencia": "2029",
+   "Mediana": 5.3508,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-09",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-09",
+   "DataReferencia": "2027",
+   "Mediana": 5.28,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-09",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-09",
+   "DataReferencia": "2029",
+   "Mediana": 5.3508,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-10",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-10",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-10",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-10",
+   "DataReferencia": "2029",
+   "Mediana": 5.3508,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-11",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-11",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-11",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-11",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-14",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-14",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-14",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-14",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-15",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-15",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-15",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-15",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-16",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-16",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-16",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-16",
+   "DataReferencia": "2029",
+   "Mediana": 5.363,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-17",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-17",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-17",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-17",
+   "DataReferencia": "2029",
+   "Mediana": 5.3615,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-18",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-18",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-18",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-18",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-21",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-21",
+   "DataReferencia": "2027",
+   "Mediana": 5.2769,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-21",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-21",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-22",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-22",
+   "DataReferencia": "2027",
+   "Mediana": 5.2769,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-22",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-22",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-23",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-23",
+   "DataReferencia": "2027",
+   "Mediana": 5.2769,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-23",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-23",
+   "DataReferencia": "2029",
+   "Mediana": 5.36,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-24",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-24",
+   "DataReferencia": "2027",
+   "Mediana": 5.275,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-24",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-24",
+   "DataReferencia": "2029",
+   "Mediana": 5.3554,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-25",
+   "DataReferencia": "2026",
+   "Mediana": 5.2,
+   "Minimo": 4.8,
+   "Maximo": 5.45,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-25",
+   "DataReferencia": "2027",
+   "Mediana": 5.2769,
+   "Minimo": 4.7,
+   "Maximo": 5.68,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-25",
+   "DataReferencia": "2028",
+   "Mediana": 5.3,
+   "Minimo": 4.5,
+   "Maximo": 6.0,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "Câmbio",
+   "Data": "2026-09-25",
+   "DataReferencia": "2029",
+   "Mediana": 5.3508,
+   "Minimo": 4.5,
+   "Maximo": 6.2,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-01",
+   "DataReferencia": "2026",
+   "Mediana": 5.3212,
+   "Minimo": 4.3,
+   "Maximo": 5.8646,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-01",
+   "DataReferencia": "2027",
+   "Mediana": 4.1792,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-01",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 2.98,
+   "Maximo": 6.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-01",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.96,
+   "Maximo": 6.0,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-02",
+   "DataReferencia": "2026",
+   "Mediana": 5.32,
+   "Minimo": 4.3,
+   "Maximo": 5.8646,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-02",
+   "DataReferencia": "2027",
+   "Mediana": 4.1714,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-02",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 2.98,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-02",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.96,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-03",
+   "DataReferencia": "2026",
+   "Mediana": 5.3001,
+   "Minimo": 4.3,
+   "Maximo": 5.8473,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-03",
+   "DataReferencia": "2027",
+   "Mediana": 4.1818,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-03",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 2.98,
+   "Maximo": 6.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-03",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.96,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-06",
+   "DataReferencia": "2026",
+   "Mediana": 5.3031,
+   "Minimo": 4.3,
+   "Maximo": 5.8473,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-06",
+   "DataReferencia": "2027",
+   "Mediana": 4.1895,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-06",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-06",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-07",
+   "DataReferencia": "2026",
+   "Mediana": 5.3,
+   "Minimo": 4.3,
+   "Maximo": 5.8473,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-07",
+   "DataReferencia": "2027",
+   "Mediana": 4.1919,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-07",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-07",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-08",
+   "DataReferencia": "2026",
+   "Mediana": 5.3,
+   "Minimo": 4.3,
+   "Maximo": 5.8473,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-08",
+   "DataReferencia": "2027",
+   "Mediana": 4.1919,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-08",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-08",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-09",
+   "DataReferencia": "2026",
+   "Mediana": 5.3,
+   "Minimo": 4.3,
+   "Maximo": 5.8473,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-09",
+   "DataReferencia": "2027",
+   "Mediana": 4.1895,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-09",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-09",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-10",
+   "DataReferencia": "2026",
+   "Mediana": 5.1625,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-10",
+   "DataReferencia": "2027",
+   "Mediana": 4.1973,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-10",
+   "DataReferencia": "2028",
+   "Mediana": 3.7,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 123
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-10",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-13",
+   "DataReferencia": "2026",
+   "Mediana": 5.143,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-13",
+   "DataReferencia": "2027",
+   "Mediana": 4.1984,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-13",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-13",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-14",
+   "DataReferencia": "2026",
+   "Mediana": 5.1311,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-14",
+   "DataReferencia": "2027",
+   "Mediana": 4.1997,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-14",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-14",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-15",
+   "DataReferencia": "2026",
+   "Mediana": 5.1308,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-15",
+   "DataReferencia": "2027",
+   "Mediana": 4.1994,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-15",
+   "DataReferencia": "2028",
+   "Mediana": 3.775,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-15",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-16",
+   "DataReferencia": "2026",
+   "Mediana": 5.1358,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-16",
+   "DataReferencia": "2027",
+   "Mediana": 4.1994,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-16",
+   "DataReferencia": "2028",
+   "Mediana": 3.775,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-16",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9329,
+   "Maximo": 6.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-17",
+   "DataReferencia": "2026",
+   "Mediana": 5.1514,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-17",
+   "DataReferencia": "2027",
+   "Mediana": 4.2,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-17",
+   "DataReferencia": "2028",
+   "Mediana": 3.775,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-17",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-20",
+   "DataReferencia": "2026",
+   "Mediana": 5.1358,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 126
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-20",
+   "DataReferencia": "2027",
+   "Mediana": 4.2,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 123
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-20",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 101
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-20",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 94
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-21",
+   "DataReferencia": "2026",
+   "Mediana": 5.1423,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 128
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-21",
+   "DataReferencia": "2027",
+   "Mediana": 4.2,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 125
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-21",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 102
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-21",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 95
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-22",
+   "DataReferencia": "2026",
+   "Mediana": 5.1363,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 130
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-22",
+   "DataReferencia": "2027",
+   "Mediana": 4.2,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 127
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-22",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-22",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 97
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-23",
+   "DataReferencia": "2026",
+   "Mediana": 5.1277,
+   "Minimo": 4.3,
+   "Maximo": 5.6775,
+   "numeroRespondentes": 130
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-23",
+   "DataReferencia": "2027",
+   "Mediana": 4.2,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 127
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-23",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-23",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.937,
+   "Maximo": 6.0,
+   "numeroRespondentes": 98
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-24",
+   "DataReferencia": "2026",
+   "Mediana": 5.1209,
+   "Minimo": 4.3,
+   "Maximo": 5.6882,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-24",
+   "DataReferencia": "2027",
+   "Mediana": 4.2154,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-24",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-24",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-27",
+   "DataReferencia": "2026",
+   "Mediana": 5.1038,
+   "Minimo": 4.3,
+   "Maximo": 5.6882,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-27",
+   "DataReferencia": "2027",
+   "Mediana": 4.2212,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-27",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-27",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-28",
+   "DataReferencia": "2026",
+   "Mediana": 5.0961,
+   "Minimo": 4.3,
+   "Maximo": 5.6882,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-28",
+   "DataReferencia": "2027",
+   "Mediana": 4.2212,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-28",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-28",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-29",
+   "DataReferencia": "2026",
+   "Mediana": 5.0908,
+   "Minimo": 4.3,
+   "Maximo": 5.6882,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-29",
+   "DataReferencia": "2027",
+   "Mediana": 4.2154,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-29",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-29",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-30",
+   "DataReferencia": "2026",
+   "Mediana": 5.0863,
+   "Minimo": 4.3,
+   "Maximo": 5.6882,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-30",
+   "DataReferencia": "2027",
+   "Mediana": 4.2107,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-30",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-30",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 2.9332,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-31",
+   "DataReferencia": "2026",
+   "Mediana": 5.0273,
+   "Minimo": 4.3,
+   "Maximo": 5.6201,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-31",
+   "DataReferencia": "2027",
+   "Mediana": 4.2194,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-31",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-07-31",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-03",
+   "DataReferencia": "2026",
+   "Mediana": 5.0265,
+   "Minimo": 4.3,
+   "Maximo": 5.5721,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-03",
+   "DataReferencia": "2027",
+   "Mediana": 4.222,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-03",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-03",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-04",
+   "DataReferencia": "2026",
+   "Mediana": 5.0265,
+   "Minimo": 4.3,
+   "Maximo": 5.5721,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-04",
+   "DataReferencia": "2027",
+   "Mediana": 4.222,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-04",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-04",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-05",
+   "DataReferencia": "2026",
+   "Mediana": 5.0273,
+   "Minimo": 4.3,
+   "Maximo": 5.5721,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-05",
+   "DataReferencia": "2027",
+   "Mediana": 4.222,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-05",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-05",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-06",
+   "DataReferencia": "2026",
+   "Mediana": 5.022,
+   "Minimo": 4.3,
+   "Maximo": 5.5721,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-06",
+   "DataReferencia": "2027",
+   "Mediana": 4.222,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-06",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-06",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-07",
+   "DataReferencia": "2026",
+   "Mediana": 5.0176,
+   "Minimo": 4.3,
+   "Maximo": 5.5721,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-07",
+   "DataReferencia": "2027",
+   "Mediana": 4.2227,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-07",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-07",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-10",
+   "DataReferencia": "2026",
+   "Mediana": 5.0176,
+   "Minimo": 4.3,
+   "Maximo": 5.5721,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-10",
+   "DataReferencia": "2027",
+   "Mediana": 4.2227,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-10",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-10",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-11",
+   "DataReferencia": "2026",
+   "Mediana": 5.0158,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-11",
+   "DataReferencia": "2027",
+   "Mediana": 4.2227,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-11",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-11",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-12",
+   "DataReferencia": "2026",
+   "Mediana": 5.0158,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-12",
+   "DataReferencia": "2027",
+   "Mediana": 4.24,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-12",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-12",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-13",
+   "DataReferencia": "2026",
+   "Mediana": 5.022,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 150
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-13",
+   "DataReferencia": "2027",
+   "Mediana": 4.24,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-13",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-13",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-14",
+   "DataReferencia": "2026",
+   "Mediana": 5.0227,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-14",
+   "DataReferencia": "2027",
+   "Mediana": 4.2402,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-14",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-14",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-17",
+   "DataReferencia": "2026",
+   "Mediana": 5.0248,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-17",
+   "DataReferencia": "2027",
+   "Mediana": 4.2403,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-17",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-17",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-18",
+   "DataReferencia": "2026",
+   "Mediana": 5.0248,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-18",
+   "DataReferencia": "2027",
+   "Mediana": 4.2403,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-18",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-18",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-19",
+   "DataReferencia": "2026",
+   "Mediana": 5.0248,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-19",
+   "DataReferencia": "2027",
+   "Mediana": 4.2403,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-19",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-19",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-20",
+   "DataReferencia": "2026",
+   "Mediana": 5.0248,
+   "Minimo": 4.3,
+   "Maximo": 5.5933,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-20",
+   "DataReferencia": "2027",
+   "Mediana": 4.2403,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-20",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-20",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-21",
+   "DataReferencia": "2026",
+   "Mediana": 5.0164,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-21",
+   "DataReferencia": "2027",
+   "Mediana": 4.2549,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-21",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-21",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-24",
+   "DataReferencia": "2026",
+   "Mediana": 5.0248,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-24",
+   "DataReferencia": "2027",
+   "Mediana": 4.2502,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-24",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-24",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-25",
+   "DataReferencia": "2026",
+   "Mediana": 5.0268,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-25",
+   "DataReferencia": "2027",
+   "Mediana": 4.2799,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-25",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-25",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-26",
+   "DataReferencia": "2026",
+   "Mediana": 5.0064,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-26",
+   "DataReferencia": "2027",
+   "Mediana": 4.2799,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-26",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-26",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-27",
+   "DataReferencia": "2026",
+   "Mediana": 5.0062,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-27",
+   "DataReferencia": "2027",
+   "Mediana": 4.2799,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-27",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-27",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-28",
+   "DataReferencia": "2026",
+   "Mediana": 5.0062,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-28",
+   "DataReferencia": "2027",
+   "Mediana": 4.28,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-28",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-28",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-31",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-31",
+   "DataReferencia": "2027",
+   "Mediana": 4.2799,
+   "Minimo": 3.17,
+   "Maximo": 5.2903,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-31",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 4.893,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-08-31",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 4.7,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-01",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.3,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-01",
+   "DataReferencia": "2027",
+   "Mediana": 4.2799,
+   "Minimo": 3.17,
+   "Maximo": 5.2903,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-01",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 4.893,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-01",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 4.7,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-02",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.2656,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-02",
+   "DataReferencia": "2027",
+   "Mediana": 4.2799,
+   "Minimo": 3.17,
+   "Maximo": 5.2903,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-02",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 4.893,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-02",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 4.7,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-03",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.2656,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-03",
+   "DataReferencia": "2027",
+   "Mediana": 4.2839,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-03",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-03",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-04",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.2656,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-04",
+   "DataReferencia": "2027",
+   "Mediana": 4.288,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-04",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-04",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-08",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.2656,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-08",
+   "DataReferencia": "2027",
+   "Mediana": 4.2891,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-08",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-08",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-09",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.2656,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-09",
+   "DataReferencia": "2027",
+   "Mediana": 4.2894,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-09",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-09",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-10",
+   "DataReferencia": "2026",
+   "Mediana": 5.0,
+   "Minimo": 4.2656,
+   "Maximo": 5.8146,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-10",
+   "DataReferencia": "2027",
+   "Mediana": 4.288,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-10",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-10",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-11",
+   "DataReferencia": "2026",
+   "Mediana": 4.9,
+   "Minimo": 4.2407,
+   "Maximo": 5.8332,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-11",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-11",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-11",
+   "DataReferencia": "2029",
+   "Mediana": 3.5003,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-14",
+   "DataReferencia": "2026",
+   "Mediana": 4.9094,
+   "Minimo": 4.047,
+   "Maximo": 5.8332,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-14",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-14",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-14",
+   "DataReferencia": "2029",
+   "Mediana": 3.5103,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-15",
+   "DataReferencia": "2026",
+   "Mediana": 4.9094,
+   "Minimo": 4.047,
+   "Maximo": 5.8332,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-15",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-15",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-15",
+   "DataReferencia": "2029",
+   "Mediana": 3.5103,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-16",
+   "DataReferencia": "2026",
+   "Mediana": 4.9094,
+   "Minimo": 4.047,
+   "Maximo": 5.8332,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-16",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-16",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-16",
+   "DataReferencia": "2029",
+   "Mediana": 3.5103,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-17",
+   "DataReferencia": "2026",
+   "Mediana": 4.9008,
+   "Minimo": 4.047,
+   "Maximo": 5.8332,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-17",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-17",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-17",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-18",
+   "DataReferencia": "2026",
+   "Mediana": 4.9205,
+   "Minimo": 4.047,
+   "Maximo": 5.8963,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-18",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-18",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-18",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-21",
+   "DataReferencia": "2026",
+   "Mediana": 4.94,
+   "Minimo": 4.2447,
+   "Maximo": 5.8963,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-21",
+   "DataReferencia": "2027",
+   "Mediana": 4.3,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-21",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-21",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-22",
+   "DataReferencia": "2026",
+   "Mediana": 4.94,
+   "Minimo": 4.2447,
+   "Maximo": 5.8963,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-22",
+   "DataReferencia": "2027",
+   "Mediana": 4.3013,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-22",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-22",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-23",
+   "DataReferencia": "2026",
+   "Mediana": 4.94,
+   "Minimo": 4.2447,
+   "Maximo": 5.8963,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-23",
+   "DataReferencia": "2027",
+   "Mediana": 4.3013,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-23",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-23",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-24",
+   "DataReferencia": "2026",
+   "Mediana": 4.9426,
+   "Minimo": 4.2447,
+   "Maximo": 5.8963,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-24",
+   "DataReferencia": "2027",
+   "Mediana": 4.312,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-24",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-24",
+   "DataReferencia": "2029",
+   "Mediana": 3.5,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-25",
+   "DataReferencia": "2026",
+   "Mediana": 4.9915,
+   "Minimo": 4.2447,
+   "Maximo": 5.8963,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-25",
+   "DataReferencia": "2027",
+   "Mediana": 4.3118,
+   "Minimo": 3.17,
+   "Maximo": 6.0,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-25",
+   "DataReferencia": "2028",
+   "Mediana": 3.8,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "IPCA",
+   "Data": "2026-09-25",
+   "DataReferencia": "2029",
+   "Mediana": 3.5003,
+   "Minimo": 3.0,
+   "Maximo": 6.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-01",
+   "DataReferencia": "2026",
+   "Mediana": 1.9865,
+   "Minimo": 1.1805,
+   "Maximo": 2.4,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-01",
+   "DataReferencia": "2027",
+   "Mediana": 1.6895,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-01",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-01",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-02",
+   "DataReferencia": "2026",
+   "Mediana": 1.9865,
+   "Minimo": 1.1805,
+   "Maximo": 2.4,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-02",
+   "DataReferencia": "2027",
+   "Mediana": 1.6948,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-02",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-02",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-03",
+   "DataReferencia": "2026",
+   "Mediana": 1.9859,
+   "Minimo": 1.1805,
+   "Maximo": 2.4,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-03",
+   "DataReferencia": "2027",
+   "Mediana": 1.6895,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-03",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-03",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-06",
+   "DataReferencia": "2026",
+   "Mediana": 1.9859,
+   "Minimo": 1.1805,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-06",
+   "DataReferencia": "2027",
+   "Mediana": 1.6895,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-06",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-06",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-07",
+   "DataReferencia": "2026",
+   "Mediana": 1.9859,
+   "Minimo": 1.1805,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-07",
+   "DataReferencia": "2027",
+   "Mediana": 1.6895,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-07",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-07",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-08",
+   "DataReferencia": "2026",
+   "Mediana": 1.9857,
+   "Minimo": 1.1805,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-08",
+   "DataReferencia": "2027",
+   "Mediana": 1.6841,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-08",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-08",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-09",
+   "DataReferencia": "2026",
+   "Mediana": 1.9863,
+   "Minimo": 1.1805,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-09",
+   "DataReferencia": "2027",
+   "Mediana": 1.6776,
+   "Minimo": 0.7232,
+   "Maximo": 2.59,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-09",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-09",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-10",
+   "DataReferencia": "2026",
+   "Mediana": 1.9865,
+   "Minimo": 1.1805,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-10",
+   "DataReferencia": "2027",
+   "Mediana": 1.6541,
+   "Minimo": 0.7232,
+   "Maximo": 2.5,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-10",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.8,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-10",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-13",
+   "DataReferencia": "2026",
+   "Mediana": 1.9914,
+   "Minimo": 1.6434,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 100
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-13",
+   "DataReferencia": "2027",
+   "Mediana": 1.6497,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 95
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-13",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 72
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-13",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 68
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-14",
+   "DataReferencia": "2026",
+   "Mediana": 1.9914,
+   "Minimo": 1.6434,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 100
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-14",
+   "DataReferencia": "2027",
+   "Mediana": 1.6497,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 95
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-14",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 72
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-14",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 68
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-15",
+   "DataReferencia": "2026",
+   "Mediana": 1.9861,
+   "Minimo": 1.6434,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 101
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-15",
+   "DataReferencia": "2027",
+   "Mediana": 1.6519,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 96
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-15",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 72
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-15",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 68
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-16",
+   "DataReferencia": "2026",
+   "Mediana": 1.9859,
+   "Minimo": 1.6434,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 100
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-16",
+   "DataReferencia": "2027",
+   "Mediana": 1.6653,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 94
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-16",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 71
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-16",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 67
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-17",
+   "DataReferencia": "2026",
+   "Mediana": 1.9859,
+   "Minimo": 1.5836,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-17",
+   "DataReferencia": "2027",
+   "Mediana": 1.6511,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 100
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-17",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-17",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 72
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-20",
+   "DataReferencia": "2026",
+   "Mediana": 1.9865,
+   "Minimo": 1.5836,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 88
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-20",
+   "DataReferencia": "2027",
+   "Mediana": 1.6841,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-20",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 64
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-20",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 61
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-21",
+   "DataReferencia": "2026",
+   "Mediana": 1.9934,
+   "Minimo": 1.5836,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 90
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-21",
+   "DataReferencia": "2027",
+   "Mediana": 1.6841,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-21",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 64
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-21",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 61
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-22",
+   "DataReferencia": "2026",
+   "Mediana": 1.9868,
+   "Minimo": 1.5836,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 93
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-22",
+   "DataReferencia": "2027",
+   "Mediana": 1.7,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 89
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-22",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 67
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-22",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 63
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-23",
+   "DataReferencia": "2026",
+   "Mediana": 1.9861,
+   "Minimo": 1.5836,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 95
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-23",
+   "DataReferencia": "2027",
+   "Mediana": 1.6895,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 91
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-23",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 68
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-23",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 64
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-24",
+   "DataReferencia": "2026",
+   "Mediana": 1.9861,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-24",
+   "DataReferencia": "2027",
+   "Mediana": 1.6,
+   "Minimo": 0.8,
+   "Maximo": 2.5,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-24",
+   "DataReferencia": "2028",
+   "Mediana": 1.995,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-24",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-27",
+   "DataReferencia": "2026",
+   "Mediana": 1.9862,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-27",
+   "DataReferencia": "2027",
+   "Mediana": 1.6,
+   "Minimo": 0.76,
+   "Maximo": 2.5,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-27",
+   "DataReferencia": "2028",
+   "Mediana": 1.995,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 86
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-27",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-28",
+   "DataReferencia": "2026",
+   "Mediana": 1.9865,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-28",
+   "DataReferencia": "2027",
+   "Mediana": 1.5874,
+   "Minimo": 0.76,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-28",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 87
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-28",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-29",
+   "DataReferencia": "2026",
+   "Mediana": 1.9862,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-29",
+   "DataReferencia": "2027",
+   "Mediana": 1.5997,
+   "Minimo": 0.76,
+   "Maximo": 2.5,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-29",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 87
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-29",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-30",
+   "DataReferencia": "2026",
+   "Mediana": 1.9862,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-30",
+   "DataReferencia": "2027",
+   "Mediana": 1.5997,
+   "Minimo": 0.76,
+   "Maximo": 2.5,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-30",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 87
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-30",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-31",
+   "DataReferencia": "2026",
+   "Mediana": 1.985,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-31",
+   "DataReferencia": "2027",
+   "Mediana": 1.5741,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-31",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 87
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-07-31",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-03",
+   "DataReferencia": "2026",
+   "Mediana": 1.9861,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-03",
+   "DataReferencia": "2027",
+   "Mediana": 1.5731,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-03",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-03",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-04",
+   "DataReferencia": "2026",
+   "Mediana": 1.986,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-04",
+   "DataReferencia": "2027",
+   "Mediana": 1.5566,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-04",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-04",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-05",
+   "DataReferencia": "2026",
+   "Mediana": 1.986,
+   "Minimo": 1.333,
+   "Maximo": 2.5127,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-05",
+   "DataReferencia": "2027",
+   "Mediana": 1.5566,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-05",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-05",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-06",
+   "DataReferencia": "2026",
+   "Mediana": 1.9849,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-06",
+   "DataReferencia": "2027",
+   "Mediana": 1.5245,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-06",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-06",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-07",
+   "DataReferencia": "2026",
+   "Mediana": 1.9828,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-07",
+   "DataReferencia": "2027",
+   "Mediana": 1.5244,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-07",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-07",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-10",
+   "DataReferencia": "2026",
+   "Mediana": 1.9828,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-10",
+   "DataReferencia": "2027",
+   "Mediana": 1.521,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-10",
+   "DataReferencia": "2028",
+   "Mediana": 1.95,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-10",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-11",
+   "DataReferencia": "2026",
+   "Mediana": 1.9707,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-11",
+   "DataReferencia": "2027",
+   "Mediana": 1.5133,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-11",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-11",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-12",
+   "DataReferencia": "2026",
+   "Mediana": 1.9707,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-12",
+   "DataReferencia": "2027",
+   "Mediana": 1.5045,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-12",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-12",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-13",
+   "DataReferencia": "2026",
+   "Mediana": 1.9707,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-13",
+   "DataReferencia": "2027",
+   "Mediana": 1.5045,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-13",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 85
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-13",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-14",
+   "DataReferencia": "2026",
+   "Mediana": 1.9821,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-14",
+   "DataReferencia": "2027",
+   "Mediana": 1.5045,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-14",
+   "DataReferencia": "2028",
+   "Mediana": 1.885,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 84
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-14",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-17",
+   "DataReferencia": "2026",
+   "Mediana": 1.9833,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-17",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-17",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-17",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-18",
+   "DataReferencia": "2026",
+   "Mediana": 1.9833,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-18",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-18",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-18",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-19",
+   "DataReferencia": "2026",
+   "Mediana": 1.9809,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-19",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-19",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-19",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-20",
+   "DataReferencia": "2026",
+   "Mediana": 1.9809,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-20",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6981,
+   "Maximo": 2.5,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-20",
+   "DataReferencia": "2028",
+   "Mediana": 1.95,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-20",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-21",
+   "DataReferencia": "2026",
+   "Mediana": 1.95,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-21",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-21",
+   "DataReferencia": "2028",
+   "Mediana": 1.98,
+   "Minimo": 0.5,
+   "Maximo": 2.8,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-21",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-24",
+   "DataReferencia": "2026",
+   "Mediana": 1.9335,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-24",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-24",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-24",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-25",
+   "DataReferencia": "2026",
+   "Mediana": 1.9335,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-25",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-25",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-25",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-26",
+   "DataReferencia": "2026",
+   "Mediana": 1.9354,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-26",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-26",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-26",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-27",
+   "DataReferencia": "2026",
+   "Mediana": 1.9335,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-27",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-27",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-27",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-28",
+   "DataReferencia": "2026",
+   "Mediana": 1.9233,
+   "Minimo": 1.333,
+   "Maximo": 2.4,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-28",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-28",
+   "DataReferencia": "2028",
+   "Mediana": 1.98,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-28",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-31",
+   "DataReferencia": "2026",
+   "Mediana": 1.9229,
+   "Minimo": 1.333,
+   "Maximo": 2.3117,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-31",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 103
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-31",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-08-31",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 73
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-01",
+   "DataReferencia": "2026",
+   "Mediana": 1.9333,
+   "Minimo": 1.3289,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-01",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 103
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-01",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-01",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 73
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-02",
+   "DataReferencia": "2026",
+   "Mediana": 1.9318,
+   "Minimo": 1.3289,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-02",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 103
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-02",
+   "DataReferencia": "2028",
+   "Mediana": 2.0,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-02",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 73
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-03",
+   "DataReferencia": "2026",
+   "Mediana": 1.9318,
+   "Minimo": 1.6025,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-03",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-03",
+   "DataReferencia": "2028",
+   "Mediana": 1.98,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-03",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-04",
+   "DataReferencia": "2026",
+   "Mediana": 1.9301,
+   "Minimo": 1.6025,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-04",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-04",
+   "DataReferencia": "2028",
+   "Mediana": 1.96,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-04",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-08",
+   "DataReferencia": "2026",
+   "Mediana": 1.908,
+   "Minimo": 1.6025,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-08",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-08",
+   "DataReferencia": "2028",
+   "Mediana": 1.93,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-08",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 73
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-09",
+   "DataReferencia": "2026",
+   "Mediana": 1.9077,
+   "Minimo": 1.6025,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-09",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-09",
+   "DataReferencia": "2028",
+   "Mediana": 1.93,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-09",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 73
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-10",
+   "DataReferencia": "2026",
+   "Mediana": 1.9068,
+   "Minimo": 1.6025,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-10",
+   "DataReferencia": "2027",
+   "Mediana": 1.5,
+   "Minimo": 0.6738,
+   "Maximo": 2.5,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-10",
+   "DataReferencia": "2028",
+   "Mediana": 1.9,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 79
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-10",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-11",
+   "DataReferencia": "2026",
+   "Mediana": 1.893,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-11",
+   "DataReferencia": "2027",
+   "Mediana": 1.453,
+   "Minimo": 0.6988,
+   "Maximo": 2.5,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-11",
+   "DataReferencia": "2028",
+   "Mediana": 1.87,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 81
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-11",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 75
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-14",
+   "DataReferencia": "2026",
+   "Mediana": 1.8855,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-14",
+   "DataReferencia": "2027",
+   "Mediana": 1.45,
+   "Minimo": 0.6704,
+   "Maximo": 2.4,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-14",
+   "DataReferencia": "2028",
+   "Mediana": 1.84,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-14",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-15",
+   "DataReferencia": "2026",
+   "Mediana": 1.8855,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-15",
+   "DataReferencia": "2027",
+   "Mediana": 1.45,
+   "Minimo": 0.6704,
+   "Maximo": 2.4,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-15",
+   "DataReferencia": "2028",
+   "Mediana": 1.84,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-15",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-16",
+   "DataReferencia": "2026",
+   "Mediana": 1.8855,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-16",
+   "DataReferencia": "2027",
+   "Mediana": 1.45,
+   "Minimo": 0.6704,
+   "Maximo": 2.4,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-16",
+   "DataReferencia": "2028",
+   "Mediana": 1.84,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 82
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-16",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 76
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-17",
+   "DataReferencia": "2026",
+   "Mediana": 1.886,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-17",
+   "DataReferencia": "2027",
+   "Mediana": 1.45,
+   "Minimo": 0.6704,
+   "Maximo": 2.4,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-17",
+   "DataReferencia": "2028",
+   "Mediana": 1.87,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-17",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-18",
+   "DataReferencia": "2026",
+   "Mediana": 1.8805,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-18",
+   "DataReferencia": "2027",
+   "Mediana": 1.4334,
+   "Minimo": 0.6704,
+   "Maximo": 2.4,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-18",
+   "DataReferencia": "2028",
+   "Mediana": 1.87,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 83
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-18",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 77
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-21",
+   "DataReferencia": "2026",
+   "Mediana": 1.8805,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-21",
+   "DataReferencia": "2027",
+   "Mediana": 1.44,
+   "Minimo": 0.6704,
+   "Maximo": 2.3755,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-21",
+   "DataReferencia": "2028",
+   "Mediana": 1.84,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-21",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-22",
+   "DataReferencia": "2026",
+   "Mediana": 1.8805,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-22",
+   "DataReferencia": "2027",
+   "Mediana": 1.44,
+   "Minimo": 0.6704,
+   "Maximo": 2.3755,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-22",
+   "DataReferencia": "2028",
+   "Mediana": 1.84,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-22",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-23",
+   "DataReferencia": "2026",
+   "Mediana": 1.8805,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-23",
+   "DataReferencia": "2027",
+   "Mediana": 1.4334,
+   "Minimo": 0.6704,
+   "Maximo": 2.3755,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-23",
+   "DataReferencia": "2028",
+   "Mediana": 1.84,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-23",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-24",
+   "DataReferencia": "2026",
+   "Mediana": 1.8805,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-24",
+   "DataReferencia": "2027",
+   "Mediana": 1.4233,
+   "Minimo": 0.6704,
+   "Maximo": 2.3755,
+   "numeroRespondentes": 104
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-24",
+   "DataReferencia": "2028",
+   "Mediana": 1.825,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 78
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-24",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 72
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-25",
+   "DataReferencia": "2026",
+   "Mediana": 1.8603,
+   "Minimo": 1.5551,
+   "Maximo": 2.2825,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-25",
+   "DataReferencia": "2027",
+   "Mediana": 1.4105,
+   "Minimo": 0.6704,
+   "Maximo": 2.3755,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-25",
+   "DataReferencia": "2028",
+   "Mediana": 1.825,
+   "Minimo": 0.5,
+   "Maximo": 2.8001,
+   "numeroRespondentes": 80
+  },
+  {
+   "Indicador": "PIB Total",
+   "Data": "2026-09-25",
+   "DataReferencia": "2029",
+   "Mediana": 2.0,
+   "Minimo": 1.0,
+   "Maximo": 2.8,
+   "numeroRespondentes": 74
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-01",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-01",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-01",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-01",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-02",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-02",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-02",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-02",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-03",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-03",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-03",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-03",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-06",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-06",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-06",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-06",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-07",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-07",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-07",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-07",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-08",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-08",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-08",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-08",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-09",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-09",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-09",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-09",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-10",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.5,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-10",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-10",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-10",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-13",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-13",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-13",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-13",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-14",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-14",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-14",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-14",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-15",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-15",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-15",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-15",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-16",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-16",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-16",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-16",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-17",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-17",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-17",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-17",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.25,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-20",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 131
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-20",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 126
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-20",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-20",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 96
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-21",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 131
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-21",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 126
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-21",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-21",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 96
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-22",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 133
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-22",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 128
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-22",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-22",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 98
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-23",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 132
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-23",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 127
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-23",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-23",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 98
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-24",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-24",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-24",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-24",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-27",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-27",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-27",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-27",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-28",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-28",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-28",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-28",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-29",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-29",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-29",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-29",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-30",
+   "DataReferencia": "2026",
+   "Mediana": 14.0,
+   "Minimo": 12.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-30",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-30",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-30",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-31",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.5,
+   "Maximo": 14.25,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-31",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-31",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-07-31",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-03",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-03",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 146
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-03",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 121
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-03",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-04",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-04",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-04",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-04",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-05",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 152
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-05",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-05",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-05",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-06",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-06",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-06",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-06",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-07",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 151
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-07",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 147
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-07",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 122
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-07",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-10",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.25,
+   "Maximo": 14.25,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-10",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-10",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-10",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-11",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-11",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-11",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-11",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-12",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-12",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.5,
+   "Maximo": 14.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-12",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-12",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 111
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-13",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 149
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-13",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-13",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-13",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-14",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 148
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-14",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-14",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 120
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-14",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-17",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-17",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-17",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-17",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-18",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-18",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-18",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-18",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-19",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-19",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-19",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-19",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-20",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-20",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-20",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-20",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-21",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-21",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-21",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-21",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-24",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-24",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-24",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-24",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-25",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 144
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-25",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-25",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-25",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-26",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-26",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-26",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-26",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-27",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.25,
+   "numeroRespondentes": 145
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-27",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-27",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 118
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-27",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-28",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-28",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-28",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 117
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-28",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-31",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-31",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 135
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-31",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-08-31",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-01",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-01",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 135
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-01",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-01",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-02",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-02",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-02",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.25,
+   "numeroRespondentes": 112
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-02",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-03",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-03",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-03",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-03",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-04",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-04",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-04",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-04",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-08",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-08",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-08",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-08",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-09",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-09",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-09",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 113
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-09",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 105
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-10",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-10",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-10",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-10",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 106
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-11",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 143
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-11",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 142
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-11",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 119
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-11",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 110
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-14",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-14",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-14",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-14",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-15",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-15",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-15",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-15",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-16",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 12.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-16",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 136
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-16",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 115
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-16",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 108
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-17",
+   "DataReferencia": "2026",
+   "Mediana": 13.75,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-17",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-17",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-17",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-18",
+   "DataReferencia": "2026",
+   "Mediana": 13.5,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-18",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 139
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-18",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-18",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-21",
+   "DataReferencia": "2026",
+   "Mediana": 13.5,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-21",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-21",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-21",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-22",
+   "DataReferencia": "2026",
+   "Mediana": 13.5,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-22",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-22",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-22",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-23",
+   "DataReferencia": "2026",
+   "Mediana": 13.5,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 141
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-23",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 140
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-23",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 116
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-23",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.75,
+   "numeroRespondentes": 109
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-24",
+   "DataReferencia": "2026",
+   "Mediana": 13.5,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-24",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-24",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-24",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 107
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "DataReferencia": "2026",
+   "Mediana": 13.5,
+   "Minimo": 13.0,
+   "Maximo": 14.0,
+   "numeroRespondentes": 138
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "DataReferencia": "2027",
+   "Mediana": 12.0,
+   "Minimo": 9.75,
+   "Maximo": 14.0,
+   "numeroRespondentes": 137
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "DataReferencia": "2028",
+   "Mediana": 10.5,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 114
+  },
+  {
+   "Indicador": "Selic",
+   "Data": "2026-09-25",
+   "DataReferencia": "2029",
+   "Mediana": 10.0,
+   "Minimo": 8.0,
+   "Maximo": 13.5,
+   "numeroRespondentes": 107
+  }
+ ],
+ "infl12": {
+  "Indicador": "IPCA",
+  "Data": "2026-09-25",
+  "Suavizada": "S",
+  "Media": 4.6464,
+  "Mediana": 4.6475,
+  "DesvioPadrao": 0.4762,
+  "Minimo": 3.1838,
+  "Maximo": 6.1242,
+  "numeroRespondentes": 134,
+  "baseCalculo": 0
+ }
+}
