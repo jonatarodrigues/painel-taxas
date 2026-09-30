@@ -31,7 +31,7 @@ Os dados ficam todos locais, mas o painel precisa de internet na primeira
 abertura para baixar o ECharts e a fonte Inter (ambos vêm de CDN).
 
 - `python atualizar.py --offline` recalcula só do cache (`cache/`).
-- Fontes: BCB SGS, FRED, Yahoo Finance e IPEA. Nenhuma chave necessária.
+- Fontes: BCB SGS, Boletim Focus (BCB), FRED, Yahoo Finance e IPEA. Nenhuma chave necessária.
 - `eventos.json` é a base curada de eventos; edite à vontade (data ISO,
   categoria entre `copom, fomc, crise, politica, fiscal, externo, plano`, e
   ids de séries de `pipeline/series.py`). Os ciclos do Copom são detectados
@@ -41,6 +41,24 @@ abertura para baixar o ECharts e a fonte Inter (ambos vêm de CDN).
 - Na aba Séries, o modo Variação mostra a variação de cada série desde o
   início do período (em % para preços e índices, em pontos percentuais para
   taxas); Nível fica disponível quando todas as séries têm a mesma unidade.
+
+## Aba Previsões
+
+Mostra o consenso do mercado segundo o Boletim Focus do BCB (mediana,
+menor e maior projeção entre as instituições), sinais calculados a partir
+dele e a agenda de Copom, FOMC e IPCA. Os sinais descrevem fatos; não são
+recomendação de investimento.
+
+- O Focus é baixado junto com as séries e fica em `cache/focus.json`; se a
+  consulta falhar, o painel usa o cache e avisa.
+- `agenda.json` guarda as datas (dia do anúncio). Quando o BCB e o Fed
+  publicarem o calendário de um novo ano, acrescente as linhas no mesmo
+  formato: `{"data": "2028-01-26", "tipo": "copom", "titulo": "Copom", "reuniao": "R1/2028"}`.
+  Tipos: `copom` (com `reuniao`), `fomc` e `ipca`. Enquanto faltar a data de
+  uma reunião que o Focus já projeta, o painel avisa e deixa essa reunião
+  fora do gráfico.
+- Regras dos sinais e limites: `pipeline/sinais.py` e
+  `docs/superpowers/specs/2026-09-30-previsoes-design.md`.
 
 ## Testes
 
