@@ -188,6 +188,7 @@
   // ---------- atualizar ----------
   async function detectarModo() {
     if (location.protocol === 'file:') return 'arquivo';
+    if (location.hostname !== '127.0.0.1' && location.hostname !== 'localhost') return 'publico';
     try {
       const r = await fetch('api/status', { cache: 'no-store' });
       if (r.ok) { const j = await r.json(); if (j && j.local === true) return 'local'; }
@@ -213,12 +214,12 @@
     renderKpis();
     renderAba();
   }
-  function toast(msg) {
+  function toast(msg, persistente = false) {
     const t = $('#toast');
     t.textContent = msg;
     t.hidden = false;
     clearTimeout(toast.timer);
-    toast.timer = setTimeout(() => { t.hidden = true; }, 4000);
+    if (!persistente) toast.timer = setTimeout(() => { t.hidden = true; }, 4000);
   }
   function girando(sim) {
     const b = $('#btn-atualizar');
@@ -228,7 +229,7 @@
   const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
   async function atualizarLocal() {
     girando(true);
-    toast('Atualizando… (1 a 3 min)');
+    toast('Atualizando… pode levar alguns minutos', true);
     try {
       const r = await fetch('api/atualizar', { method: 'POST', headers: { 'X-Painel': '1' } });
       if (r.status !== 202 && r.status !== 409) { toast(`Não foi possível atualizar (HTTP ${r.status})`); return; }
