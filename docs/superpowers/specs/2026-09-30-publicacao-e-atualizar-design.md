@@ -87,7 +87,10 @@ no teste de integridade não mudam.
     em 2025; fechou em 4,26% (0,55 p.p. abaixo)."
   - **Câmbio:** o ano `hoje.year − 1`, comparado com o último `usd_brl`
     daquele ano. Exemplo: "Há 12 meses o mercado esperava o dólar a
-    **R$ 5,46** no fim de 2025; fechou em R$ 5,50 (+0,8%)."
+    **R$ 5,46** no fim de 2025; fechou em R$ 5,50 (+0,7%)."
+  - As diferenças são calculadas sobre os valores já arredondados para 2
+    casas, os mesmos que aparecem no texto. Assim a conta que o leitor faz
+    de cabeça bate com a diferença escrita.
   - **PIB:** fica sem sinal (o painel não tem a série do PIB anual).
   - Sem o dado realizado (série ausente, ou dezembro do ano anterior ainda
     não publicado), o sinal daquele indicador não aparece.
