@@ -101,6 +101,7 @@ p { margin: 6px 0; }
 .tt-linha { display: flex; align-items: center; gap: 8px; padding: 1px 0; }
 .tt-chave { width: 14px; height: 2px; border-radius: 1px; flex: none; }
 .tt-nome { color: var(--muted); }
+.tt-var { color: var(--text-2); font-variant-numeric: tabular-nums; }
 .tt-desc { color: var(--text-2); white-space: normal; margin-top: 2px; }
 
 @media (max-width: 900px) {

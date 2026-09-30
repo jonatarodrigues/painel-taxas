@@ -283,7 +283,8 @@
       let dados = pontos(id).filter((p) => p[0] >= inicio);
       if (modo === 'variacao' && dados.length) {
         const base = dados.find((p) => p[1] != null && (s.var_tipo !== 'pct' || p[1] !== 0));
-        dados = !base ? [] : dados.map(([d, v]) => [d, s.var_tipo === 'pct' ? (v / base[1] - 1) * 100 : v - base[1]]);
+        // O terceiro elemento guarda o valor original para o tooltip; o ECharts desenha só x e y.
+        dados = !base ? [] : dados.map(([d, v]) => [d, s.var_tipo === 'pct' ? (v / base[1] - 1) * 100 : v - base[1], v]);
       }
       return { id, name: s.nome, type: 'line', showSymbol: false, symbolSize: 8, sampling: 'lttb', data: dados, lineStyle: { width: 2, color: corSlot(i) }, itemStyle: { color: corSlot(i) }, emphasis: { focus: 'series' } };
     });
@@ -326,8 +327,12 @@
       for (const p of linhas) {
         const id = p.seriesId;
         const v = p.value[1];
-        const texto = estado.modoAtivo === 'variacao' && id && D.series[id] ? fmtSinal(v) + unidadeVar(id) : fmt(v, id && D.series[id] ? casasDe(id) : 2);
-        caixa.append(el('div', { class: 'tt-linha' }, el('span', { class: 'tt-chave', style: `background:${p.color}` }), el('strong', { text: texto }), el('span', { class: 'tt-nome', text: p.seriesName })));
+        const s = id && D.series[id];
+        const variacao = estado.modoAtivo === 'variacao' && s;
+        const texto = s ? `${fmt(variacao ? p.value[2] : v, casasDe(id))} ${s.unidade}` : fmt(v, 2);
+        caixa.append(el('div', { class: 'tt-linha' }, el('span', { class: 'tt-chave', style: `background:${p.color}` }), el('strong', { text: texto }),
+          variacao ? el('span', { class: 'tt-var', text: `(${fmtSinal(v)}${unidadeVar(id)})` }) : null,
+          el('span', { class: 'tt-nome', text: p.seriesName })));
       }
     }
     for (const p of lista.filter((q) => q.seriesType === 'scatter' && q.data && q.data.evento)) {
