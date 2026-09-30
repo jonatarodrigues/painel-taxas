@@ -28,6 +28,7 @@
 
 <nav class="abas" role="tablist" aria-label="Seções do painel">
   <button role="tab" type="button" data-aba="series" aria-selected="true">Séries</button>
+  <button role="tab" type="button" data-aba="previsoes" aria-selected="false">Previsões</button>
   <button role="tab" type="button" data-aba="cerebro" aria-selected="false">Cérebro</button>
   <button role="tab" type="button" data-aba="correlacoes" aria-selected="false">Correlações</button>
   <button role="tab" type="button" data-aba="timeline" aria-selected="false">Linha do tempo</button>
@@ -59,6 +60,30 @@
       <p class="legenda-faixa muted">Faixa inferior: eventos por categoria. Passe o mouse para ler, clique para ver o impacto em 30 e 90 dias.</p>
     </div>
     <div id="evento-detalhe" class="card evento-detalhe" hidden></div>
+  </section>
+
+  <section id="aba-previsoes" class="aba" role="tabpanel" hidden>
+    <div class="prev-cab">
+      <h2>O que o mercado espera</h2>
+      <span id="focus-info" class="muted"></span>
+    </div>
+    <div id="prev-vazio" class="card muted" hidden>Previsões indisponíveis: rode o Abrir Painel.bat com internet para baixar o Boletim Focus.</div>
+    <div id="sinais" class="sinais"></div>
+    <div class="grade-prev">
+      <div id="card-traj" class="card">
+        <div class="controles">
+          <div id="seg-traj" class="segmentos" role="group" aria-label="Indicador"></div>
+          <span id="leg-traj" class="hint"></span>
+        </div>
+        <div id="chart-traj" class="chart" style="height:400px"></div>
+        <p class="legenda-faixa muted">Linha contínua: histórico. Tracejada: mediana do Focus. Faixa: menor e maior projeção entre as instituições.</p>
+      </div>
+      <div class="card">
+        <h3>Agenda</h3>
+        <table class="agenda"><tbody id="agenda"></tbody></table>
+        <p id="agenda-vazia" class="muted" hidden>Sem eventos futuros em agenda.json.</p>
+      </div>
+    </div>
   </section>
 
   <section id="aba-cerebro" class="aba" role="tabpanel" hidden>

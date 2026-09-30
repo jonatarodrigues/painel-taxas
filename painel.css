@@ -109,3 +109,24 @@ p { margin: 6px 0; }
   .cerebro-grade { grid-template-columns: 1fr; }
   .sel-lista { grid-template-columns: 1fr; min-width: 280px; }
 }
+
+/* Aba Previsões */
+.prev-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.prev-cab h2 { font-size: 16px; margin: 0; font-weight: 600; }
+.sinais { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 10px; margin-bottom: 14px; }
+.sinal { background: var(--card); border-radius: 10px; padding: 10px 14px 10px 12px; box-shadow: var(--sombra); border-left: 3px solid var(--border-solid); display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; }
+.sinal.destaque { border-left-color: #fab219; }
+.sinal-tag { flex: none; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: color-mix(in srgb, var(--muted) 14%, transparent); border-radius: 4px; padding: 2px 6px; margin-top: 2px; }
+.sinal.destaque .sinal-tag { color: #b77f00; background: color-mix(in srgb, #fab219 16%, transparent); }
+:root[data-theme="dark"] .sinal.destaque .sinal-tag { color: #fab219; }
+.sinal strong { font-weight: 600; }
+.grade-prev { display: grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); gap: 12px; align-items: start; }
+@media (max-width: 900px) { .grade-prev { grid-template-columns: 1fr; } }
+.grade-prev .card h3 { margin: 2px 4px 8px; font-size: 14px; font-weight: 600; }
+.agenda { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.agenda td { padding: 7px 4px; border-top: 1px solid var(--border-solid); vertical-align: top; }
+.agenda tr:first-child td { border-top: 0; }
+.agenda .ag-data { white-space: nowrap; font-weight: 600; width: 1%; }
+.agenda .ag-dias { white-space: nowrap; text-align: right; color: var(--muted); width: 1%; }
+.agenda .ag-tipo { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--cor); }
+.agenda .ag-sub { color: var(--text-2); font-size: 12px; }

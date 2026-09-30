@@ -27,6 +27,7 @@
     janelaHeat: 'tudo',
     filtroCat: new Set(ORDEM_CAT),
     busca: '',
+    traj: 'selic',
   };
   const RENDER = {};
 
@@ -258,6 +259,102 @@
     montarControlesTimeline();
   }
   function atualizarResumoSel() { $('#sel-resumo').textContent = `Séries (${estado.selecionadas.length}) ▾`; }
+  // ---------- aba Previsões ----------
+  const TRAJ = [['selic', 'Selic'], ['ipca', 'IPCA 12m'], ['cambio', 'Dólar'], ['pib', 'PIB']];
+  const COR_TRAJ = { selic: 'juros', ipca: 'inflacao', cambio: 'cambio', pib: 'macro' };
+  const TAG_SINAL = { copom: 'Copom', selic: 'Selic', revisao: 'Revisão', juro_real: 'Juro real', cambio: 'Câmbio', fomc: 'Agenda', ipca: 'Agenda' };
+  const COR_AGENDA = { copom: 'copom', fomc: 'fomc', ipca: 'plano' };
+
+  // "**x**" vira <strong>, sem innerHTML.
+  function textoRico(texto) {
+    const s = el('span');
+    texto.split('**').forEach((parte, i) => s.append(i % 2 ? el('strong', { text: parte }) : document.createTextNode(parte)));
+    return s;
+  }
+
+  function renderPrevisoes() {
+    const P = D.previsoes || null;
+    const hoje = D.gerado_em.slice(0, 10);
+    const semFocus = !P || !P.focus_data;
+    $('#prev-vazio').hidden = !semFocus;
+    $('#focus-info').textContent = semFocus ? '' : `Boletim Focus de ${fmtData(P.focus_data)}` + (P.respondentes ? ` · ${P.respondentes} instituições` : '');
+    $('#sinais').replaceChildren(...((P && P.sinais) || []).map((s) =>
+      el('div', { class: 'sinal ' + s.nivel }, el('span', { class: 'sinal-tag', text: TAG_SINAL[s.tipo] || s.tipo }), textoRico(s.texto))));
+    renderAgenda((P && P.agenda) || [], hoje);
+    $('#card-traj').hidden = semFocus;
+    if (!semFocus) renderTrajetoria(P.trajetorias, hoje);
+  }
+
+  function renderAgenda(agenda, hoje) {
+    const prox = agenda.filter((a) => a.data >= hoje).slice(0, 8);
+    $('#agenda-vazia').hidden = prox.length > 0;
+    $('#agenda').replaceChildren(...prox.map((a) => {
+      const dias = Math.round((Date.parse(a.data) - Date.parse(hoje)) / 864e5);
+      let sub = null;
+      if (a.espera) {
+        const d = a.espera.dif;
+        const v = d === 0 ? 'manter' : (d < 0 ? `cortar ${fmt(-d)}` : `subir ${fmt(d)}`);
+        sub = el('div', { class: 'ag-sub', text: `${a.reuniao} · mercado espera ${v} → ${fmt(a.espera.mediana)}%` });
+      } else if (a.contexto) sub = el('div', { class: 'ag-sub', text: a.contexto });
+      return el('tr', {},
+        el('td', { class: 'ag-data', text: fmtData(a.data).slice(0, 5) }),
+        el('td', {}, el('span', { class: 'ag-tipo', style: `--cor:${corCat(COR_AGENDA[a.tipo])}` }), a.titulo, sub),
+        el('td', { class: 'ag-dias', text: dias === 0 ? 'hoje' : `em ${dias} d` }));
+    }));
+  }
+
+  function renderTrajetoria(trajetorias, hoje) {
+    const seg = $('#seg-traj');
+    if (!seg.children.length) {
+      for (const [k, nome] of TRAJ) {
+        seg.append(el('button', { type: 'button', class: 'seg', 'data-traj': k, text: nome, onclick: () => { estado.traj = k; renderPrevisoes(); } }));
+      }
+    }
+    $$('[data-traj]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.traj === estado.traj)));
+    const t = trajetorias[estado.traj];
+    const c = grafico('chart-traj');
+    if (!t || !t.proj.length) {
+      $('#leg-traj').textContent = '';
+      c.setOption({ title: { text: 'Sem projeções do Focus para este indicador', left: 'center', top: 'middle', textStyle: { color: cssVar('--muted'), fontWeight: 400, fontSize: 14 } } }, true);
+      return;
+    }
+    const cor = corGrupo(COR_TRAJ[estado.traj]);
+    const inicio = anosAtras(hoje, 3);
+    const hist = t.serie_hist && D.series[t.serie_hist] ? pontos(t.serie_hist).filter((p) => p[0] >= inicio && p[1] != null) : [];
+    const ultimo = hist.length ? hist[hist.length - 1] : null;
+    // A projeção parte do último ponto real para a linha não ter buraco.
+    const proj = (ultimo ? [[ultimo[0], ultimo[1], ultimo[1], ultimo[1], null, 'hoje']] : []).concat(t.proj);
+    const degrau = estado.traj === 'selic' && t.proj[0] && t.proj[0][5].startsWith('R') ? 'end' : false;
+    $('#leg-traj').textContent = `${t.nome} · ${t.unidade}` + (t.serie_hist ? '' : ' · sem histórico no painel, só projeções');
+    c.setOption({
+      textStyle: textoBase(), animation: false,
+      grid: { left: 52, right: 20, top: 24, bottom: 30 },
+      tooltip: Object.assign(tooltipBase(), {
+        trigger: 'axis',
+        formatter: (ps) => {
+          const p = ps.find((q) => q.seriesId === 'proj' && q.data[4] != null) || ps.find((q) => q.seriesId === 'hist');
+          if (!p) return '';
+          const d = p.data;
+          const caixa = el('div', { class: 'tt' }, el('div', { class: 'tt-titulo', text: p.seriesId === 'proj' ? `${d[5]} · ${fmtData(d[0])}` : fmtData(String(d[0]).slice(0, 10)) }),
+            el('div', {}, el('strong', { text: `${fmt(d[1])} ${t.unidade}` }), el('span', { class: 'tt-nome', text: p.seriesId === 'proj' ? ' mediana' : '' })));
+          if (p.seriesId === 'proj') caixa.append(el('div', { class: 'tt-nome', text: `Faixa ${fmt(d[2])} a ${fmt(d[3])} · ${d[4]} respostas` }));
+          return caixa;
+        },
+      }),
+      xAxis: Object.assign({ type: 'time' }, eixoBase(), { splitLine: { show: false } }),
+      yAxis: Object.assign({ type: 'value', scale: true }, eixoBase(), { axisLine: { show: false }, axisLabel: { color: cssVar('--muted'), fontSize: 11, formatter: (v) => v.toLocaleString('pt-BR') } }),
+      series: [
+        { id: 'hist', type: 'line', data: hist, showSymbol: false, sampling: 'lttb', lineStyle: { width: 2, color: cor }, itemStyle: { color: cor },
+          markLine: ultimo ? { symbol: 'none', silent: true, label: { formatter: 'hoje', color: cssVar('--muted'), fontSize: 11 }, lineStyle: { color: cssVar('--muted'), type: 'dotted' }, data: [{ xAxis: ultimo[0] }] } : undefined },
+        // Faixa: base invisível no mínimo + área com a diferença até o máximo.
+        { id: 'faixa-base', type: 'line', data: proj.map((p) => [p[0], p[2]]), stack: 'faixa', step: degrau, lineStyle: { opacity: 0 }, showSymbol: false, silent: true, tooltip: { show: false } },
+        { id: 'faixa', type: 'line', data: proj.map((p) => [p[0], p[3] - p[2]]), stack: 'faixa', step: degrau, lineStyle: { opacity: 0 }, showSymbol: false, silent: true, areaStyle: { color: cor, opacity: 0.16 }, tooltip: { show: false } },
+        { id: 'proj', type: 'line', data: proj, step: degrau, showSymbol: true, symbolSize: 6, lineStyle: { width: 2, type: 'dashed', color: cor }, itemStyle: { color: cor } },
+      ],
+    }, true);
+  }
+  RENDER.previsoes = renderPrevisoes;
+
   // ---------- aba Séries ----------
   function renderSeries() {
     const ids = estado.selecionadas.filter((id) => D.series[id]);
