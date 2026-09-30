@@ -54,6 +54,8 @@
   const fmtSinal = (v, casas = 2) => v == null ? '—' : (v > 0 ? '+' : '') + fmt(v, casas);
   const fmtData = (iso) => { if (!iso) return '—'; const [a, m, d] = iso.split('-'); return d ? `${d}/${m}/${a}` : `${m}/${a}`; };
   const casasDe = (id) => { const u = (D.series[id] && D.series[id].unidade) || ''; return /pontos|índice/.test(u) ? 0 : (u === 'R$' ? 3 : 2); };
+  // Taxas e percentuais (% a.a., % 12m, % a.m., % PIB, p.p.) cabem no mesmo eixo; as demais unidades ficam sozinhas.
+  const familiaEixo = (u) => (u.startsWith('%') || u === 'p.p.') ? '%' : u;
   const unidadeVar = (id) => D.series[id].var_tipo === 'pct' ? '%' : ' p.p.';
   const classeVar = (v) => v == null ? 'muted' : (v > 0 ? 'var-pos' : v < 0 ? 'var-neg' : '');
   const fmtVar = (id, v) => v == null ? '—' : fmtSinal(v) + unidadeVar(id);
@@ -266,11 +268,15 @@
       $('#aviso-modo').hidden = true;
       return;
     }
-    const unidades = new Set(ids.map((id) => D.series[id].unidade));
-    const misto = unidades.size > 1;
+    // Unidades da mesma família dividem um eixo; o Nível aceita até duas famílias (eixo esquerdo e direito).
+    const familias = [...new Set(ids.map((id) => familiaEixo(D.series[id].unidade)))];
+    const misto = familias.length > 2;
     const modo = misto ? 'variacao' : estado.modo;
+    const doisEixos = modo === 'nivel' && familias.length === 2;
+    const nomeEixo = (f) => [...new Set(ids.filter((id) => familiaEixo(D.series[id].unidade) === f).map((id) => D.series[id].unidade))].join(' · ');
     estado.modoAtivo = modo;
     $('#modo-nivel').disabled = misto;
+    $('#modo-nivel').title = misto ? 'Nível mostra no máximo duas unidades (uma em cada eixo). Tire séries para liberar.' : '';
     $('#aviso-modo').hidden = !misto;
     $$('[data-modo]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
 
@@ -286,7 +292,8 @@
         // O terceiro elemento guarda o valor original para o tooltip; o ECharts desenha só x e y.
         dados = !base ? [] : dados.map(([d, v]) => [d, s.var_tipo === 'pct' ? (v / base[1] - 1) * 100 : v - base[1], v]);
       }
-      return { id, name: s.nome, type: 'line', showSymbol: false, symbolSize: 8, sampling: 'lttb', data: dados, lineStyle: { width: 2, color: corSlot(i) }, itemStyle: { color: corSlot(i) }, emphasis: { focus: 'series' } };
+      const yAxisIndex = doisEixos && familiaEixo(s.unidade) === familias[1] ? 2 : 0;
+      return { id, name: s.nome, type: 'line', yAxisIndex, showSymbol: false, symbolSize: 8, sampling: 'lttb', data: dados, lineStyle: { width: 2, color: corSlot(i) }, itemStyle: { color: corSlot(i) }, emphasis: { focus: 'series' } };
     });
     const eventos = D.eventos.filter((e) => estado.categorias.has(e.categoria) && e.data >= inicio && e.data <= ultimo);
     series.push({
@@ -298,7 +305,7 @@
     c.setOption({
       textStyle: textoBase(), animation: false,
       legend: { data: ids.map((id) => D.series[id].nome), top: 0, type: 'scroll', textStyle: { color: cssVar('--text-2') }, icon: 'path://M0,5 L20,5 L20,7 L0,7 Z', itemWidth: 18 },
-      grid: [{ left: 60, right: 24, top: 44, height: '58%' }, { left: 60, right: 24, top: '76%', height: 44 }],
+      grid: [{ left: 60, right: doisEixos ? 64 : 24, top: 44, height: '58%' }, { left: 60, right: doisEixos ? 64 : 24, top: '76%', height: 44 }],
       axisPointer: { link: [{ xAxisIndex: 'all' }], lineStyle: { color: cssVar('--muted') } },
       tooltip: Object.assign(tooltipBase(), { trigger: 'axis', formatter: tooltipSeries }),
       xAxis: [
@@ -306,9 +313,9 @@
         Object.assign({ type: 'time', gridIndex: 1 }, eixoBase(), { axisLabel: { show: false }, splitLine: { show: false }, axisLine: { show: false } }),
       ],
       yAxis: [
-        Object.assign({ type: 'value', scale: true, name: modo === 'variacao' ? 'Variação desde o início (% ou p.p.)' : [...unidades][0] || '', nameTextStyle: { color: cssVar('--muted'), align: 'left' } }, eixoBase(), { axisLine: { show: false } }),
+        Object.assign({ type: 'value', scale: true, name: modo === 'variacao' ? 'Variação desde o início (% ou p.p.)' : nomeEixo(familias[0]), nameTextStyle: { color: cssVar('--muted'), align: 'left' } }, eixoBase(), { axisLine: { show: false } }),
         { type: 'value', gridIndex: 1, min: -1, max: ORDEM_CAT.length, show: false },
-      ],
+      ].concat(doisEixos ? [Object.assign({ type: 'value', scale: true, position: 'right', name: nomeEixo(familias[1]), nameTextStyle: { color: cssVar('--muted'), align: 'right' } }, eixoBase(), { axisLine: { show: false }, splitLine: { show: false } })] : []),
       dataZoom: [
         { type: 'inside', xAxisIndex: [0, 1] },
         { type: 'slider', xAxisIndex: [0, 1], bottom: 6, height: 22, borderColor: 'transparent', backgroundColor: cssVar('--bg'), fillerColor: 'rgba(120,120,140,.18)', handleStyle: { color: cssVar('--muted') }, textStyle: { color: cssVar('--muted') }, dataBackground: { lineStyle: { color: cssVar('--muted') }, areaStyle: { color: cssVar('--grid') } } },

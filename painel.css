@@ -61,6 +61,7 @@ p { margin: 6px 0; }
 .segmentos { display: inline-flex; background: var(--card); border: 1px solid var(--border-solid); border-radius: 999px; padding: 2px; }
 .segmentos .seg { border: 0; background: none; padding: 5px 12px; font-size: 13px; color: var(--text-2); }
 .segmentos .seg[aria-pressed="true"] { background: var(--text); color: var(--card); }
+.segmentos .seg:disabled { opacity: .4; cursor: not-allowed; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .slider { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); }
 .slider input { width: 140px; accent-color: var(--pos); }
