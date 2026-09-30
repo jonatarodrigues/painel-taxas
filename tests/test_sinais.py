@@ -166,3 +166,31 @@ def test_ordenar_destaque_primeiro_depois_data():
     lista = [{"nivel": "info", "tipo": "a"}, {"nivel": "info", "tipo": "b", "data": "2026-10-09"},
              {"nivel": "destaque", "tipo": "c"}, {"nivel": "destaque", "tipo": "d", "data": "2026-11-04"}]
     assert [s["tipo"] for s in sinais.ordenar(lista)] == ["d", "c", "b", "a"]
+
+
+def test_dmy():
+    assert sinais.dmy("2025-09-30") == "30/09/2025"
+
+
+def test_acerto_selic_acima_abaixo_igual():
+    s = sinais.sinal_acerto_selic(12.75, "2026-09-16", "2025-09-30", 13.75)
+    assert s == {"nivel": "info", "tipo": "acerto",
+                 "texto": "Há 12 meses (Focus de 30/09/2025) o mercado esperava a Selic em **12,75%** no Copom de "
+                          "16/09/2026; ela está em 13,75% (1,00 p.p. acima)."}
+    assert sinais.sinal_acerto_selic(14.0, "2026-09-16", "2025-09-30", 13.75)["texto"].endswith(
+        "ela está em 13,75% (0,25 p.p. abaixo).")
+    assert sinais.sinal_acerto_selic(13.75, "2026-09-16", "2025-09-30", 13.75)["texto"].endswith("(igual ao previsto).")
+
+
+def test_acerto_ipca_usa_valores_arredondados():
+    s = sinais.sinal_acerto_ipca(4.8061, "2025", 4.2644)
+    assert s == {"nivel": "info", "tipo": "acerto",
+                 "texto": "Há 12 meses o mercado esperava IPCA de **4,81%** em 2025; fechou em 4,26% (0,55 p.p. abaixo)."}
+
+
+def test_acerto_cambio():
+    s = sinais.sinal_acerto_cambio(5.4555, "2025", 5.5024)
+    assert s == {"nivel": "info", "tipo": "acerto",
+                 "texto": "Há 12 meses o mercado esperava o dólar a **R$ 5,46** no fim de 2025; fechou em R$ 5,50 (+0,7%)."}
+    assert sinais.sinal_acerto_cambio(5.5, "2025", 5.5)["texto"].endswith("fechou em R$ 5,50 (igual ao previsto).")
+    assert sinais.sinal_acerto_cambio(5.5, "2025", 5.39)["texto"].endswith("fechou em R$ 5,39 (-2,0%).")

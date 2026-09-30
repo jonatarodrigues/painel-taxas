@@ -25,6 +25,10 @@ def dm(iso: str) -> str:
     return f"{iso[8:10]}/{iso[5:7]}"
 
 
+def dmy(iso: str) -> str:
+    return f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}"
+
+
 def quando(dias: int) -> str:
     return "hoje" if dias == 0 else ("amanhã" if dias == 1 else f"em {dias} dias")
 
@@ -184,3 +188,33 @@ def sinais_agenda(agenda: list[dict], hoje: date, fed_funds: float | None) -> li
 def ordenar(lista: list[dict]) -> list[dict]:
     """Destaques primeiro; dentro de cada nível, pela data do evento (sem data vai para o fim)."""
     return sorted(lista, key=lambda s: (s["nivel"] != "destaque", s.get("data") or "9999-12-31"))
+
+
+def _comparacao_pp(previsto: float, realizado: float) -> str:
+    """Diferença sobre os valores arredondados que aparecem no texto."""
+    d = round(realizado, 2) - round(previsto, 2)
+    if abs(d) < 0.005:
+        return "igual ao previsto"
+    return f"{fmt_br(abs(d))} p.p. {'acima' if d > 0 else 'abaixo'}"
+
+
+def sinal_acerto_selic(previsto: float, data_reuniao: str, data_pesquisa: str, selic_atual: float) -> dict:
+    return {"nivel": "info", "tipo": "acerto",
+            "texto": (f"Há 12 meses (Focus de {dmy(data_pesquisa)}) o mercado esperava a Selic em "
+                      f"**{fmt_br(previsto)}%** no Copom de {dmy(data_reuniao)}; ela está em "
+                      f"{fmt_br(selic_atual)}% ({_comparacao_pp(previsto, selic_atual)}).")}
+
+
+def sinal_acerto_ipca(previsto: float, ano: str, realizado: float) -> dict:
+    return {"nivel": "info", "tipo": "acerto",
+            "texto": (f"Há 12 meses o mercado esperava IPCA de **{fmt_br(previsto)}%** em {ano}; "
+                      f"fechou em {fmt_br(realizado)}% ({_comparacao_pp(previsto, realizado)}).")}
+
+
+def sinal_acerto_cambio(previsto: float, ano: str, realizado: float) -> dict:
+    p, r = round(previsto, 2), round(realizado, 2)
+    comparacao = "igual ao previsto" if abs(r - p) < 0.005 else f"{fmt_br((r / p - 1) * 100, 1, sinal=True)}%"
+    return {"nivel": "info", "tipo": "acerto",
+            "texto": (f"Há 12 meses o mercado esperava o dólar a **R$ {fmt_br(previsto)}** no fim de {ano}; "
+                      f"fechou em R$ {fmt_br(realizado)} ({comparacao}).")}
+
