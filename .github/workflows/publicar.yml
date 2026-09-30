@@ -27,9 +27,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
           cache: pip
@@ -41,7 +41,7 @@ jobs:
         run: python -m pytest -q
 
       - name: Restaurar o cache das fontes
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: cache
           key: dados-${{ github.run_id }}
@@ -54,7 +54,7 @@ jobs:
 
       - name: Guardar o cache das fontes
         if: always() && hashFiles('cache/**') != ''
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: cache
           key: dados-${{ github.run_id }}
@@ -64,10 +64,11 @@ jobs:
           mkdir -p _site
           cp painel.html painel.css painel.js dados.js dados.json _site/
           cp site/index.html _site/index.html
+          cp site/og.png _site/og.png
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
       - id: deploy
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

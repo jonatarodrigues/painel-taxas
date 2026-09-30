@@ -80,7 +80,8 @@ O workflow `.github/workflows/publicar.yml` roda os testes, executa o
 (Actions → publicar → Run workflow). O `cache/` das fontes é guardado entre
 execuções; se uma fonte falhar, a série usa o último dado bom e aparece nos
 avisos. Só `painel.html`, `painel.css`, `painel.js`, `dados.js`,
-`dados.json` e a página inicial vão para o site.
+`dados.json`, a página inicial e a imagem de prévia do link (`site/og.png`)
+vão para o site.
 
 O GitHub desativa workflows agendados em repositórios sem atividade por 60
 dias. Se o site parar de atualizar, reative em Actions → publicar →

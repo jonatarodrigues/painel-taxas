@@ -266,8 +266,8 @@
   }
 
   async function init() {
-    let tema = 'dark';
-    try { tema = localStorage.getItem('tema') || 'dark'; } catch (e) { /* ok */ }
+    let tema = 'light';
+    try { tema = localStorage.getItem('tema') || 'light'; } catch (e) { /* ok */ }
     aplicarTema(tema);
     $('#btn-tema').addEventListener('click', () => aplicarTema(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     try {
