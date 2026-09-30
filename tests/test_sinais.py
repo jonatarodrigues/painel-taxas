@@ -116,7 +116,12 @@ def test_juro_real_usa_reuniao_mais_perto_de_12_meses():
     # R6/2027 (22/09/2027) é a reunião mais perto de 30/09/2027; 12,50 − 4,60 = 7,90, acima de 79 dos 100 valores.
     s = sinais.sinal_juro_real(AGENDA, MEDIANAS, 4.60, hist, HOJE)
     assert s == {"nivel": "info", "tipo": "juro_real",
-                 "texto": "Juro real esperado para 12 meses: **7,9%** (Selic esperada 12,50% − IPCA esperado 4,60%). Maior que em 79% dos meses desde 2000."}
+                 "texto": "Juro real esperado para 12 meses: **7,9%** (Selic esperada em R6/2027 12,50% − IPCA esperado 4,60%). Maior que em 79% dos meses desde 2000."}
+
+
+def test_juro_real_sem_reuniao_perto_de_12_meses():
+    agenda = [{"data": "2026-11-04", "tipo": "copom", "titulo": "Copom", "reuniao": "R7/2026"}]
+    assert sinais.sinal_juro_real(agenda, MEDIANAS, 4.60, [1.0, 2.0], HOJE) is None
 
 
 def test_juro_real_destaque_nos_extremos():

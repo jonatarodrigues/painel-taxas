@@ -36,7 +36,7 @@ BRUTO = {
 
 
 def montar(**troca):
-    args = dict(bruto=BRUTO, agenda_=AGENDA, selic_hoje=13.75, usd_hoje=5.36, fed_funds=3.88,
+    args = dict(bruto=BRUTO, agenda_=AGENDA, selic_hoje=13.75, selic_data="2026-09-29", usd_hoje=5.36, fed_funds=3.88,
                 juro_hist=[float(x) for x in range(20)], hoje=HOJE, avisos=[])
     args.update(troca)
     return exportar.previsoes(**args), args["avisos"]
@@ -73,7 +73,10 @@ def test_sem_agenda_selic_usa_projecao_anual_e_nao_avisa_por_reuniao():
 
 
 def test_sinais_presentes_e_ordenados():
-    p, _ = montar()
+    # o juro real de 12 meses precisa de uma reunião perto de 30/09/2027
+    agenda = AGENDA + [{"data": "2027-09-22", "tipo": "copom", "titulo": "Copom", "reuniao": "R6/2027"}]
+    bruto = dict(BRUTO, selic=BRUTO["selic"] + [linha("R6/2027", 12.5)])
+    p, _ = montar(agenda_=agenda, bruto=bruto)
     tipos = [s["tipo"] for s in p["sinais"]]
     assert {"copom", "selic", "juro_real", "cambio", "ipca"} <= set(tipos)
     niveis = [s["nivel"] for s in p["sinais"]]
@@ -102,3 +105,38 @@ def test_com_resposta_real_gravada():
     p, avisos = montar(bruto=bruto, agenda_=agenda_)
     assert p["trajetorias"]["selic"]["proj"] and p["sinais"]
     json.dumps(p, allow_nan=False)
+
+
+def test_selic_defasada_com_mediana_da_reuniao_passada_ancora_na_mediana():
+    hoje = date(2026, 11, 10)            # R7/2026 (04/11) já passou; a série da Selic é de 01/11
+    bruto = dict(BRUTO, selic=[linha("R7/2026", 13.5), linha("R8/2026", 13.5), linha("R1/2027", 13.25)])
+    p, avisos = montar(bruto=bruto, hoje=hoje, selic_hoje=13.75, selic_data="2026-11-01")
+    copom = {a["reuniao"]: a for a in p["agenda"] if a["tipo"] == "copom"}
+    assert copom["R8/2026"]["espera"] == {"mediana": 13.5, "dif": 0.0}     # e não "cortar 0,25"
+    assert any(s["tipo"] == "copom" and "manter" in s["texto"] for s in p["sinais"])
+    assert ("Selic meta mais recente é de 01/11/2026, antes do Copom de 04/11 (R7/2026); decisões esperadas "
+            "contadas a partir da mediana do Focus para essa reunião (13,50%)") in avisos
+
+
+def test_selic_defasada_sem_mediana_omite_sinais_do_copom():
+    hoje = date(2026, 11, 10)
+    bruto = dict(BRUTO, selic=[linha("R8/2026", 13.5), linha("R1/2027", 13.25)])
+    p, avisos = montar(bruto=bruto, hoje=hoje, selic_hoje=13.75, selic_data="2026-11-01")
+    assert not any(s["tipo"] in ("copom", "selic") for s in p["sinais"])
+    assert not any("espera" in a for a in p["agenda"])
+    assert ("Selic meta mais recente é de 01/11/2026, antes do Copom de 04/11 (R7/2026); "
+            "sinais do Copom omitidos até a atualização da série") in avisos
+
+
+def test_selic_posterior_ao_ultimo_copom_nao_avisa():
+    p, avisos = montar(selic_data="2026-09-17")
+    assert not any("Selic meta mais recente" in a for a in avisos)
+    assert any(s["tipo"] == "copom" for s in p["sinais"])
+
+
+def test_focus_sem_alguns_indicadores_avisa():
+    bruto = dict(BRUTO, anuais=[a for a in BRUTO["anuais"] if a["Indicador"] == "IPCA"])
+    _, avisos = montar(bruto=bruto)
+    for ind in ("Câmbio", "PIB Total", "Selic"):
+        assert f"Focus sem projeções anuais de {ind}; sinais e gráfico desse indicador ficam de fora" in avisos
+    assert not any("de IPCA;" in a for a in avisos)

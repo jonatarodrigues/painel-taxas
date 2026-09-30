@@ -109,7 +109,11 @@ def _proj_anual(semanal: dict, indicador: str) -> list[list]:
     return saida
 
 
-def previsoes(bruto: dict | None, agenda_: list[dict], selic_hoje: float | None, usd_hoje: float | None,
+def _dmy(iso: str) -> str:
+    return f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}"
+
+
+def previsoes(bruto: dict | None, agenda_: list[dict], selic_hoje: float | None, selic_data: str | None, usd_hoje: float | None,
               fed_funds: float | None, juro_hist: list[float], hoje: date, avisos: list[str]) -> dict:
     """Bloco da aba Previsões: sinais, agenda futura e trajetórias. Sem Focus, só a agenda."""
     iso = hoje.isoformat()
@@ -128,13 +132,31 @@ def previsoes(bruto: dict | None, agenda_: list[dict], selic_hoje: float | None,
     semanal = focus.semanal(bruto.get("anuais", []))
     infl12 = (bruto.get("infl12") or {}).get("Mediana")
 
-    if selic_hoje is not None:
-        decisoes = sinais.decisoes_esperadas(medianas, selic_hoje, passadas)
+    for ind in focus.INDICADORES:
+        if ind not in semanal:
+            avisos.append(f"Focus sem projeções anuais de {ind}; sinais e gráfico desse indicador ficam de fora")
+
+    ancora = selic_hoje
+    ultima = max((a for a in agenda_ if a["tipo"] == "copom" and a["data"] < iso),
+                 key=lambda a: a["data"], default=None)
+    if selic_hoje is not None and selic_data is not None and ultima is not None and selic_data <= ultima["data"]:
+        # a série da Selic ainda não tem a decisão de uma reunião que já passou
+        aviso = (f"Selic meta mais recente é de {_dmy(selic_data)}, antes do Copom de "
+                 f"{sinais.dm(ultima['data'])} ({ultima['reuniao']}); ")
+        if ultima["reuniao"] in medianas:
+            ancora = medianas[ultima["reuniao"]]
+            avisos.append(aviso + "decisões esperadas contadas a partir da mediana do Focus para essa reunião "
+                          f"({sinais.fmt_br(ancora)}%)")
+        else:
+            ancora = None
+            avisos.append(aviso + "sinais do Copom omitidos até a atualização da série")
+    if ancora is not None:
+        decisoes = sinais.decisoes_esperadas(medianas, ancora, passadas)
         for a in futura:
             if a["tipo"] == "copom" and a["reuniao"] in decisoes:
                 a["espera"] = decisoes[a["reuniao"]]
-        lista += [s for s in (sinais.sinal_copom(futura, medianas, selic_hoje, hoje, passadas),
-                              sinais.sinal_trajetoria(medianas, selic_hoje, hoje, passadas)) if s]
+        lista += [s for s in (sinais.sinal_copom(futura, medianas, ancora, hoje, passadas),
+                              sinais.sinal_trajetoria(medianas, ancora, hoje, passadas)) if s]
     lista += sinais.sinais_revisao(semanal, hoje)
     lista += [s for s in (sinais.sinal_juro_real(futura, medianas, infl12, juro_hist, hoje),
                           sinais.sinal_cambio(usd_hoje, semanal, hoje)) if s]

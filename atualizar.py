@@ -118,8 +118,10 @@ def main(argv: list[str] | None = None) -> int:
 
     jr = mensais.get("juro_real")
     juro_hist = [] if jr is None else [float(v) for i, v in jr.dropna().items() if str(i)[:4] >= "2000"]
-    prev = exportar.previsoes(bruto_focus, agenda_, ultimo("selic_meta"), ultimo("usd_brl"), ultimo("fed_funds"),
-                              juro_hist, hoje, avisos)
+    selic_serie = brutas["selic_meta"].dropna() if "selic_meta" in brutas else None
+    selic_data = None if selic_serie is None or selic_serie.empty else str(selic_serie.index[-1])[:10]
+    prev = exportar.previsoes(bruto_focus, agenda_, ultimo("selic_meta"), selic_data, ultimo("usd_brl"),
+                              ultimo("fed_funds"), juro_hist, hoje, avisos)
 
     metas = {s.id: s for s in SERIES + DERIVADAS}
     dados = exportar.montar(metas, diarias, mensais, status, avisos, correl, eventos, previsoes=prev)

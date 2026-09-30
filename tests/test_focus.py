@@ -72,6 +72,28 @@ def test_baixar_sem_selic_levanta_resposta_vazia(monkeypatch):
         focus.baixar(date(2026, 9, 30))
 
 
+def _falso(anuais, infl):
+    def consultar_falso(entidade, **op):
+        if entidade == "ExpectativasMercadoSelic":
+            return [linha_selic("2026-09-25", "R7/2026", 13.5)]
+        if entidade == "ExpectativasMercadoInflacao12Meses":
+            return infl
+        return anuais
+    return consultar_falso
+
+
+def test_baixar_sem_anuais_levanta_resposta_vazia(monkeypatch):
+    monkeypatch.setattr(focus, "consultar", _falso([], [{"Data": "2026-09-25", "Mediana": 4.65}]))
+    with pytest.raises(fontes.RespostaVazia, match="Focus sem projeções anuais"):
+        focus.baixar(date(2026, 9, 30))
+
+
+def test_baixar_sem_infl12_levanta_resposta_vazia(monkeypatch):
+    monkeypatch.setattr(focus, "consultar", _falso([{"Indicador": "IPCA"}], []))
+    with pytest.raises(fontes.RespostaVazia, match="Focus sem IPCA 12 meses"):
+        focus.baixar(date(2026, 9, 30))
+
+
 def test_semanal_pega_a_ultima_linha_de_cada_semana():
     anuais = [
         {"Indicador": "IPCA", "Data": "2026-09-14", "DataReferencia": "2026", "Mediana": 4.9, "Minimo": 4, "Maximo": 6, "numeroRespondentes": 90},

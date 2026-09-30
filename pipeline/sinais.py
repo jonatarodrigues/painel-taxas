@@ -129,6 +129,7 @@ def sinais_revisao(semanal: dict, hoje: date) -> list[dict]:
 
 DIAS_AGENDA = 14
 PERCENTIL_EXTREMO = 10
+DIST_MAX_JURO_REAL = 60  # dias entre a reunião escolhida e hoje + 365
 
 
 def sinal_juro_real(agenda: list[dict], medianas: dict[str, float], infl12: float | None,
@@ -141,11 +142,13 @@ def sinal_juro_real(agenda: list[dict], medianas: dict[str, float], infl12: floa
         return None
     alvo = hoje + timedelta(days=365)
     r = min(sorted(datas), key=lambda k: abs((datas[k] - alvo).days))
+    if abs((datas[r] - alvo).days) > DIST_MAX_JURO_REAL:
+        return None
     jr = medianas[r] - infl12
     pct = round(100 * sum(h < jr for h in juro_hist) / len(juro_hist))
     extremo = pct >= 100 - PERCENTIL_EXTREMO or pct <= PERCENTIL_EXTREMO
     return {"nivel": "destaque" if extremo else "info", "tipo": "juro_real",
-            "texto": (f"Juro real esperado para 12 meses: **{fmt_br(jr, 1)}%** (Selic esperada {fmt_br(medianas[r])}% − "
+            "texto": (f"Juro real esperado para 12 meses: **{fmt_br(jr, 1)}%** (Selic esperada em {r} {fmt_br(medianas[r])}% − "
                       f"IPCA esperado {fmt_br(infl12)}%). Maior que em {pct}% dos meses desde 2000.")}
 
 

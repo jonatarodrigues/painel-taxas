@@ -44,7 +44,11 @@ def baixar(hoje: date) -> dict:
     infl = consultar("ExpectativasMercadoInflacao12Meses",
                      filter="Indicador eq 'IPCA' and Suavizada eq 'S' and baseCalculo eq 0",
                      orderby="Data desc", top=1)
-    return {"data_pesquisa": data, "selic": selic, "anuais": anuais, "infl12": infl[0] if infl else None}
+    if not anuais:
+        raise fontes.RespostaVazia("Focus sem projeções anuais")
+    if not infl:
+        raise fontes.RespostaVazia("Focus sem IPCA 12 meses")
+    return {"data_pesquisa": data, "selic": selic, "anuais": anuais, "infl12": infl[0]}
 
 
 def semanal(anuais: list[dict]) -> dict[str, dict[str, list[dict]]]:
