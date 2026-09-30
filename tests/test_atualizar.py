@@ -4,12 +4,22 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pytest
 
 import atualizar
 from pipeline import cache as cache_mod
+from pipeline import focus
 from pipeline.series import SERIES
 
 RAIZ = Path(__file__).parent.parent
+
+
+@pytest.fixture(autouse=True)
+def sem_focus_na_rede(monkeypatch):
+    """Os testes nunca chamam o Olinda de verdade."""
+    def falha(hoje):
+        raise ConnectionError("rede desligada no teste")
+    monkeypatch.setattr(focus, "baixar", falha)
 
 
 def serie_fake(serie):
@@ -83,3 +93,30 @@ def test_carregar_eventos_ausente(tmp_path):
     avisos = []
     assert atualizar.carregar_eventos(tmp_path / "eventos.json", avisos) == []
     assert "não encontrado" in avisos[0]
+
+
+def test_main_gera_bloco_previsoes(tmp_path, monkeypatch):
+    bruto = json.loads((RAIZ / "tests" / "fixtures" / "focus_bruto.json").read_text(encoding="utf-8"))
+    monkeypatch.setattr(cache_mod.fontes, "baixar", serie_fake)
+    monkeypatch.setattr(focus, "baixar", lambda hoje: bruto)
+    shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
+    shutil.copy(RAIZ / "agenda.json", tmp_path / "agenda.json")
+    assert atualizar.main(["--pasta", str(tmp_path)]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert d["previsoes"]["focus_data"] == bruto["data_pesquisa"]
+    assert (tmp_path / "cache" / "focus.json").exists()
+    # Offline: o Focus vem do cache, com aviso próprio e fora do resumo "Modo offline" das séries.
+    assert atualizar.main(["--pasta", str(tmp_path), "--offline"]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert d["previsoes"]["focus_data"] == bruto["data_pesquisa"]
+    assert any(a.startswith("Focus: lido do cache de") for a in d["avisos"])
+
+
+def test_main_sem_focus_e_sem_cache_continua(tmp_path, monkeypatch):
+    monkeypatch.setattr(cache_mod.fontes, "baixar", serie_fake)
+    shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
+    assert atualizar.main(["--pasta", str(tmp_path)]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert d["previsoes"]["focus_data"] is None
+    assert any(a.startswith("Focus: falha ao baixar") for a in d["avisos"])
+    assert "agenda.json não encontrado; aba Previsões sem agenda" in d["avisos"]

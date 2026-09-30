@@ -10,9 +10,10 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
-from pipeline import correlacao, exportar, fontes, transformar
+from pipeline import agenda, correlacao, exportar, focus, fontes, transformar
 from pipeline.cache import Cache, obter
 from pipeline.ciclos import ciclos_copom
 from pipeline.series import DERIVADAS, POR_ID, SERIES
@@ -106,8 +107,22 @@ def main(argv: list[str] | None = None) -> int:
     if "selic_meta" in brutas:
         eventos = eventos + ciclos_copom(brutas["selic_meta"])
 
+    hoje = date.today()
+    bruto_focus, aviso_focus = focus.obter(pasta / "cache" / "focus.json", args.offline, hoje, baixar=focus.baixar)
+    if aviso_focus:
+        avisos.append(aviso_focus)
+    agenda_ = agenda.carregar(pasta / "agenda.json", avisos)
+
+    def ultimo(id: str) -> float | None:
+        return float(brutas[id].dropna().iloc[-1]) if id in brutas and not brutas[id].dropna().empty else None
+
+    jr = mensais.get("juro_real")
+    juro_hist = [] if jr is None else [float(v) for i, v in jr.dropna().items() if str(i)[:4] >= "2000"]
+    prev = exportar.previsoes(bruto_focus, agenda_, ultimo("selic_meta"), ultimo("usd_brl"), ultimo("fed_funds"),
+                              juro_hist, hoje, avisos)
+
     metas = {s.id: s for s in SERIES + DERIVADAS}
-    dados = exportar.montar(metas, diarias, mensais, status, avisos, correl, eventos)
+    dados = exportar.montar(metas, diarias, mensais, status, avisos, correl, eventos, previsoes=prev)
     exportar.gravar(dados, pasta)
 
     n_arestas = sum(len(a) for a in dados["arestas"].values())

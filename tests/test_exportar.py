@@ -26,7 +26,8 @@ def montar_exemplo():
 
 def test_montar_formato():
     d = montar_exemplo()
-    assert set(d) == {"gerado_em", "series", "correlacao", "arestas", "eventos", "avisos"}
+    assert set(d) == {"gerado_em", "series", "correlacao", "arestas", "eventos", "avisos", "previsoes"}
+    assert d["previsoes"] is None
     usd = d["series"]["usd_brl"]
     assert usd["var_tipo"] == "pct" and d["series"]["selic_meta"]["var_tipo"] == "pp"
     assert usd["diario"][0][0] == "2020-01-01" and len(usd["diario"][0]) == 2
