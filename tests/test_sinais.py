@@ -71,3 +71,41 @@ def test_sinal_trajetoria_sem_ano_seguinte_e_sem_dados():
     s = sinais.sinal_trajetoria({"R7/2026": 14.0}, 13.75, HOJE, set())
     assert s["texto"] == "Mercado espera **0,25 p.p. de altas** até R7/2026 (13,75% → 14,00%)."
     assert sinais.sinal_trajetoria({}, 13.75, HOJE, set()) is None
+
+
+def sem(*medianas):
+    return [{"semana": f"2026-{7 + i // 4:02d}-{1 + (i % 4) * 7:02d}", "Mediana": m, "Minimo": m, "Maximo": m,
+             "numeroRespondentes": 100} for i, m in enumerate(medianas)]
+
+
+def test_revisao_3_semanas_seguidas_dispara():
+    r = sinais.sinais_revisao({"PIB Total": {"2026": sem(1.95, 1.93, 1.90, 1.88, 1.86)}}, HOJE)
+    assert r == [{"nivel": "destaque", "tipo": "revisao",
+                  "texto": "Expectativa de PIB 2026 **caiu 4 semanas seguidas** (1,95% → 1,86%)."}]
+
+
+def test_revisao_exatamente_3_semanas():
+    r = sinais.sinais_revisao({"IPCA": {"2027": sem(4.20, 4.20, 4.21, 4.22, 4.23)}}, HOJE)
+    assert r[0]["texto"] == "Expectativa de IPCA 2027 **subiu 3 semanas seguidas** (4,20% → 4,23%)."
+
+
+def test_revisao_semana_parada_interrompe_a_sequencia():
+    assert sinais.sinais_revisao({"IPCA": {"2026": sem(4.90, 4.91, 4.92, 4.92, 4.93)}}, HOJE) == []
+
+
+def test_revisao_acumulado_no_limite_dispara_e_abaixo_nao():
+    no_limite = sinais.sinais_revisao({"Selic": {"2026": sem(13.75, 13.75, 13.50, 13.50, 13.50)}}, HOJE)
+    assert no_limite[0]["texto"] == "Expectativa de Selic 2026 **caiu 0,25 p.p.** em 4 semanas (13,75% → 13,50%)."
+    abaixo = sinais.sinais_revisao({"IPCA": {"2026": sem(4.80, 4.80, 4.99, 4.99, 4.99)}}, HOJE)
+    assert abaixo == []  # 0,19 < 0,20 e sem sequência de 3
+
+
+def test_revisao_cambio_em_reais_e_float_impreciso():
+    r = sinais.sinais_revisao({"Câmbio": {"2026": sem(5.30, 5.30, 5.20, 5.20, 5.20)}}, HOJE)
+    assert r[0]["texto"] == "Expectativa de Câmbio 2026 **caiu R$ 0,10** em 4 semanas (R$ 5,30 → R$ 5,20)."
+
+
+def test_revisao_so_ano_atual_e_seguinte_e_poucas_semanas():
+    semanal = {"IPCA": {"2028": sem(3.0, 3.1, 3.2, 3.3, 3.4), "2026": sem(4.9)}}
+    assert sinais.sinais_revisao(semanal, HOJE) == []
+    assert sinais.sinais_revisao({}, HOJE) == []

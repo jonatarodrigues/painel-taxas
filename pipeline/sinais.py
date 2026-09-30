@@ -83,3 +83,45 @@ def sinal_trajetoria(medianas: dict[str, float], selic_hoje: float, hoje: date, 
     if fim and ultima != fim:
         texto += f" e {_movimento(futuras[ultima] - selic_hoje)} até {ultima} ({fmt_br(futuras[ultima])}%)"
     return {"nivel": "info", "tipo": "selic", "texto": texto + "."}
+
+
+LIMITES = {"IPCA": 0.20, "PIB Total": 0.20, "Selic": 0.25, "Câmbio": 0.10}
+NOMES = {"IPCA": "IPCA", "PIB Total": "PIB", "Selic": "Selic", "Câmbio": "Câmbio"}
+SEMANAS_SEGUIDAS = 3
+JANELA_ACUMULADO = 4
+
+
+def _sequencia(valores: list[float]) -> tuple[int, int]:
+    """(semanas seguidas na mesma direção terminando na última, direção +1/-1)."""
+    seq, direcao = 0, 0
+    for a, b in reversed(list(zip(valores, valores[1:]))):
+        d = b - a
+        s = 0 if abs(d) < EPS else (1 if d > 0 else -1)
+        if s == 0 or (direcao and s != direcao):
+            break
+        direcao, seq = s, seq + 1
+    return seq, direcao
+
+
+def sinais_revisao(semanal: dict, hoje: date) -> list[dict]:
+    saida = []
+    for ind, limite in LIMITES.items():
+        cambio = ind == "Câmbio"
+        nivel = (lambda x: f"R$ {fmt_br(x)}") if cambio else (lambda x: f"{fmt_br(x)}%")
+        passo = (lambda x: f"R$ {fmt_br(x)}") if cambio else (lambda x: f"{fmt_br(x)} p.p.")
+        for ano in (str(hoje.year), str(hoje.year + 1)):
+            v = [l["Mediana"] for l in semanal.get(ind, {}).get(ano, [])]
+            if len(v) < 2:
+                continue
+            seq, direcao = _sequencia(v)
+            acum = v[-1] - v[-1 - JANELA_ACUMULADO] if len(v) > JANELA_ACUMULADO else None
+            if seq >= SEMANAS_SEGUIDAS:
+                texto = (f"Expectativa de {NOMES[ind]} {ano} **{'subiu' if direcao > 0 else 'caiu'} "
+                         f"{seq} semanas seguidas** ({nivel(v[-1 - seq])} → {nivel(v[-1])}).")
+            elif acum is not None and abs(acum) >= limite - EPS:
+                texto = (f"Expectativa de {NOMES[ind]} {ano} **{'subiu' if acum > 0 else 'caiu'} {passo(abs(acum))}** "
+                         f"em {JANELA_ACUMULADO} semanas ({nivel(v[-1 - JANELA_ACUMULADO])} → {nivel(v[-1])}).")
+            else:
+                continue
+            saida.append({"nivel": "destaque", "tipo": "revisao", "texto": texto})
+    return saida
