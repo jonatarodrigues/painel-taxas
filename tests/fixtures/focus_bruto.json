@@ -9135,5 +9135,122 @@
   "Maximo": 6.1242,
   "numeroRespondentes": 134,
   "baseCalculo": 0
- }
+ },
+ "ha_12m": {
+  "data_pesquisa": "2025-09-30",
+  "selic": [
+   {
+    "Reuniao": "R6/2027",
+    "Mediana": 10.5
+   },
+   {
+    "Reuniao": "R5/2027",
+    "Mediana": 11.0
+   },
+   {
+    "Reuniao": "R4/2027",
+    "Mediana": 11.0
+   },
+   {
+    "Reuniao": "R3/2027",
+    "Mediana": 11.5
+   },
+   {
+    "Reuniao": "R2/2027",
+    "Mediana": 11.5
+   },
+   {
+    "Reuniao": "R1/2027",
+    "Mediana": 12.0
+   },
+   {
+    "Reuniao": "R8/2026",
+    "Mediana": 12.25
+   },
+   {
+    "Reuniao": "R7/2026",
+    "Mediana": 12.5
+   },
+   {
+    "Reuniao": "R6/2026",
+    "Mediana": 12.75
+   },
+   {
+    "Reuniao": "R5/2026",
+    "Mediana": 13.0
+   },
+   {
+    "Reuniao": "R4/2026",
+    "Mediana": 13.5
+   },
+   {
+    "Reuniao": "R3/2026",
+    "Mediana": 14.0
+   },
+   {
+    "Reuniao": "R2/2026",
+    "Mediana": 14.5
+   },
+   {
+    "Reuniao": "R1/2026",
+    "Mediana": 14.75
+   },
+   {
+    "Reuniao": "R8/2025",
+    "Mediana": 15.0
+   },
+   {
+    "Reuniao": "R7/2025",
+    "Mediana": 15.0
+   }
+  ],
+  "anuais": [
+   {
+    "Indicador": "Câmbio",
+    "DataReferencia": "2025",
+    "Mediana": 5.4555
+   },
+   {
+    "Indicador": "Câmbio",
+    "DataReferencia": "2026",
+    "Mediana": 5.5761
+   },
+   {
+    "Indicador": "Câmbio",
+    "DataReferencia": "2027",
+    "Mediana": 5.58
+   },
+   {
+    "Indicador": "IPCA",
+    "DataReferencia": "2025",
+    "Mediana": 4.8061
+   },
+   {
+    "Indicador": "IPCA",
+    "DataReferencia": "2026",
+    "Mediana": 4.29
+   },
+   {
+    "Indicador": "IPCA",
+    "DataReferencia": "2027",
+    "Mediana": 3.9
+   },
+   {
+    "Indicador": "PIB Total",
+    "DataReferencia": "2025",
+    "Mediana": 2.1614
+   },
+   {
+    "Indicador": "PIB Total",
+    "DataReferencia": "2026",
+    "Mediana": 1.8
+   },
+   {
+    "Indicador": "PIB Total",
+    "DataReferencia": "2027",
+    "Mediana": 1.9
+   }
+  ]
+ },
+ "ha_12m_erro": null
 }

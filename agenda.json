@@ -1,4 +1,8 @@
 [
+{"data":"2025-10-29","tipo":"fomc","titulo":"FOMC"},
+{"data":"2025-11-05","tipo":"copom","titulo":"Copom","reuniao":"R7/2025"},
+{"data":"2025-12-10","tipo":"copom","titulo":"Copom","reuniao":"R8/2025"},
+{"data":"2025-12-10","tipo":"fomc","titulo":"FOMC"},
 {"data":"2026-01-28","tipo":"copom","titulo":"Copom","reuniao":"R1/2026"},
 {"data":"2026-01-28","tipo":"fomc","titulo":"FOMC"},
 {"data":"2026-03-18","tipo":"copom","titulo":"Copom","reuniao":"R2/2026"},

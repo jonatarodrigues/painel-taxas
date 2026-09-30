@@ -56,6 +56,7 @@ def test_baixar_fica_so_com_a_pesquisa_mais_recente_da_selic(monkeypatch):
         return [{"Indicador": "IPCA"}]
 
     monkeypatch.setattr(focus, "consultar", consultar_falso)
+    monkeypatch.setattr(focus, "baixar_ha_12m", lambda hoje: None)  # só a pesquisa atual interessa aqui
     b = focus.baixar(date(2026, 9, 30))
     assert b["data_pesquisa"] == "2026-09-25"
     assert [r["Reuniao"] for r in b["selic"]] == ["R7/2026", "R8/2026"]
@@ -120,6 +121,66 @@ def test_semanal_na_resposta_real_gravada():
             semanas = [l["semana"] for l in linhas]
             assert semanas == sorted(semanas) and len(set(semanas)) == len(semanas)
             assert all(date.fromisoformat(d).weekday() == 4 for d in semanas)  # sexta-feira
+
+
+def test_baixar_ha_12m_filtros_e_ultima_linha(monkeypatch):
+    vistos = []
+
+    def consultar_falso(entidade, **op):
+        vistos.append((entidade, op))
+        if entidade == "ExpectativasMercadoSelic":
+            return [linha_selic("2025-09-30", "R6/2026", 12.75), linha_selic("2025-09-30", "R7/2025", 15.0),
+                    linha_selic("2025-09-26", "R6/2026", 12.5)]
+        return [{"Indicador": "IPCA", "Data": "2025-09-26", "DataReferencia": "2025", "Mediana": 4.9},
+                {"Indicador": "IPCA", "Data": "2025-09-30", "DataReferencia": "2025", "Mediana": 4.8061},
+                {"Indicador": "Câmbio", "Data": "2025-09-30", "DataReferencia": "2025", "Mediana": 5.4555}]
+
+    monkeypatch.setattr(focus, "consultar", consultar_falso)
+    h = focus.baixar_ha_12m(date(2026, 9, 30))
+    assert h == {"data_pesquisa": "2025-09-30",
+                 "selic": [{"Reuniao": "R6/2026", "Mediana": 12.75}, {"Reuniao": "R7/2025", "Mediana": 15.0}],
+                 "anuais": [{"Indicador": "Câmbio", "DataReferencia": "2025", "Mediana": 5.4555},
+                            {"Indicador": "IPCA", "DataReferencia": "2025", "Mediana": 4.8061}]}
+    (_, op_selic), (_, op_anuais) = vistos
+    assert op_selic["filter"] == "baseCalculo eq 0 and Data le '2025-09-30'"
+    f = op_anuais["filter"]
+    assert "Data ge '2025-09-23' and Data le '2025-09-30'" in f
+    assert "DataReferencia ge '2025' and DataReferencia le '2027'" in f
+    assert all(f"Indicador eq '{i}'" in f for i in focus.INDICADORES_12M) and "Selic" not in f
+
+
+def test_baixar_ha_12m_sem_selic_levanta(monkeypatch):
+    monkeypatch.setattr(focus, "consultar", lambda entidade, **op: [])
+    with pytest.raises(fontes.RespostaVazia):
+        focus.baixar_ha_12m(date(2026, 9, 30))
+
+
+def test_baixar_inclui_ha_12m_ou_o_erro(monkeypatch):
+    def consultar_falso(entidade, **op):
+        if entidade == "ExpectativasMercadoSelic":
+            return [linha_selic("2026-09-25", "R7/2026", 13.5)]
+        if entidade == "ExpectativasMercadoInflacao12Meses":
+            return [{"Data": "2026-09-25", "Mediana": 4.65}]
+        return [{"Indicador": "IPCA"}]
+
+    monkeypatch.setattr(focus, "consultar", consultar_falso)
+    monkeypatch.setattr(focus, "baixar_ha_12m", lambda hoje: {"data_pesquisa": "2025-09-30", "selic": [], "anuais": []})
+    b = focus.baixar(date(2026, 9, 30))
+    assert b["ha_12m"]["data_pesquisa"] == "2025-09-30" and b["ha_12m_erro"] is None
+
+    def falha(hoje):
+        raise ConnectionError("rede fora")
+
+    monkeypatch.setattr(focus, "baixar_ha_12m", falha)
+    b = focus.baixar(date(2026, 9, 30))
+    assert b["ha_12m"] is None and b["ha_12m_erro"] == "rede fora"
+    assert [r["Reuniao"] for r in b["selic"]] == ["R7/2026"]  # a pesquisa atual continua intacta
+
+
+def test_fixture_tem_a_pesquisa_de_12_meses_atras():
+    ha = json.loads(FIX.read_text(encoding="utf-8"))["ha_12m"]
+    assert ha["data_pesquisa"] <= "2025-09-30" and ha["selic"]
+    assert {(r["Indicador"], r["DataReferencia"]) for r in ha["anuais"]} >= {("IPCA", "2025"), ("Câmbio", "2025")}
 
 
 def test_obter_grava_cache_e_usa_na_falha(tmp_path):
