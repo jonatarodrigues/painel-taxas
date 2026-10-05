@@ -1,0 +1,9 @@
+{"chart": {"result": [{
+  "meta": {"symbol": "KNCR11.SA", "currency": "BRL"},
+  "timestamp": [1759496400, 1759755600, 1759842000],
+  "events": {"dividends": {"1759755600": {"amount": 1.1, "date": 1759755600}}},
+  "indicators": {
+    "quote": [{"close": [104.0, 103.0, 104.5]}],
+    "adjclose": [{"adjclose": [102.9, 103.0, 104.5]}]
+  }
+}], "error": null}}

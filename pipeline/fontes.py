@@ -140,15 +140,35 @@ def fred(codigo: str) -> pd.Series:
 
 
 # ---------------- Yahoo Finance ----------------
-def parse_yahoo(payload: dict) -> pd.Series:
+def parse_yahoo(payload: dict, ajustado: bool = False) -> pd.Series:
+    """Fechamento diário. Com ajustado=True usa o adjclose (com proventos) quando existe."""
     try:
         res = payload["chart"]["result"][0]
         ts = res["timestamp"]
         close = res["indicators"]["quote"][0]["close"]
     except (KeyError, IndexError, TypeError):
         return _vazia()
+    if ajustado and tem_adjclose(payload):
+        close = res["indicators"]["adjclose"][0]["adjclose"]
     idx = pd.to_datetime(ts, unit="s", utc=True).tz_convert(None).normalize()
     return _limpar(pd.Series(close, index=idx, dtype=float))
+
+
+def tem_adjclose(payload: dict) -> bool:
+    try:
+        return bool(payload["chart"]["result"][0]["indicators"]["adjclose"][0]["adjclose"])
+    except (KeyError, IndexError, TypeError):
+        return False
+
+
+def yahoo_ajustado(simbolo: str) -> tuple[pd.Series, bool]:
+    """13 meses de adjclose para a aba Bolsa. Devolve (série, tem_proventos)."""
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{quote(simbolo, safe='')}"
+    r = _get(url, {"range": "13mo", "interval": "1d", "events": "div"}, json=True)
+    if r is None:
+        return _vazia(), False
+    p = r.json()
+    return parse_yahoo(p, ajustado=True), tem_adjclose(p)
 
 
 def yahoo(ticker: str) -> pd.Series:

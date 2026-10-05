@@ -178,3 +178,49 @@ def test_fred_nunca_expoe_a_chave_no_erro(monkeypatch):
     with pytest.raises(fontes.requests.RequestException) as erro:
         fontes.fred("DFF")
     assert "chave-secreta-123" not in str(erro.value) and "***" in str(erro.value)
+
+
+def test_parse_yahoo_ajustado_prefere_adjclose():
+    p = json.loads((FIX / "yahoo_fii_adj.json").read_text(encoding="utf-8"))
+    s = fontes.parse_yahoo(p, ajustado=True)
+    assert list(s.round(2)) == [102.9, 103.0, 104.5]
+    assert s.index[0] == pd.Timestamp("2025-10-03")
+    assert fontes.tem_adjclose(p)
+
+
+def test_parse_yahoo_sem_ajuste_continua_usando_close():
+    p = json.loads((FIX / "yahoo_fii_adj.json").read_text(encoding="utf-8"))
+    assert list(fontes.parse_yahoo(p).round(2)) == [104.0, 103.0, 104.5]
+
+
+def test_parse_yahoo_ajustado_cai_para_close_sem_adjclose():
+    p = json.loads((FIX / "yahoo_fii_adj.json").read_text(encoding="utf-8"))
+    del p["chart"]["result"][0]["indicators"]["adjclose"]
+    assert list(fontes.parse_yahoo(p, ajustado=True).round(2)) == [104.0, 103.0, 104.5]
+    assert not fontes.tem_adjclose(p)
+
+
+def test_yahoo_ajustado_pede_13_meses_com_dividendos(monkeypatch):
+    p = json.loads((FIX / "yahoo_fii_adj.json").read_text(encoding="utf-8"))
+    pedidos = []
+
+    class Resp:
+        def json(self):
+            return p
+
+    def falso_get(url, params=None, timeout=None, json=False):
+        pedidos.append((url, params, json))
+        return Resp()
+
+    monkeypatch.setattr(fontes, "_get", falso_get)
+    s, com_proventos = fontes.yahoo_ajustado("KNCR11.SA")
+    assert com_proventos and len(s) == 3
+    url, params, como_json = pedidos[0]
+    assert url.endswith("/v8/finance/chart/KNCR11.SA")
+    assert params == {"range": "13mo", "interval": "1d", "events": "div"} and como_json
+
+
+def test_yahoo_ajustado_404_devolve_vazia(monkeypatch):
+    monkeypatch.setattr(fontes, "_get", lambda *a, **k: None)
+    s, com_proventos = fontes.yahoo_ajustado("XXXX3.SA")
+    assert s.empty and not com_proventos
