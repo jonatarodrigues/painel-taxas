@@ -1,10 +1,12 @@
+import base64
 import json
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
-from pipeline import bolsa
+from pipeline import bolsa, fontes
+from pipeline.cache import Cache
 
 FIX = Path(__file__).parent / "fixtures"
 
@@ -253,3 +255,133 @@ def test_montar_visao_sem_carteira_mostra_so_o_indice():
 
 def test_montar_visao_sem_carteira_e_sem_indice_e_none():
     assert bolsa.montar_visao("ibov", None, False, {}, None, None, []) is None
+
+
+def test_url_carteira_codifica_o_json_em_base64():
+    url = bolsa.url_carteira("IFIX", 2)
+    assert url.startswith("https://sistemaswebb3-listados.b3.com.br/indexProxy/indexCall/GetPortfolioDay/")
+    p = json.loads(base64.b64decode(url.rsplit("/", 1)[1]))
+    assert p == {"language": "pt-br", "pageNumber": 2, "pageSize": 200, "index": "IFIX", "segment": "2"}
+
+
+def test_baixar_carteira_junta_paginas(monkeypatch):
+    p1 = carregar("b3_ibov.json"); p1["page"]["totalPages"] = 2
+    p2 = carregar("b3_ibov.json"); p2["results"] = [dict(p2["results"][0], cod="VALE3")]
+    respostas = iter([p1, p2])
+
+    class Resp:
+        def __init__(self, j): self.j = j
+        def json(self): return self.j
+
+    monkeypatch.setattr(fontes, "_get", lambda url, json=False, **k: Resp(next(respostas)))
+    c = bolsa.baixar_carteira("IBOV")
+    assert [a["ticker"] for a in c["ativos"]][-1] == "VALE3" and len(c["ativos"]) == 5
+
+
+def test_obter_carteira_grava_e_usa_cache(tmp_path):
+    arq = tmp_path / "carteiras.json"
+    c = bolsa.parse_carteira_b3(carregar("b3_ibov.json"))
+    assert bolsa.obter_carteira("ibov", arq, False, baixar=lambda cod: c) == (c, False)
+    def caiu(cod): raise ConnectionError("B3 fora")
+    assert bolsa.obter_carteira("ibov", arq, False, baixar=caiu) == (c, True)
+    assert bolsa.obter_carteira("ibov", arq, True, baixar=caiu) == (c, True)
+    assert bolsa.obter_carteira("ifix", arq, False, baixar=caiu) == (None, False)
+
+
+def test_obter_carteira_cache_corrompido(tmp_path):
+    arq = tmp_path / "carteiras.json"
+    arq.write_text("{quebrado", encoding="utf-8")
+    def caiu(cod): raise ConnectionError("B3 fora")
+    assert bolsa.obter_carteira("ibov", arq, False, baixar=caiu) == (None, False)
+
+
+def test_obter_precos_baixa_grava_e_cai_para_cache(tmp_path):
+    cache = Cache(tmp_path / "bolsa")
+    s = serie({"2026-10-06": 100, "2026-10-07": 110})
+    r = bolsa.obter_precos(["AAAA3.SA", "^BVSP"], cache, False, baixar=lambda sim: (s, sim != "^BVSP"))
+    assert not r["AAAA3.SA"].desatualizado and not r["AAAA3.SA"].sem_proventos
+    assert r["^BVSP"].sem_proventos
+    def caiu(sim): raise ConnectionError("Yahoo fora")
+    r = bolsa.obter_precos(["AAAA3.SA", "BBBB3.SA"], cache, False, baixar=caiu)
+    assert r["AAAA3.SA"].desatualizado and len(r["AAAA3.SA"].serie) == 2
+    assert r["BBBB3.SA"].serie is None
+
+
+def test_obter_precos_offline_nao_chama_a_rede(tmp_path):
+    cache = Cache(tmp_path / "bolsa")
+    cache.gravar(bolsa._id_cache("^BVSP"), serie({"2026-10-07": 1}))
+    def proibido(sim): raise AssertionError("não devia baixar")
+    r = bolsa.obter_precos(["^BVSP"], cache, True, baixar=proibido)
+    assert r["^BVSP"].desatualizado and len(r["^BVSP"].serie) == 1
+
+
+def test_carregar_fiis(tmp_path):
+    arq = tmp_path / "fiis.json"
+    arq.write_text(json.dumps({"_tipos": ["Papel", "Outros"], "KNCR11": "Papel", "XXXX11": "Lajão"}), encoding="utf-8")
+    avisos = []
+    assert bolsa.carregar_fiis(arq, avisos) == {"KNCR11": "Papel", "XXXX11": "Outros"}
+    assert avisos == ["fiis.json: tipo desconhecido em XXXX11 (fica em Outros)."]
+
+
+@pytest.mark.parametrize("conteudo, trecho", [(None, "ausente"), ("{quebrado", "inválido"), ("[1, 2]", "inválido")])
+def test_carregar_fiis_ausente_ou_quebrado(tmp_path, conteudo, trecho):
+    arq = tmp_path / "fiis.json"
+    if conteudo is not None:
+        arq.write_text(conteudo, encoding="utf-8")
+    avisos = []
+    assert bolsa.carregar_fiis(arq, avisos) == {}
+    assert len(avisos) == 1 and trecho in avisos[0]
+
+
+def test_fiis_json_do_repo_e_valido():
+    avisos = []
+    tipos = bolsa.carregar_fiis(Path(__file__).parent.parent / "fiis.json", avisos)
+    assert avisos == [] and len(tipos) >= 90
+    assert set(tipos.values()) <= set(bolsa.TIPOS_FII)
+
+
+def preco_fake(sim):
+    s = serie({"2025-10-06": 90, "2026-10-06": 100, "2026-10-07": 105})
+    return s, True
+
+
+def carteira_fake(cod):
+    return bolsa.parse_carteira_b3(carregar("b3_ibov.json" if cod == "IBOV" else "b3_ifix.json"))
+
+
+def test_obter_monta_o_bloco(tmp_path):
+    (tmp_path / "fiis.json").write_text(json.dumps({"_tipos": list(bolsa.TIPOS_FII), "KNCR11": "Papel", "HGLG11": "Logística"}), encoding="utf-8")
+    avisos = []
+    b = bolsa.obter(tmp_path, False, avisos, baixar_carteira_=carteira_fake, baixar_preco=preco_fake)
+    assert set(b) == {"ibov", "ifix", "avisos"}
+    assert len(b["ibov"]["ativos"]) == 4 and b["ibov"]["indice"]["ret"]["dia"] == 5.0
+    assert [a["setor"] for a in b["ifix"]["ativos"]] == ["Papel", "Logística", "Outros"]
+    assert b["avisos"] == ["IFIX: 1 fundo sem tipo em fiis.json: CACR11 (fica em Outros)."]
+    assert avisos == b["avisos"]
+    assert (tmp_path / "cache" / "carteiras.json").exists()
+    assert (tmp_path / "cache" / "bolsa" / "WEGE3.SA.csv").exists()
+
+
+def test_obter_b3_fora_usa_carteira_do_cache_e_avisa(tmp_path):
+    bolsa.obter(tmp_path, False, [], baixar_carteira_=carteira_fake, baixar_preco=preco_fake)
+    def caiu(cod): raise ConnectionError("B3 fora")
+    avisos = []
+    b = bolsa.obter(tmp_path, False, avisos, baixar_carteira_=caiu, baixar_preco=preco_fake)
+    assert b["ibov"]["carteira_cache"] and len(b["ibov"]["ativos"]) == 4
+    assert "Ibovespa: carteira da B3 indisponível; usando a de 05/10/2026." in avisos
+
+
+def test_obter_sem_nada_devolve_none(tmp_path):
+    def caiu(*a): raise ConnectionError("fora")
+    avisos = []
+    assert bolsa.obter(tmp_path, False, avisos, baixar_carteira_=caiu, baixar_preco=caiu) is None
+    assert avisos[-1] == "Bolsa: sem carteiras e sem preços; a aba fica vazia nesta atualização."
+
+
+def test_tamanho_do_bloco_com_175_ativos():
+    ref = pd.Timestamp("2026-10-07")
+    s = serie({str(d.date()): 100 + i * 0.37 for i, d in enumerate(pd.bdate_range("2025-09-01", ref))})
+    c = carteira(*[(f"T{i:03d}3", f"Setor{i % 12}", 100 / 175) for i in range(175)])
+    v = bolsa.montar_visao("ibov", c, False, {f"T{i:03d}3": bolsa.Preco(s) for i in range(175)}, s, None, [])
+    texto = json.dumps({"ibov": v, "ifix": None, "avisos": []}, ensure_ascii=False, separators=(",", ":"))
+    assert len(texto.encode("utf-8")) < 250_000
