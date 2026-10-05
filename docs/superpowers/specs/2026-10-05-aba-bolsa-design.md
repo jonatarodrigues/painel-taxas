@@ -75,7 +75,7 @@ Fica na raiz, ao lado do `agenda.json`:
 
 ```json
 {
-  "_tipos": ["Logística", "Lajes", "Shoppings", "Papel", "Híbrido", "Fundo de fundos", "Outros"],
+  "_tipos": ["Logística", "Lajes", "Shoppings", "Renda urbana", "Agro", "Papel", "Híbrido", "Fundo de fundos", "Outros"],
   "HGLG11": "Logística",
   "KNCR11": "Papel"
 }
@@ -138,8 +138,12 @@ o que é esperado.
 
 ### Mini-série semanal
 
-Último `adjclose` de cada semana (sexta ou o último pregão da semana) nas 52
-semanas até `data_ref`.
+Cada visão tem uma lista comum `semanas` com as 52 semanas (períodos
+`W-FRI`) até `data_ref`, rotuladas pela sexta-feira ou por `data_ref` na
+semana corrente. Cada ativo traz em `semanal` só os valores alinhados a
+essa lista: o último `adjclose` da semana, ou `null` se não houve pregão
+para ele. Com isso o bloco fica em ~70 KB, contra ~230 KB se cada ativo
+repetisse as datas.
 
 ## Saída: bloco `bolsa` em `dados.json`
 
@@ -151,12 +155,14 @@ Montado por `exportar.bolsa(...)` e chamado no `atualizar.py` ao lado de
 bolsa: {
   ibov: {
     nome: "Ibovespa", data_ref: "2026-10-05", carteira_data: "2026-10-05", carteira_cache: false,
+    alerta: null,                                          // texto quando > 20% sem cotação
+    semanas: ["2025-10-10", ..., "2026-10-05"],
     indice:  { ret: {dia, semana, mes, ano, m12} },
     amplitude: { dia: {alta: 48, total: 76}, ... },
     setores: [ {nome, peso, ret: {...}} ],                 // ordenados por peso
     ativos:  [ {ticker, nome, setor, subsetor, peso, ret: {...},
                 parado, desatualizado, sem_proventos,
-                semanal: [["2025-10-10", 31.2], ...]} ]
+                semanal: [31.2, null, ...]} ]                // alinhado a semanas
   },
   ifix: { ...mesma forma; setor = tipo do fiis.json; subsetor ausente... },
   avisos: ["IFIX: 2 fundos sem tipo em fiis.json: XXXX11, YYYY11"]
@@ -177,8 +183,8 @@ de `role="tab"` / `section.aba`.
 2. **Cards (4):** retorno do índice no período; amplitude ("48 de 76 em
    alta", 63%); melhor setor; pior setor.
 3. **Mapa (treemap ECharts, 2 níveis setor → ativo):** a área é o peso e a cor
-   é o retorno no período. A escala divergente vai de vermelho a neutro a
-   verde, centrada em 0 e saturada em ±limite por período: dia ±3%, semana
+   é o retorno no período. A escala divergente usa os tokens do painel,
+   `--neg` (vermelho) → `--mid` → `--pos` (azul), centrada em 0 e saturada em ±limite por período: dia ±3%, semana
    ±6%, mês ±10%, ano ±25%, 12m ±40% (valores iniciais, ajustáveis numa
    constante do `painel.js`). Cada bloco mostra ticker e retorno. Ativos com
    `ret` nulo ficam cinza. Clicar no setor dá zoom e clicar no ativo abre o
