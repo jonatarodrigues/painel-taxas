@@ -134,3 +134,122 @@ def test_semanal_ultimo_valor_de_cada_semana_e_nulo_sem_pregao():
                "2026-10-08": 99})                     # depois da ref: ignorado
     assert bolsa.semanal(s, ref, per) == [2.0, None, 7.0]
     assert bolsa.semanal(None, ref, per) == [None, None, None]
+
+
+# ---- montagem de uma visão ----
+
+REF = pd.Timestamp("2026-10-07")
+
+
+def ativo(ticker, setor, peso, dia):
+    return {"ticker": ticker, "setor": setor, "peso": peso, "ret": {p: dia for p in bolsa.PERIODOS}}
+
+
+def test_agregar_setores_pondera_pelo_peso_e_ordena_por_peso():
+    ativos = [ativo("A", "Fin", 6.0, 2.0), ativo("B", "Fin", 2.0, -2.0), ativo("C", "Pet", 10.0, 1.0)]
+    s = bolsa.agregar_setores(ativos)
+    assert [x["nome"] for x in s] == ["Pet", "Fin"]
+    assert s[1]["peso"] == 8.0 and s[1]["ret"]["dia"] == 1.0   # (6*2 + 2*-2) / 8
+
+
+def test_agregar_setores_normaliza_sem_ativo_sem_dado():
+    ativos = [ativo("A", "Fin", 6.0, 2.0), ativo("B", "Fin", 2.0, None)]
+    s = bolsa.agregar_setores(ativos)
+    assert s[0]["ret"]["dia"] == 2.0 and s[0]["peso"] == 8.0
+
+
+def test_agregar_setores_tudo_sem_dado_fica_nulo():
+    assert bolsa.agregar_setores([ativo("A", "Fin", 6.0, None)])[0]["ret"]["dia"] is None
+
+
+def test_soma_dos_setores_igual_a_soma_dos_ativos():
+    ativos = [ativo("A", "X", 3.0, 1.5), ativo("B", "X", 1.0, -4.0), ativo("C", "Y", 5.0, 0.7), ativo("D", "Z", 1.0, 9.0)]
+    por_ativo = sum(a["peso"] * a["ret"]["dia"] for a in ativos)
+    por_setor = sum(s["peso"] * s["ret"]["dia"] for s in bolsa.agregar_setores(ativos))
+    assert por_setor == pytest.approx(por_ativo, abs=0.05)
+
+
+def test_amplitude():
+    ativos = [ativo("A", "X", 1, 1.0), ativo("B", "X", 1, -1.0), ativo("C", "X", 1, 0.0), ativo("D", "X", 1, None)]
+    assert bolsa.amplitude(ativos)["dia"] == {"alta": 1, "total": 3}
+
+
+def test_data_referencia_usa_indice_e_cai_para_a_moda():
+    ind = serie({"2026-10-06": 1, "2026-10-07": 2})
+    assert bolsa.data_referencia(ind, []) == REF
+    a = serie({"2026-10-07": 1}); b = serie({"2026-10-07": 1}); c = serie({"2026-10-02": 1})
+    assert bolsa.data_referencia(None, [a, b, c, None]) == REF
+    assert bolsa.data_referencia(None, [None]) is None
+
+
+def carteira(*itens):
+    return {"data": "2026-10-05", "ativos": [
+        {"ticker": t, "nome": t, "setor": setor, "subsetor": setor + " / Sub", "peso": peso} for t, setor, peso in itens]}
+
+
+def precos_ok(*tickers, valor_final=110.0):
+    s = serie({"2026-10-06": 100, "2026-10-07": valor_final})
+    return {t: bolsa.Preco(s) for t in tickers}
+
+
+def test_montar_visao_ibov():
+    avisos = []
+    c = carteira(("AAAA3", "Fin", 6.0), ("BBBB3", "Pet", 4.0))
+    precos = precos_ok("AAAA3", "BBBB3")
+    precos["BBBB3"] = bolsa.Preco(serie({"2026-10-06": 100, "2026-10-07": 95}), desatualizado=True, sem_proventos=True)
+    ind = serie({"2026-10-06": 1000, "2026-10-07": 1020})
+    v = bolsa.montar_visao("ibov", c, False, precos, ind, None, avisos)
+    assert v["nome"] == "Ibovespa" and v["data_ref"] == "2026-10-07" and v["carteira_data"] == "2026-10-05"
+    assert v["indice"]["ret"]["dia"] == 2.0 and v["alerta"] is None and avisos == []
+    assert v["amplitude"]["dia"] == {"alta": 1, "total": 2}
+    assert len(v["semanas"]) == 52 and v["semanas"][-1] == "2026-10-07"
+    a, b = v["ativos"]
+    assert a["ret"]["dia"] == 10.0 and a["subsetor"] == "Fin / Sub" and len(a["semanal"]) == 52
+    assert b["desatualizado"] and b["sem_proventos"] and not b["parado"]
+    assert [s["nome"] for s in v["setores"]] == ["Fin", "Pet"]
+
+
+def test_montar_visao_ativo_sem_preco():
+    avisos = []
+    c = carteira(("AAAA3", "Fin", 6.0), ("EMBJ3", "Bens", 4.0))
+    v = bolsa.montar_visao("ibov", c, False, precos_ok("AAAA3"), None, None, avisos)
+    emb = v["ativos"][1]
+    assert emb["parado"] and emb["ret"] == {p: None for p in bolsa.PERIODOS}
+    assert emb["semanal"] == [None] * 52
+
+
+def test_montar_visao_alerta_acima_de_20_por_cento():
+    avisos = []
+    c = carteira(*[(f"T{i}", "X", 1.0) for i in range(5)])
+    v = bolsa.montar_visao("ibov", c, False, precos_ok("T0", "T1", "T2"), None, None, avisos)
+    assert v["alerta"] == "Ibovespa: 2 de 5 ativos sem cotação em 07/10/2026; o mapa não representa o índice inteiro."
+    assert avisos == [v["alerta"]]
+
+
+def test_montar_visao_exatamente_20_por_cento_nao_alerta():
+    c = carteira(*[(f"T{i}", "X", 1.0) for i in range(5)])
+    v = bolsa.montar_visao("ibov", c, False, precos_ok("T0", "T1", "T2", "T3"), None, None, [])
+    assert v["alerta"] is None
+
+
+def test_montar_visao_ifix_usa_tipos_e_avisa_sem_tipo():
+    avisos = []
+    c = carteira(("KNCR11", "Financ e Outros", 9.0), ("NOVO11", "Financ e Outros", 1.0))
+    v = bolsa.montar_visao("ifix", c, False, precos_ok("KNCR11", "NOVO11"), None, {"KNCR11": "Papel"}, avisos)
+    assert [a["setor"] for a in v["ativos"]] == ["Papel", "Outros"]
+    assert "subsetor" not in v["ativos"][0]
+    assert avisos == ["IFIX: 1 fundo sem tipo em fiis.json: NOVO11 (fica em Outros)."]
+
+
+def test_montar_visao_sem_carteira_mostra_so_o_indice():
+    avisos = []
+    ind = serie({"2026-10-06": 1000, "2026-10-07": 1020})
+    v = bolsa.montar_visao("ibov", None, False, {}, ind, None, avisos)
+    assert v["ativos"] == [] and v["setores"] == [] and v["alerta"] is None
+    assert v["amplitude"]["dia"] == {"alta": 0, "total": 0}
+    assert v["indice"]["ret"]["dia"] == 2.0 and v["carteira_data"] is None
+    assert avisos == ["Ibovespa: carteira indisponível (B3 fora do ar e sem cache)."]
+
+
+def test_montar_visao_sem_carteira_e_sem_indice_e_none():
+    assert bolsa.montar_visao("ibov", None, False, {}, None, None, []) is None
