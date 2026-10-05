@@ -52,6 +52,21 @@ jobs:
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}  # o fredgraph.csv não responde a IPs de nuvem
 
+      # Falhas de rede costumam durar minutos (ex.: DNS do api.bcb.gov.br em 02/10/2026),
+      # mais que as tentativas de segundos do pipeline. Se alguma fonte caiu no cache,
+      # espera e roda de novo uma única vez; o que já baixou continua no cache.
+      - name: Repetir se alguma fonte falhou
+        run: |
+          if python -c "import json, re, sys; avisos = json.load(open('dados.json', encoding='utf-8'))['avisos']; sys.exit(0 if any(re.search(r'falha ao baixar|indisponível|sem cotação', a) for a in avisos) else 1)"; then
+            echo "Alguma fonte falhou; nova tentativa em 10 minutos."
+            sleep 600
+            python atualizar.py
+          else
+            echo "Todas as fontes responderam."
+          fi
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+
       - name: Guardar o cache das fontes
         if: always() && hashFiles('cache/**') != ''
         uses: actions/cache/save@v6
