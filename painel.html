@@ -43,6 +43,7 @@
 <nav class="abas" role="tablist" aria-label="Seções do painel">
   <button role="tab" type="button" data-aba="series" aria-selected="true">Séries</button>
   <button role="tab" type="button" data-aba="previsoes" aria-selected="false">Previsões</button>
+  <button role="tab" type="button" data-aba="bolsa" aria-selected="false">Bolsa</button>
   <button role="tab" type="button" data-aba="cerebro" aria-selected="false">Cérebro</button>
   <button role="tab" type="button" data-aba="correlacoes" aria-selected="false">Correlações</button>
   <button role="tab" type="button" data-aba="timeline" aria-selected="false">Linha do tempo</button>
@@ -98,6 +99,32 @@
         <table class="agenda"><tbody id="agenda"></tbody></table>
         <p id="agenda-vazia" class="muted" hidden>Sem eventos futuros em agenda.json.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="aba-bolsa" class="aba" role="tabpanel" hidden>
+    <div class="controles">
+      <div id="seg-bolsa-visao" class="segmentos" role="group" aria-label="Índice"></div>
+      <div id="seg-bolsa-periodo" class="segmentos" role="group" aria-label="Período"></div>
+    </div>
+    <div id="bolsa-vazio" class="card muted" hidden>Dados da bolsa indisponíveis nesta atualização.</div>
+    <div id="bolsa-conteudo">
+      <div id="bolsa-alerta" class="avisos" hidden></div>
+      <div id="bolsa-cards" class="kpis"></div>
+      <div class="grade-bolsa">
+        <div class="card"><div id="chart-mapa" class="chart" style="height:480px"></div></div>
+        <div class="card">
+          <h3>Maiores altas</h3><ol id="bolsa-altas" class="ranking"></ol>
+          <h3>Maiores baixas</h3><ol id="bolsa-baixas" class="ranking"></ol>
+        </div>
+      </div>
+      <div class="card"><h3>Retorno por setor</h3><div id="chart-setores" class="chart" style="height:340px"></div></div>
+      <div id="bolsa-detalhe" class="card" hidden>
+        <div class="det-cab"><h3 id="det-nome"></h3><span id="det-tags"></span></div>
+        <div id="det-rets" class="kpi-vars"></div>
+        <div id="chart-ativo" class="chart" style="height:240px"></div>
+      </div>
+      <p id="bolsa-rodape" class="muted"></p>
     </div>
   </section>
 

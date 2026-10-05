@@ -11,6 +11,10 @@
   const JANELAS = { tudo: 'Tudo', '10a': '10 anos', '5a': '5 anos', '3a': '3 anos' };
   const PERIODOS = { '1a': 1, '5a': 5, '10a': 10, '20a': 20, tudo: null };
   const MAX_SERIES = 8;
+  const VISOES_BOLSA = { ibov: 'Ibovespa', ifix: 'IFIX' };
+  const PERIODOS_BOLSA = { dia: 'Dia', semana: 'Semana', mes: 'Mês', ano: 'Ano', m12: '12m' };
+  const TEXTO_PERIODO = { dia: 'no dia', semana: 'na semana', mes: 'no mês', ano: 'no ano', m12: 'em 12 meses' };
+  const LIMITE_COR = { dia: 3, semana: 6, mes: 10, ano: 25, m12: 40 }; // % em que a cor satura
 
   let D = null;
   let modo = 'publico';
@@ -29,6 +33,9 @@
     filtroCat: new Set(ORDEM_CAT),
     busca: '',
     traj: 'selic',
+    bolsaVisao: 'ibov',
+    bolsaPeriodo: 'dia',
+    bolsaAtivo: null,
   };
   const RENDER = {};
 
@@ -101,6 +108,18 @@
   const textoBase = () => ({ color: cssVar('--text-2'), fontFamily: 'Inter, system-ui, sans-serif' });
   const eixoBase = () => ({ axisLine: { lineStyle: { color: cssVar('--axis') } }, axisTick: { show: false }, axisLabel: { color: cssVar('--muted'), fontSize: 11 }, splitLine: { lineStyle: { color: cssVar('--grid') } } });
   const tooltipBase = () => ({ backgroundColor: cssVar('--card'), borderColor: cssVar('--border-solid'), borderWidth: 1, textStyle: { color: cssVar('--text'), fontSize: 12 }, extraCssText: 'box-shadow:0 8px 24px rgba(0,0,0,.25);border-radius:8px;' });
+  const hexRgb = (h) => { let x = h.replace('#', ''); if (x.length === 3) x = x.split('').map((c) => c + c).join(''); const n = parseInt(x, 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  // escala divergente --neg -> --mid -> --pos, saturando em ±lim
+  function corRetorno(v, lim) {
+    if (v == null) return cssVar('--grid');
+    const k = Math.min(1, Math.abs(v) / lim);
+    const a = hexRgb(cssVar('--mid')), b = hexRgb(cssVar(v >= 0 ? '--pos' : '--neg'));
+    return `rgb(${a.map((x, i) => Math.round(x + (b[i] - x) * k)).join(',')})`;
+  }
+  const corTextoRetorno = (v, lim) => (v != null && Math.abs(v) / lim > 0.55 ? '#ffffff' : cssVar('--text'));
+  const fmtRet = (v) => (v == null ? '—' : fmtSinal(v, 1) + '%');
+  function lerPref(chave, validos, padrao) { try { const v = localStorage.getItem(chave); return v in validos ? v : padrao; } catch (e) { return padrao; } }
+  function gravarPref(chave, v) { try { localStorage.setItem(chave, v); } catch (e) { /* armazenamento indisponível */ } }
 
   // ---------- KPIs ----------
   function renderKpis() {
@@ -335,6 +354,7 @@
     montarControlesCerebro();
     montarControlesHeat();
     montarControlesTimeline();
+    montarControlesBolsa();
   }
   function atualizarResumoSel() { $('#sel-resumo').textContent = `Séries (${estado.selecionadas.length}) ▾`; }
   // ---------- aba Previsões ----------
@@ -686,6 +706,147 @@
     }, true);
   }
   RENDER.correlacoes = renderHeat;
+
+  // ---------- aba Bolsa ----------
+  function montarControlesBolsa() {
+    estado.bolsaVisao = lerPref('bolsaVisao', VISOES_BOLSA, 'ibov');
+    estado.bolsaPeriodo = lerPref('bolsaPeriodo', PERIODOS_BOLSA, 'dia');
+    const seg = (container, opcoes, chave) => container.replaceChildren(...Object.entries(opcoes).map(([k, rotulo]) => {
+      const b = el('button', { type: 'button', class: 'seg', 'aria-pressed': String(estado[chave] === k), text: rotulo });
+      b.addEventListener('click', () => {
+        estado[chave] = k; gravarPref(chave, k);
+        if (chave === 'bolsaVisao') estado.bolsaAtivo = null;
+        $$('.seg', container).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        renderBolsa();
+      });
+      return b;
+    }));
+    seg($('#seg-bolsa-visao'), VISOES_BOLSA, 'bolsaVisao');
+    seg($('#seg-bolsa-periodo'), PERIODOS_BOLSA, 'bolsaPeriodo');
+  }
+
+  function renderBolsa() {
+    const V = D.bolsa && D.bolsa[estado.bolsaVisao];
+    $('#bolsa-vazio').hidden = !!V;
+    $('#bolsa-conteudo').hidden = !V;
+    if (!V) return;
+    const p = estado.bolsaPeriodo;
+    $('#bolsa-alerta').hidden = !V.alerta;
+    $('#bolsa-alerta').textContent = V.alerta || '';
+    renderCardsBolsa(V, p);
+    renderMapa(V, p);
+    renderRanking(V, p);
+    renderSetores(V, p);
+    renderDetalhe(V, p);
+    const cart = V.carteira_data ? `Carteira B3 de ${fmtData(V.carteira_data)}${V.carteira_cache ? ' (cache)' : ''} · ` : '';
+    $('#bolsa-rodape').textContent = `${cart}Preços até ${fmtData(V.data_ref)} · retornos com proventos (Yahoo Finance)`;
+  }
+
+  function renderCardsBolsa(V, p) {
+    const amp = V.amplitude[p];
+    const comDado = V.setores.filter((s) => s.ret[p] != null).sort((a, b) => b.ret[p] - a.ret[p]);
+    const card = (nome, valor, cls, sub) => el('article', { class: 'kpi', style: '--cor:var(--g-bolsa)' },
+      el('div', { class: 'kpi-nome', text: nome }), el('div', { class: 'kpi-valor ' + cls, text: valor }), el('div', { class: 'kpi-data muted', text: sub }));
+    const r = V.indice.ret[p];
+    $('#bolsa-cards').replaceChildren(
+      card(V.nome, fmtRet(r), classeVar(r), TEXTO_PERIODO[p]),
+      card('Em alta', amp.total ? `${amp.alta} de ${amp.total}` : '—', '', amp.total ? `${fmt(100 * amp.alta / amp.total, 0)}% dos ativos` : 'sem dados'),
+      card('Melhor setor', comDado.length ? fmtRet(comDado[0].ret[p]) : '—', comDado.length ? classeVar(comDado[0].ret[p]) : '', comDado.length ? comDado[0].nome : ''),
+      card('Pior setor', comDado.length ? fmtRet(comDado.at(-1).ret[p]) : '—', comDado.length ? classeVar(comDado.at(-1).ret[p]) : '', comDado.length ? comDado.at(-1).nome : ''));
+  }
+
+  function tooltipAtivo(a, p) {
+    return el('div', { class: 'tt' },
+      el('div', { class: 'tt-titulo', text: `${a.ticker} · ${a.nome}` }),
+      el('div', { class: 'tt-nome', text: a.subsetor || a.setor }),
+      el('div', {}, el('strong', { text: a.ret[p] == null ? 'sem cotação' : fmtRet(a.ret[p]) }), el('span', { class: 'tt-nome', text: ` ${TEXTO_PERIODO[p]} · peso ${fmt(a.peso, 2)}%` })));
+  }
+
+  function renderMapa(V, p) {
+    const c = grafico('chart-mapa');
+    const lim = LIMITE_COR[p];
+    const porSetor = {};
+    for (const a of V.ativos) (porSetor[a.setor] = porSetor[a.setor] || []).push(a);
+    const data = V.setores.map((s) => ({
+      name: s.nome, value: s.peso, ret: s.ret[p],
+      children: (porSetor[s.nome] || []).map((a) => ({
+        name: a.ticker, value: Math.max(a.peso, 0.01), ret: a.ret[p], ativo: a,
+        itemStyle: { color: corRetorno(a.ret[p], lim) },
+        label: { color: corTextoRetorno(a.ret[p], lim) },
+      })),
+    }));
+    c.setOption({
+      textStyle: textoBase(),
+      tooltip: Object.assign(tooltipBase(), {
+        formatter: (i) => i.data && i.data.ativo ? tooltipAtivo(i.data.ativo, p)
+          : el('div', { class: 'tt' }, el('div', { class: 'tt-titulo', text: i.name }), el('div', { text: `${fmtRet(i.data && i.data.ret)} ${TEXTO_PERIODO[p]} · peso ${fmt(i.value, 1)}%` })),
+      }),
+      series: [{
+        type: 'treemap', data, roam: false, nodeClick: 'zoomToNode', top: 28, left: 0, right: 0, bottom: 0,
+        breadcrumb: { show: true, top: 0, itemStyle: { color: cssVar('--card'), borderColor: cssVar('--border-solid'), textStyle: { color: cssVar('--text') } } },
+        levels: [
+          { itemStyle: { borderWidth: 0, gapWidth: 3 } },
+          { itemStyle: { color: cssVar('--border-solid'), borderColor: cssVar('--border-solid'), borderWidth: 2, gapWidth: 1 },
+            upperLabel: { show: true, height: 22, color: cssVar('--text-2'), fontWeight: 600, formatter: (i) => `${i.name}  ${fmtRet(i.data.ret)}` } },
+          { itemStyle: { borderColor: cssVar('--card'), borderWidth: 1 },
+            label: { show: true, fontSize: 11, formatter: (i) => `${i.name}\n${fmtRet(i.data.ret)}` } },
+        ],
+      }],
+    });
+    c.on('click', (e) => { if (e.data && e.data.ativo) abrirAtivo(e.data.ativo.ticker); });
+  }
+
+  function renderRanking(V, p) {
+    const ord = V.ativos.filter((a) => a.ret[p] != null).sort((a, b) => b.ret[p] - a.ret[p]);
+    const item = (a) => el('li', {}, el('button', { type: 'button', onclick: () => abrirAtivo(a.ticker) },
+      el('strong', { text: a.ticker }), el('span', { class: 'rk-nome', text: a.nome }), el('span', { class: classeVar(a.ret[p]), text: fmtRet(a.ret[p]) })));
+    $('#bolsa-altas').replaceChildren(...ord.slice(0, 5).map(item));
+    $('#bolsa-baixas').replaceChildren(...ord.slice(-5).reverse().map(item));
+  }
+
+  function renderSetores(V, p) {
+    const lim = LIMITE_COR[p];
+    const s = V.setores.filter((x) => x.ret[p] != null).sort((a, b) => a.ret[p] - b.ret[p]);
+    grafico('chart-setores').setOption({
+      textStyle: textoBase(),
+      grid: { left: 8, right: 56, top: 8, bottom: 8, containLabel: true },
+      tooltip: Object.assign(tooltipBase(), { trigger: 'axis', axisPointer: { type: 'shadow' },
+        formatter: (ps) => el('div', { class: 'tt' }, el('div', { class: 'tt-titulo', text: ps[0].name }), el('div', { text: `${fmtRet(ps[0].value)} ${TEXTO_PERIODO[p]}` })) }),
+      xAxis: Object.assign({ type: 'value' }, eixoBase(), { axisLabel: { color: cssVar('--muted'), fontSize: 11, formatter: (v) => v + '%' } }),
+      yAxis: Object.assign({ type: 'category', data: s.map((x) => x.nome) }, eixoBase(), { splitLine: { show: false } }),
+      series: [{ type: 'bar', data: s.map((x) => ({ value: x.ret[p], itemStyle: { color: corRetorno(x.ret[p], lim) } })),
+        label: { show: true, position: 'right', color: cssVar('--text-2'), fontSize: 11, formatter: (i) => fmtRet(i.value) } }],
+    });
+  }
+
+  function abrirAtivo(ticker) {
+    estado.bolsaAtivo = ticker;
+    const V = D.bolsa && D.bolsa[estado.bolsaVisao];
+    if (V) { renderDetalhe(V, estado.bolsaPeriodo); $('#bolsa-detalhe').scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  }
+
+  function renderDetalhe(V, p) {
+    const a = V.ativos.find((x) => x.ticker === estado.bolsaAtivo);
+    $('#bolsa-detalhe').hidden = !a;
+    if (!a) return;
+    $('#det-nome').textContent = `${a.ticker} · ${a.nome}`;
+    const tags = [a.subsetor || a.setor, `peso ${fmt(a.peso, 2)}%`];
+    if (a.parado) tags.push(`sem cotação em ${fmtData(V.data_ref)}`);
+    if (a.desatualizado) tags.push('preço do cache');
+    if (a.sem_proventos) tags.push('sem ajuste de proventos');
+    $('#det-tags').replaceChildren(...tags.map((t) => el('span', { class: 'chip', text: t })));
+    $('#det-rets').replaceChildren(...Object.entries(PERIODOS_BOLSA).map(([k, rot]) =>
+      el(k === p ? 'strong' : 'span', { class: classeVar(a.ret[k]), text: `${rot} ${fmtRet(a.ret[k])}` })));
+    grafico('chart-ativo').setOption({
+      textStyle: textoBase(),
+      grid: { left: 8, right: 16, top: 12, bottom: 8, containLabel: true },
+      tooltip: Object.assign(tooltipBase(), { trigger: 'axis', formatter: (ps) => el('div', { text: `${fmtData(ps[0].name)}: ${fmt(ps[0].value, 2)}` }) }),
+      xAxis: Object.assign({ type: 'category', data: V.semanas }, eixoBase(), { axisLabel: { color: cssVar('--muted'), fontSize: 11, formatter: (v) => fmtData(v).slice(3) } }),
+      yAxis: Object.assign({ type: 'value', scale: true }, eixoBase()),
+      series: [{ type: 'line', data: a.semanal, connectNulls: true, showSymbol: false, lineStyle: { width: 2, color: cssVar('--g-bolsa') }, areaStyle: { color: cssVar('--g-bolsa'), opacity: 0.1 } }],
+    });
+  }
+  RENDER.bolsa = renderBolsa;
 
   // ---------- aba Linha do tempo ----------
   function montarControlesTimeline() {
