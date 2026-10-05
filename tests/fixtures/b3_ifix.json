@@ -1,0 +1,7 @@
+{"page": {"pageNumber": 1, "pageSize": 200, "totalRecords": 3, "totalPages": 1},
+ "header": {"date": "05/10/26", "text": "Quantidade Teórica Total", "part": "100,000"},
+ "results": [
+  {"segment": "Financ e Outros / Fundos", "cod": "KNCR11", "asset": "FII KINEA RI", "type": "CI", "part": "9,177", "partAcum": "50.000.000", "theoricalQty": "50.000.000"},
+  {"segment": "Financ e Outros / Fundos", "cod": "HGLG11", "asset": "FII HGLG PAX", "type": "CI", "part": "4,462", "partAcum": "100,000", "theoricalQty": "20.000.000"},
+  {"segment": "Financ e Outros / Fundos", "cod": "CACR11", "asset": "CARTESIA FII", "type": "CI", "part": "0,045", "partAcum": "100,000", "theoricalQty": "4.836.324"}
+ ]}

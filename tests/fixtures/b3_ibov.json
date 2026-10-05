@@ -1,0 +1,8 @@
+{"page": {"pageNumber": 1, "pageSize": 200, "totalRecords": 4, "totalPages": 1},
+ "header": {"date": "05/10/26", "text": "Quantidade Teórica Total", "part": "100,000"},
+ "results": [
+  {"segment": "Bens Indls / Máqs e Equips", "cod": "WEGE3", "asset": "WEG", "type": "ON      NM", "part": "2,792", "partAcum": "2,792", "theoricalQty": "1.460.506.056"},
+  {"segment": "Bens Indls / Mat Transporte", "cod": "EMBJ3", "asset": "EMBRAER", "type": "ON      NM", "part": "2,598", "partAcum": "2,715", "theoricalQty": "711.833.141"},
+  {"segment": "Financ e Outros / Intermediários Financeiros", "cod": "ITUB4", "asset": "ITAUUNIBANCO", "type": "PN      N1", "part": "8,104", "partAcum": "8,104", "theoricalQty": "4.801.193.035"},
+  {"segment": "Petróleo, Gás e Biocombustíveis", "cod": "PETR4", "asset": "PETROBRAS", "type": "PN      N2", "part": "7,031", "partAcum": "7,031", "theoricalQty": "4.520.405.236"}
+ ]}
