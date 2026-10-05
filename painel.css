@@ -145,6 +145,7 @@ p { margin: 6px 0; }
 /* aba Bolsa */
 .grade-bolsa { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 12px; align-items: start; }
 @media (max-width: 900px) { .grade-bolsa { grid-template-columns: 1fr; } }
+.grade-bolsa[hidden] { display: none; }
 .grade-bolsa .card h3, #aba-bolsa .card > h3 { margin: 2px 4px 8px; font-size: 14px; font-weight: 600; }
 .ranking { list-style: none; margin: 0 0 12px; padding: 0; }
 .ranking button { font: inherit; color: var(--text); background: none; border: 0; width: 100%; display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 8px; padding: 5px 4px; border-radius: 6px; cursor: pointer; text-align: left; font-variant-numeric: tabular-nums; }

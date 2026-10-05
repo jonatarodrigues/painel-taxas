@@ -64,8 +64,10 @@ setor exibido é o trecho de `segment` antes da `/`, sem espaços nas pontas
   `indicators.quote[0].close` e marca o ativo com `sem_proventos: true`.
 - Índices: o Ibovespa usa `^BVSP`. Para o IFIX o Yahoo não tem histórico de `IFIX.SA` (só o ponto do dia, verificado em 2026-10-05); por isso a visão do IFIX usa o ETF `XFIX11.SA`, que replica o índice e reinveste os proventos. O card diz "via ETF XFIX11".
 - São ~175 tickers baixados com `ThreadPoolExecutor(max_workers=5)`, usando
-  o `fontes._get` existente (User-Agent e repetições). O tempo estimado é de
-  ~30 s a mais no workflow.
+  o `fontes._get` existente (User-Agent e repetições). O bloco baixa ~177
+  símbolos (175 ativos e 2 índices), 5 por vez. A execução completa do
+  `atualizar.py` levou ~6 min em 2026-10-05; o timeout de 45 min do workflow
+  cobre com folga.
 - O `/v7/finance/spark` foi descartado porque aceita até 20 símbolos e não
   traz `adjclose`.
 
@@ -96,6 +98,7 @@ Fica na raiz, ao lado do `agenda.json`:
 | Último preço anterior à data de referência (suspenso, sem negócio ou ticker novo ainda desconhecido no Yahoo) | `ret` nulo e `parado: true`. Ativo cinza no mapa. |
 | Mais de 20% dos ativos de uma visão sem retorno no período Dia | Aviso destacado no topo da visão. |
 | Índice (`^BVSP`/`XFIX11.SA`) indisponível | A data de referência passa a ser a data mais frequente entre os últimos pregões dos ativos, e o card do índice mostra "—". |
+| Índice só no cache (Yahoo falhou só para ele) | `indice.desatualizado: true`; `data_ref` pelos ativos (o mais recente vence) e aviso "<nome>: índice do cache (Yahoo indisponível)."; o card do índice mostra "· cache". |
 | `--offline` | Lê só os caches, como as demais séries. |
 
 Os avisos entram em `bolsa.avisos` e também na lista geral de avisos do
@@ -105,8 +108,11 @@ Os avisos entram em `bolsa.avisos` e também na lista geral de avisos do
 
 ### Data de referência
 
-`data_ref` = último pregão do índice da visão. Cada visão (IBOV, IFIX) tem a
-sua.
+`data_ref` = o mais recente entre o último pregão do índice da visão e a data
+mais frequente dos últimos pregões dos ativos (empate: a mais recente). Assim
+um índice vindo do cache, defasado, não prende a visão a uma data antiga. Sem
+ativos vale o último pregão do índice; sem índice, a data mais frequente dos
+ativos. Cada visão (IBOV, IFIX) tem a sua.
 
 ### Retornos
 
@@ -147,8 +153,8 @@ repetisse as datas.
 
 ## Saída: bloco `bolsa` em `dados.json`
 
-Montado por `exportar.bolsa(...)` e chamado no `atualizar.py` ao lado de
-`exportar.previsoes`. É opcional: se a montagem inteira falhar, o bloco vem
+Montado por `bolsa.obter(...)`, chamado no `atualizar.py` ao lado de
+`exportar.previsoes`, e repassado a `exportar.montar(..., bolsa=...)`. É opcional: se a montagem inteira falhar, o bloco vem
 `null` e a aba mostra "Dados da bolsa indisponíveis".
 
 ```
@@ -157,7 +163,7 @@ bolsa: {
     nome: "Ibovespa", data_ref: "2026-10-05", carteira_data: "2026-10-05", carteira_cache: false,
     alerta: null,                                          // texto quando > 20% sem cotação
     semanas: ["2025-10-10", ..., "2026-10-05"],
-    indice:  { ret: {dia, semana, mes, ano, m12}, simbolo },
+    indice:  { ret: {dia, semana, mes, ano, m12}, simbolo, desatualizado },   // true: série do cache
     amplitude: { dia: {alta: 48, total: 76}, ... },
     setores: [ {nome, peso, ret: {...}} ],                 // ordenados por peso
     ativos:  [ {ticker, nome, setor, subsetor, peso, ret: {...},
@@ -206,9 +212,9 @@ controle e o mapa funcionam em largura de celular.
 
 | Arquivo | Mudança |
 |---|---|
-| `pipeline/bolsa.py` (novo) | `parse_carteira_b3`, `numero_br`, `retornos`, `setores`, `amplitude`, `semanal`, `montar_visao` (puras); `baixar_carteira`, `baixar_precos` (rede, com cache). |
+| `pipeline/bolsa.py` (novo) | `parse_carteira_b3`, `numero_br`, `retornos`, `setores`, `amplitude`, `semanal`, `montar_visao`, `data_referencia` (puras); `baixar_carteira`, `obter_carteira`, `obter_precos`, `carregar_fiis` (rede e cache) e `obter` (monta o bloco `bolsa` e os avisos). |
 | `pipeline/fontes.py` | `parse_yahoo(payload, ajustado=False)`: com `ajustado=True`, prefere `adjclose`. O comportamento atual não muda. |
-| `pipeline/exportar.py` | `bolsa(...)` monta o bloco final e os avisos. |
+| `pipeline/exportar.py` | `montar(..., bolsa=...)` inclui o bloco já pronto no `dados.json`. |
 | `atualizar.py` | Chama a montagem da bolsa (respeitando `--offline`) e passa o bloco a `exportar.montar(..., bolsa=...)`. Uma falha inesperada vira aviso e `bolsa: null`, sem abortar o resto. |
 | `fiis.json` (novo) | Classificação curada. |
 | `painel.html` / `painel.js` / `painel.css` | Aba, renderização e estilos. |

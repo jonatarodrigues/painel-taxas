@@ -734,10 +734,17 @@
     $('#bolsa-alerta').hidden = !V.alerta;
     $('#bolsa-alerta').textContent = V.alerta || '';
     renderCardsBolsa(V, p);
-    renderMapa(V, p);
-    renderRanking(V, p);
-    renderSetores(V, p);
-    renderDetalhe(V, p);
+    const semCarteira = V.ativos.length === 0;
+    $('#bolsa-grade').hidden = semCarteira;
+    $('#bolsa-setores').hidden = semCarteira;
+    if (semCarteira) {
+      $('#bolsa-detalhe').hidden = true;
+    } else {
+      renderMapa(V, p);
+      renderRanking(V, p);
+      renderSetores(V, p);
+      renderDetalhe(V, p);
+    }
     const cart = V.carteira_data ? `Carteira B3 de ${fmtData(V.carteira_data)}${V.carteira_cache ? ' (cache)' : ''} · ` : '';
     $('#bolsa-rodape').textContent = `${cart}Preços até ${fmtData(V.data_ref)} · retornos com proventos (Yahoo Finance)`;
     const avisos = ((D.bolsa && D.bolsa.avisos) || []).filter((t) => t !== V.alerta);
@@ -752,7 +759,7 @@
     const r = V.indice.ret[p];
     const sim = V.indice.simbolo;
     $('#bolsa-cards').replaceChildren(
-      card(V.nome, fmtRet(r), classeVar(r), TEXTO_PERIODO[p] + (sim && !sim.startsWith('^') ? ` · via ETF ${sim.replace('.SA', '')}` : '')),
+      card(V.nome, fmtRet(r), classeVar(r), TEXTO_PERIODO[p] + (sim && !sim.startsWith('^') ? ` · via ETF ${sim.replace('.SA', '')}` : '') + (V.indice.desatualizado ? ' · cache' : '')),
       card('Em alta', amp.total ? `${amp.alta} de ${amp.total}` : '—', '', amp.total ? `${fmt(100 * amp.alta / amp.total, 0)}% dos ativos` : 'sem dados'),
       card('Melhor setor', comDado.length ? fmtRet(comDado[0].ret[p]) : '—', comDado.length ? classeVar(comDado[0].ret[p]) : '', comDado.length ? comDado[0].nome : ''),
       card('Pior setor', comDado.length ? fmtRet(comDado.at(-1).ret[p]) : '—', comDado.length ? classeVar(comDado.at(-1).ret[p]) : '', comDado.length ? comDado.at(-1).nome : ''));
@@ -771,7 +778,7 @@
     const porSetor = {};
     for (const a of V.ativos) (porSetor[a.setor] = porSetor[a.setor] || []).push(a);
     const data = V.setores.map((s) => ({
-      name: s.nome, value: s.peso, ret: s.ret[p],
+      id: 'setor:' + s.nome, name: s.nome, value: s.peso, ret: s.ret[p],
       children: (porSetor[s.nome] || []).map((a) => ({
         name: a.ticker, value: Math.max(a.peso, 0.01), ret: a.ret[p], ativo: a,
         itemStyle: { color: corRetorno(a.ret[p], lim) },
@@ -785,7 +792,7 @@
           : el('div', { class: 'tt' }, el('div', { class: 'tt-titulo', text: i.name }), el('div', { text: `${fmtRet(i.data && i.data.ret)} ${TEXTO_PERIODO[p]} · peso ${fmt(i.value, 1)}%` })),
       }),
       series: [{
-        type: 'treemap', data, roam: false, nodeClick: 'zoomToNode', top: 28, left: 0, right: 0, bottom: 0,
+        type: 'treemap', data, roam: false, nodeClick: false, top: 28, left: 0, right: 0, bottom: 0,
         breadcrumb: { show: true, top: 0, itemStyle: { color: cssVar('--card'), borderColor: cssVar('--border-solid'), textStyle: { color: cssVar('--text') } } },
         levels: [
           { itemStyle: { borderWidth: 0, gapWidth: 3 } },
@@ -796,7 +803,11 @@
         ],
       }],
     });
-    c.on('click', (e) => { if (e.data && e.data.ativo) abrirAtivo(e.data.ativo.ticker); });
+    c.on('click', (e) => {
+      if (!e.data) return;
+      if (e.data.ativo) abrirAtivo(e.data.ativo.ticker);
+      else if (e.data.id) c.dispatchAction({ type: 'treemapZoomToNode', seriesIndex: 0, targetNodeId: e.data.id });
+    });
   }
 
   function renderRanking(V, p) {
