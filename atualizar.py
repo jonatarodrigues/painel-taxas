@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from pipeline import agenda, correlacao, exportar, focus, fontes, transformar
+from pipeline import agenda, bolsa, correlacao, exportar, focus, fontes, transformar
 from pipeline.cache import Cache, obter
 from pipeline.ciclos import ciclos_copom
 from pipeline.series import DERIVADAS, POR_ID, SERIES
@@ -146,8 +146,14 @@ def main(argv: list[str] | None = None) -> int:
                               ipca_dez_anterior=valor_dezembro(mensais.get("ipca_12m"), hoje.year - 1),
                               usd_fim_anterior=ultimo_do_ano(brutas.get("usd_brl"), hoje.year - 1))
 
+    try:
+        bloco_bolsa = bolsa.obter(pasta, args.offline, avisos)
+    except Exception as e:  # a aba Bolsa nunca derruba a atualização das séries
+        avisos.append(f"Bolsa: falha ao montar a aba ({e})")
+        bloco_bolsa = None
+
     metas = {s.id: s for s in SERIES + DERIVADAS}
-    dados = exportar.montar(metas, diarias, mensais, status, avisos, correl, eventos, previsoes=prev)
+    dados = exportar.montar(metas, diarias, mensais, status, avisos, correl, eventos, previsoes=prev, bolsa=bloco_bolsa)
     exportar.gravar(dados, pasta)
 
     n_arestas = sum(len(a) for a in dados["arestas"].values())

@@ -65,7 +65,7 @@ def resumo_serie(serie: Serie, diaria: pd.Series, mensal: pd.Series, status: str
 
 def montar(metas: dict[str, Serie], diarias: dict[str, pd.Series], mensais: dict[str, pd.Series],
            status: dict[str, str], avisos: list[str], correl: dict, eventos: list[dict],
-           gerado_em: datetime | None = None, previsoes: dict | None = None) -> dict:
+           gerado_em: datetime | None = None, previsoes: dict | None = None, bolsa: dict | None = None) -> dict:
     gerado_em = gerado_em or datetime.now()
     series = {}
     vazia = pd.Series(dtype=float)
@@ -82,6 +82,7 @@ def montar(metas: dict[str, Serie], diarias: dict[str, pd.Series], mensais: dict
         "eventos": sorted(eventos, key=lambda e: e["data"]),
         "avisos": list(avisos),
         "previsoes": previsoes,
+        "bolsa": bolsa,
     }
 
 

@@ -26,7 +26,7 @@ def montar_exemplo():
 
 def test_montar_formato():
     d = montar_exemplo()
-    assert set(d) == {"gerado_em", "series", "correlacao", "arestas", "eventos", "avisos", "previsoes"}
+    assert set(d) == {"gerado_em", "series", "correlacao", "arestas", "eventos", "avisos", "previsoes", "bolsa"}
     assert d["previsoes"] is None
     usd = d["series"]["usd_brl"]
     assert usd["var_tipo"] == "pct" and d["series"]["selic_meta"]["var_tipo"] == "pp"
@@ -67,3 +67,10 @@ def test_variacao_respeita_calendario():
     m = pd.Series([100.0, 105.0, 120.0], index=idx)
     assert exportar._variacao(m, 1, pct=False) is None       # 2024-03 não existe
     assert exportar._variacao(m, 2, pct=False) == 15.0       # 2024-02 existe
+
+
+def test_montar_inclui_bolsa():
+    correl = {"correlacao": {}, "arestas": {}}
+    d = exportar.montar({}, {}, {}, {}, [], correl, [], bolsa={"ibov": None, "ifix": None, "avisos": []})
+    assert d["bolsa"] == {"ibov": None, "ifix": None, "avisos": []}
+    assert exportar.montar({}, {}, {}, {}, [], correl, [])["bolsa"] is None

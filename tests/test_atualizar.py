@@ -7,8 +7,7 @@ import pandas as pd
 import pytest
 
 import atualizar
-from pipeline import cache as cache_mod
-from pipeline import focus
+from pipeline import bolsa, cache as cache_mod, fontes, focus
 from pipeline.series import SERIES
 
 RAIZ = Path(__file__).parent.parent
@@ -20,6 +19,15 @@ def sem_focus_na_rede(monkeypatch):
     def falha(hoje):
         raise ConnectionError("rede desligada no teste")
     monkeypatch.setattr(focus, "baixar", falha)
+
+
+@pytest.fixture(autouse=True)
+def sem_bolsa_na_rede(monkeypatch):
+    """Os testes nunca chamam a B3 nem o Yahoo de verdade."""
+    def falha(*a):
+        raise ConnectionError("rede desligada no teste")
+    monkeypatch.setattr(bolsa, "baixar_carteira", falha)
+    monkeypatch.setattr(fontes, "yahoo_ajustado", falha)
 
 
 def serie_fake(serie):
@@ -129,3 +137,38 @@ def test_valor_dezembro_e_ultimo_do_ano():
     d = pd.Series([5.4, 5.5024, 5.6], index=pd.to_datetime(["2025-12-30", "2025-12-31", "2026-01-02"]))
     assert atualizar.ultimo_do_ano(d, 2025) == 5.5024
     assert atualizar.ultimo_do_ano(d, 2024) is None and atualizar.ultimo_do_ano(None, 2025) is None
+
+
+def test_main_gera_bloco_bolsa(tmp_path, monkeypatch):
+    monkeypatch.setattr(cache_mod.fontes, "baixar", serie_fake)
+    fix = Path(__file__).parent / "fixtures"
+    monkeypatch.setattr(bolsa, "baixar_carteira", lambda cod: bolsa.parse_carteira_b3(
+        json.loads((fix / ("b3_ibov.json" if cod == "IBOV" else "b3_ifix.json")).read_text(encoding="utf-8"))))
+    idx = pd.bdate_range("2025-09-01", "2026-10-07", name="data")
+    monkeypatch.setattr(fontes, "yahoo_ajustado", lambda sim: (pd.Series(range(100, 100 + len(idx)), index=idx, dtype=float), True))
+    shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
+    shutil.copy(RAIZ / "fiis.json", tmp_path / "fiis.json")
+    assert atualizar.main(["--pasta", str(tmp_path)]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert len(d["bolsa"]["ibov"]["ativos"]) == 4 and len(d["bolsa"]["ifix"]["ativos"]) == 3
+
+
+def test_main_sem_bolsa_continua(tmp_path, monkeypatch):
+    monkeypatch.setattr(cache_mod.fontes, "baixar", serie_fake)
+    shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
+    assert atualizar.main(["--pasta", str(tmp_path)]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert d["bolsa"] is None
+    assert any(a.startswith("Bolsa: sem carteiras") for a in d["avisos"])
+
+
+def test_main_excecao_na_bolsa_vira_aviso(tmp_path, monkeypatch):
+    monkeypatch.setattr(cache_mod.fontes, "baixar", serie_fake)
+    def explode(*a, **k):
+        raise RuntimeError("bug inesperado")
+    monkeypatch.setattr(bolsa, "obter", explode)
+    shutil.copy(RAIZ / "eventos.json", tmp_path / "eventos.json")
+    assert atualizar.main(["--pasta", str(tmp_path)]) == 0
+    d = json.loads((tmp_path / "dados.json").read_text(encoding="utf-8"))
+    assert d["bolsa"] is None
+    assert "Bolsa: falha ao montar a aba (bug inesperado)" in d["avisos"]
