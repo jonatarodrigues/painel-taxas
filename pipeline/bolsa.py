@@ -15,7 +15,7 @@ from pipeline.cache import Cache
 PERIODOS = ("dia", "semana", "mes", "ano", "m12")
 INDICES = {  # chave -> (código na B3, nome, símbolo do índice no Yahoo)
     "ibov": ("IBOV", "Ibovespa", "^BVSP"),
-    "ifix": ("IFIX", "IFIX", "IFIX.SA"),
+    "ifix": ("IFIX", "IFIX", "XFIX11.SA"),
 }
 OUTROS = "Outros"
 LIMIAR_SEM_DADO = 0.20
@@ -200,7 +200,7 @@ def montar_visao(chave: str, carteira: dict | None, carteira_cache: bool, precos
         "carteira_cache": bool(carteira_cache and carteira),
         "alerta": alerta,
         "semanas": rotulos_semanas(periodos, ref),
-        "indice": {"ret": retornos(indice, ref)},
+        "indice": {"ret": retornos(indice, ref), "simbolo": INDICES[chave][2]},
         "amplitude": amplitude(ativos),
         "setores": agregar_setores(ativos),
         "ativos": ativos,

@@ -62,7 +62,7 @@ setor exibido é o trecho de `segment` antes da `/`, sem espaços nas pontas
 
 - Usa `indicators.adjclose[0].adjclose`. Se esse campo faltar, cai para
   `indicators.quote[0].close` e marca o ativo com `sem_proventos: true`.
-- Índices: `^BVSP` e `IFIX.SA`, pelo mesmo caminho.
+- Índices: o Ibovespa usa `^BVSP`. Para o IFIX o Yahoo não tem histórico de `IFIX.SA` (só o ponto do dia, verificado em 2026-10-05); por isso a visão do IFIX usa o ETF `XFIX11.SA`, que replica o índice e reinveste os proventos. O card diz "via ETF XFIX11".
 - São ~175 tickers baixados com `ThreadPoolExecutor(max_workers=5)`, usando
   o `fontes._get` existente (User-Agent e repetições). O tempo estimado é de
   ~30 s a mais no workflow.
@@ -95,7 +95,7 @@ Fica na raiz, ao lado do `agenda.json`:
 | O Yahoo falha num ticker | Usa `cache/bolsa/{TICKER}.csv` (classe `Cache` atual) e marca `desatualizado: true`. Sem cache, o ativo fica com `ret` nulo (cinza). |
 | Último preço anterior à data de referência (suspenso, sem negócio ou ticker novo ainda desconhecido no Yahoo) | `ret` nulo e `parado: true`. Ativo cinza no mapa. |
 | Mais de 20% dos ativos de uma visão sem retorno no período Dia | Aviso destacado no topo da visão. |
-| Índice (`^BVSP`/`IFIX.SA`) indisponível | A data de referência passa a ser a data mais frequente entre os últimos pregões dos ativos, e o card do índice mostra "—". |
+| Índice (`^BVSP`/`XFIX11.SA`) indisponível | A data de referência passa a ser a data mais frequente entre os últimos pregões dos ativos, e o card do índice mostra "—". |
 | `--offline` | Lê só os caches, como as demais séries. |
 
 Os avisos entram em `bolsa.avisos` e também na lista geral de avisos do
@@ -157,7 +157,7 @@ bolsa: {
     nome: "Ibovespa", data_ref: "2026-10-05", carteira_data: "2026-10-05", carteira_cache: false,
     alerta: null,                                          // texto quando > 20% sem cotação
     semanas: ["2025-10-10", ..., "2026-10-05"],
-    indice:  { ret: {dia, semana, mes, ano, m12} },
+    indice:  { ret: {dia, semana, mes, ano, m12}, simbolo },
     amplitude: { dia: {alta: 48, total: 76}, ... },
     setores: [ {nome, peso, ret: {...}} ],                 // ordenados por peso
     ativos:  [ {ticker, nome, setor, subsetor, peso, ret: {...},

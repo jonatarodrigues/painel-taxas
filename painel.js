@@ -116,7 +116,7 @@
     const a = hexRgb(cssVar('--mid')), b = hexRgb(cssVar(v >= 0 ? '--pos' : '--neg'));
     return `rgb(${a.map((x, i) => Math.round(x + (b[i] - x) * k)).join(',')})`;
   }
-  const corTextoRetorno = (v, lim) => (v != null && Math.abs(v) / lim > 0.55 ? '#ffffff' : cssVar('--text'));
+  const corTextoRetorno = (v, lim) => (v != null && Math.abs(v) / lim > 0.55 ? cssVar('--card') : cssVar('--text'));
   const fmtRet = (v) => (v == null ? '—' : fmtSinal(v, 1) + '%');
   function lerPref(chave, validos, padrao) { try { const v = localStorage.getItem(chave); return v in validos ? v : padrao; } catch (e) { return padrao; } }
   function gravarPref(chave, v) { try { localStorage.setItem(chave, v); } catch (e) { /* armazenamento indisponível */ } }
@@ -740,6 +740,8 @@
     renderDetalhe(V, p);
     const cart = V.carteira_data ? `Carteira B3 de ${fmtData(V.carteira_data)}${V.carteira_cache ? ' (cache)' : ''} · ` : '';
     $('#bolsa-rodape').textContent = `${cart}Preços até ${fmtData(V.data_ref)} · retornos com proventos (Yahoo Finance)`;
+    const avisos = ((D.bolsa && D.bolsa.avisos) || []).filter((t) => t !== V.alerta);
+    $('#bolsa-avisos').replaceChildren(...avisos.map((t) => el('div', { text: t })));
   }
 
   function renderCardsBolsa(V, p) {
@@ -748,8 +750,9 @@
     const card = (nome, valor, cls, sub) => el('article', { class: 'kpi', style: '--cor:var(--g-bolsa)' },
       el('div', { class: 'kpi-nome', text: nome }), el('div', { class: 'kpi-valor ' + cls, text: valor }), el('div', { class: 'kpi-data muted', text: sub }));
     const r = V.indice.ret[p];
+    const sim = V.indice.simbolo;
     $('#bolsa-cards').replaceChildren(
-      card(V.nome, fmtRet(r), classeVar(r), TEXTO_PERIODO[p]),
+      card(V.nome, fmtRet(r), classeVar(r), TEXTO_PERIODO[p] + (sim && !sim.startsWith('^') ? ` · via ETF ${sim.replace('.SA', '')}` : '')),
       card('Em alta', amp.total ? `${amp.alta} de ${amp.total}` : '—', '', amp.total ? `${fmt(100 * amp.alta / amp.total, 0)}% dos ativos` : 'sem dados'),
       card('Melhor setor', comDado.length ? fmtRet(comDado[0].ret[p]) : '—', comDado.length ? classeVar(comDado[0].ret[p]) : '', comDado.length ? comDado[0].nome : ''),
       card('Pior setor', comDado.length ? fmtRet(comDado.at(-1).ret[p]) : '—', comDado.length ? classeVar(comDado.at(-1).ret[p]) : '', comDado.length ? comDado.at(-1).nome : ''));
@@ -797,11 +800,14 @@
   }
 
   function renderRanking(V, p) {
-    const ord = V.ativos.filter((a) => a.ret[p] != null).sort((a, b) => b.ret[p] - a.ret[p]);
+    const com = V.ativos.filter((a) => a.ret[p] != null);
+    const altas = com.filter((a) => a.ret[p] > 0).sort((a, b) => b.ret[p] - a.ret[p]).slice(0, 5);
+    const baixas = com.filter((a) => a.ret[p] < 0).sort((a, b) => a.ret[p] - b.ret[p]).slice(0, 5);
     const item = (a) => el('li', {}, el('button', { type: 'button', onclick: () => abrirAtivo(a.ticker) },
       el('strong', { text: a.ticker }), el('span', { class: 'rk-nome', text: a.nome }), el('span', { class: classeVar(a.ret[p]), text: fmtRet(a.ret[p]) })));
-    $('#bolsa-altas').replaceChildren(...ord.slice(0, 5).map(item));
-    $('#bolsa-baixas').replaceChildren(...ord.slice(-5).reverse().map(item));
+    const lista = (id, itens, vazio) => $(id).replaceChildren(...(itens.length ? itens.map(item) : [el('li', { class: 'muted', text: vazio })]));
+    lista('#bolsa-altas', altas, 'Nenhum ativo em alta no período.');
+    lista('#bolsa-baixas', baixas, 'Nenhum ativo em queda no período.');
   }
 
   function renderSetores(V, p) {

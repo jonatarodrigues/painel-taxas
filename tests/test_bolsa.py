@@ -203,6 +203,7 @@ def test_montar_visao_ibov():
     v = bolsa.montar_visao("ibov", c, False, precos, ind, None, avisos)
     assert v["nome"] == "Ibovespa" and v["data_ref"] == "2026-10-07" and v["carteira_data"] == "2026-10-05"
     assert v["indice"]["ret"]["dia"] == 2.0 and v["alerta"] is None and avisos == []
+    assert v["indice"]["simbolo"] == "^BVSP" and bolsa.INDICES["ifix"][2] == "XFIX11.SA"
     assert v["amplitude"]["dia"] == {"alta": 1, "total": 2}
     assert len(v["semanas"]) == 52 and v["semanas"][-1] == "2026-10-07"
     a, b = v["ativos"]
@@ -358,6 +359,7 @@ def test_obter_monta_o_bloco(tmp_path):
     assert [a["setor"] for a in b["ifix"]["ativos"]] == ["Papel", "Logística", "Outros"]
     assert b["avisos"] == ["IFIX: 1 fundo sem tipo em fiis.json: CACR11 (fica em Outros)."]
     assert avisos == b["avisos"]
+    assert b["ifix"]["indice"]["simbolo"] == "XFIX11.SA" and b["ibov"]["indice"]["simbolo"] == "^BVSP"
     assert (tmp_path / "cache" / "carteiras.json").exists()
     assert (tmp_path / "cache" / "bolsa" / "WEGE3.SA.csv").exists()
 
