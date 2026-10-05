@@ -72,6 +72,24 @@ recomendação de investimento.
 - Regras dos sinais e limites: `pipeline/sinais.py` e
   `docs/superpowers/specs/2026-09-30-previsoes-design.md`.
 
+## Aba Bolsa
+
+Mostra como foram as ações do Ibovespa e os fundos do IFIX no dia, na
+semana, no mês, no ano e em 12 meses: mapa por setor (tamanho = peso no
+índice, cor = retorno), maiores altas e baixas, retorno por setor e o
+gráfico de cada ativo. Os retornos incluem proventos (`adjclose` do Yahoo
+Finance), e a carteira de cada índice vem da B3 a cada atualização.
+
+- A B3 não informa o tipo dos FIIs. Eles ficam em `fiis.json`
+  (`"HGLG11": "Logística"`), com os tipos listados em `_tipos`. Fundo novo no
+  IFIX sem tipo entra em "Outros", e o painel avisa para classificar.
+- Carteiras em `cache/carteiras.json` e preços em `cache/bolsa/`. Se a B3 ou
+  o Yahoo falharem, o painel usa o cache e avisa.
+- Retorno do IFIX vem do ETF `XFIX11.SA` (replica o IFIX, reinveste
+  distribuições), pois o Yahoo não tem histórico para `IFIX.SA`.
+- Regras de cálculo: `pipeline/bolsa.py` e
+  `docs/superpowers/specs/2026-10-05-aba-bolsa-design.md`.
+
 ## Publicação
 
 O workflow `.github/workflows/publicar.yml` roda os testes, executa o
