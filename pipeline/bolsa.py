@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Callable, NamedTuple
@@ -32,9 +33,10 @@ def numero_br(texto) -> float | None:
         return None
     t = str(texto).strip().replace(".", "").replace(",", ".")
     try:
-        return float(t)
+        v = float(t)
     except ValueError:
         return None
+    return v if math.isfinite(v) else None
 
 
 def _data_b3(texto: str) -> str | None:
@@ -128,11 +130,14 @@ class Preco(NamedTuple):
 
 
 def data_referencia(indice: pd.Series | None, series: list[pd.Series | None]) -> pd.Timestamp | None:
-    """Último pregão do índice; sem índice, a data mais frequente entre os últimos pregões dos ativos."""
+    """O mais recente entre o último pregão do índice e a data mais frequente dos últimos pregões dos ativos."""
+    candidatas = []
     if indice is not None and not indice.dropna().empty:
-        return indice.dropna().index[-1]
+        candidatas.append(indice.dropna().index[-1])
     ultimos = [s.dropna().index[-1] for s in series if s is not None and not s.dropna().empty]
-    return pd.Series(ultimos).mode().max() if ultimos else None
+    if ultimos:
+        candidatas.append(pd.Series(ultimos).mode().max())
+    return max(candidatas) if candidatas else None
 
 
 def agregar_setores(ativos: list[dict]) -> list[dict]:
@@ -157,7 +162,8 @@ def amplitude(ativos: list[dict]) -> dict[str, dict]:
 
 
 def montar_visao(chave: str, carteira: dict | None, carteira_cache: bool, precos: dict[str, Preco],
-                 indice: pd.Series | None, tipos: dict[str, str] | None, avisos: list[str]) -> dict | None:
+                 indice: pd.Series | None, tipos: dict[str, str] | None, avisos: list[str],
+                 indice_desatualizado: bool = False) -> dict | None:
     """Uma visão (ibov ou ifix) pronta para o painel. None quando não há índice nem preços."""
     nome = INDICES[chave][1]
     itens = carteira["ativos"] if carteira else []
@@ -166,6 +172,8 @@ def montar_visao(chave: str, carteira: dict | None, carteira_cache: bool, precos
         return None
     if carteira is None:
         avisos.append(f"{nome}: carteira indisponível (B3 fora do ar e sem cache).")
+    if indice_desatualizado:
+        avisos.append(f"{nome}: índice do cache (Yahoo indisponível).")
     periodos = semanas(ref)
     ativos, sem_tipo = [], []
     for item in itens:
@@ -200,7 +208,8 @@ def montar_visao(chave: str, carteira: dict | None, carteira_cache: bool, precos
         "carteira_cache": bool(carteira_cache and carteira),
         "alerta": alerta,
         "semanas": rotulos_semanas(periodos, ref),
-        "indice": {"ret": retornos(indice, ref), "simbolo": INDICES[chave][2]},
+        "indice": {"ret": retornos(indice, ref), "simbolo": INDICES[chave][2],
+                   "desatualizado": bool(indice_desatualizado)},
         "amplitude": amplitude(ativos),
         "setores": agregar_setores(ativos),
         "ativos": ativos,
@@ -274,7 +283,10 @@ def obter_precos(simbolos: list[str], cache: Cache, offline: bool,
                     return simbolo, Preco(s, False, not com_proventos)
             except Exception:  # rede ou parsing: cai no cache
                 pass
-        s = cache.ler(_id_cache(simbolo))
+        try:
+            s = cache.ler(_id_cache(simbolo))
+        except Exception:  # CSV corrompido: trata como sem cache
+            s = None
         return simbolo, Preco(s, s is not None, False)
 
     with ThreadPoolExecutor(max_workers=DOWNLOADS_SIMULTANEOS) as ex:
@@ -324,10 +336,12 @@ def obter(pasta: Path, offline: bool, avisos: list[str], baixar_carteira_=None, 
             meus.append(f"{nome}: carteira da B3 indisponível; usando a de {data}.")
         tickers = [a["ticker"] for a in (carteira or {}).get("ativos", [])]
         precos = obter_precos([simbolo_indice] + [t + ".SA" for t in tickers], cache, offline, baixar_preco)
-        indice = precos.pop(simbolo_indice).serie
+        preco_indice = precos.pop(simbolo_indice)
+        indice = preco_indice.serie
         por_ticker = {s.removesuffix(".SA"): p for s, p in precos.items()}
         visoes[chave] = montar_visao(chave, carteira, do_cache, por_ticker, indice,
-                                     tipos if chave == "ifix" else None, meus)
+                                     tipos if chave == "ifix" else None, meus,
+                                     indice_desatualizado=preco_indice.desatualizado)
     if all(v is None for v in visoes.values()):
         meus.append("Bolsa: sem carteiras e sem preços; a aba fica vazia nesta atualização.")
         avisos.extend(meus)

@@ -18,6 +18,7 @@ def carregar(nome):
 @pytest.mark.parametrize("texto, esperado", [
     ("2,792", 2.792), ("1.460.506.056", 1460506056.0), ("100,000", 100.0),
     ("0,045", 0.045), ("", None), (None, None), ("abc", None),
+    ("nan", None), ("inf", None), ("-Infinity", None),
 ])
 def test_numero_br(texto, esperado):
     assert bolsa.numero_br(texto) == esperado
@@ -184,6 +185,18 @@ def test_data_referencia_usa_indice_e_cai_para_a_moda():
     assert bolsa.data_referencia(None, [None]) is None
 
 
+def test_data_referencia_indice_velho_perde_para_a_moda_dos_ativos():
+    ind = serie({"2026-10-02": 1, "2026-10-05": 2})
+    a = serie({"2026-10-07": 1}); b = serie({"2026-10-07": 1})
+    assert bolsa.data_referencia(ind, [a, b]) == REF
+
+
+def test_data_referencia_indice_na_frente_dos_ativos_vence():
+    ind = serie({"2026-10-06": 1, "2026-10-07": 2})
+    a = serie({"2026-10-05": 1}); b = serie({"2026-10-05": 1})
+    assert bolsa.data_referencia(ind, [a, b]) == REF
+
+
 def carteira(*itens):
     return {"data": "2026-10-05", "ativos": [
         {"ticker": t, "nome": t, "setor": setor, "subsetor": setor + " / Sub", "peso": peso} for t, setor, peso in itens]}
@@ -308,6 +321,16 @@ def test_obter_precos_baixa_grava_e_cai_para_cache(tmp_path):
     assert r["BBBB3.SA"].serie is None
 
 
+def test_obter_precos_csv_corrompido_vira_sem_cache(tmp_path):
+    cache = Cache(tmp_path / "bolsa")
+    cache.gravar(bolsa._id_cache("BBBB3.SA"), serie({"2026-10-07": 1}))
+    cache.caminho(bolsa._id_cache("AAAA3.SA")).write_bytes(b"lixo sem coluna\n\x00\x01")
+    def caiu(sim): raise ConnectionError("fora")
+    r = bolsa.obter_precos(["AAAA3.SA", "BBBB3.SA"], cache, True, baixar=caiu)
+    assert r["AAAA3.SA"].serie is None and not r["AAAA3.SA"].desatualizado
+    assert r["BBBB3.SA"].desatualizado and len(r["BBBB3.SA"].serie) == 1
+
+
 def test_obter_precos_offline_nao_chama_a_rede(tmp_path):
     cache = Cache(tmp_path / "bolsa")
     cache.gravar(bolsa._id_cache("^BVSP"), serie({"2026-10-07": 1}))
@@ -371,6 +394,22 @@ def test_obter_b3_fora_usa_carteira_do_cache_e_avisa(tmp_path):
     b = bolsa.obter(tmp_path, False, avisos, baixar_carteira_=caiu, baixar_preco=preco_fake)
     assert b["ibov"]["carteira_cache"] and len(b["ibov"]["ativos"]) == 4
     assert "Ibovespa: carteira da B3 indisponível; usando a de 05/10/2026." in avisos
+
+
+def test_obter_indice_so_no_cache_usa_data_dos_ativos_e_avisa(tmp_path):
+    antigo = serie({"2026-10-02": 100, "2026-10-05": 101})
+    Cache(tmp_path / "cache" / "bolsa").gravar(bolsa._id_cache("^BVSP"), antigo)
+    def baixar(sim):
+        if sim == "^BVSP":
+            raise ConnectionError("Yahoo fora")
+        return preco_fake(sim)
+    avisos = []
+    b = bolsa.obter(tmp_path, False, avisos, baixar_carteira_=carteira_fake, baixar_preco=baixar)
+    assert b["ibov"]["data_ref"] == "2026-10-07"
+    assert b["ibov"]["indice"]["desatualizado"] is True
+    assert b["ifix"]["indice"]["desatualizado"] is False
+    assert "Ibovespa: índice do cache (Yahoo indisponível)." in b["avisos"]
+    assert "Ibovespa: índice do cache (Yahoo indisponível)." in avisos
 
 
 def test_obter_sem_nada_devolve_none(tmp_path):
